@@ -14,6 +14,7 @@
   <licence>GNU/GPL v3</licence>
 
   <necessite nom="zcore" compatibilite="[2.8.7;]" />
+  <necessite nom="a2ta_associations" compatibilite="[1.0.0;]" />
 
   <spip compatibilite="[3.2.0;3.2.*]">
     <style type="public" source="dist/css/a2ta.css" />
