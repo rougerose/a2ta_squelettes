@@ -1,0 +1,6 @@
+# fichiers systemes
+.DS_Store
+node_modules/
+yarn.*
+yarn-error.log
+*.diff
