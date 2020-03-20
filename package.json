@@ -11,10 +11,12 @@
   ],
   "scripts": {
     "clean": "rm -rf dist/*",
+    "copy:fonts": "mkdir -p dist/webfonts && cp -R _src/webfonts/barlow/fonts/woff2 dist/webfonts/barlow",
+    "fonts": "node _src/scripts/webfonts.js",
     "scss": "node-sass _src/scss/ --include-path node_modules/ -o dist/css",
     "postcss": "postcss dist/css/a2ta.css -o dist/css/a2ta.css",
     "build:css": "run-s scss postcss",
-    "build": "run-s clean build:*",
+    "build": "run-s clean fonts build:*",
     "watch:scss": "onchange '_src/scss' -- run-s build:css",
     "watch": "run-p watch:*",
     "dev-watch": "NODE_ENV='development' yarn watch",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.7.4",
+    "cpy": "^8.1.0",
     "cssnano": "^4.1.10",
     "inuit-flexgrid": "^0.4.0",
     "inuitcss": "^6.0.0",
