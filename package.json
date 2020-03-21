@@ -10,14 +10,16 @@
 		"defaults"
 	],
 	"scripts": {
-		"clean": "rm -rf dist/*",
+		"clean": "rm -rf dist/* && mkdir dist/javascript",
 		"copy:fonts": "node _src/scripts/webfonts.js",
 		"scss": "node-sass _src/scss/ --include-path node_modules/ -o dist/css",
 		"postcss": "postcss dist/css/a2ta.css -o dist/css/a2ta.css",
-		"build:css": "run-s scss postcss",
 		"prebuild": "run-s clean copy:*",
+		"build:js": "terser _src/javascript/a2ta.js -c -m -o dist/javascript/a2ta.js",
+		"build:css": "run-s scss postcss",
 		"build": "run-s build:*",
 		"watch:scss": "onchange '_src/scss' -- run-s build:css",
+		"watch:js": "onchange '_src/javascript' -- run-s build:js",
 		"watch": "run-p watch:*",
 		"dev-watch": "NODE_ENV='development' yarn watch",
 		"dev": "NODE_ENV='development' yarn build",
@@ -33,6 +35,7 @@
 		"node-sass": "^4.13.1",
 		"npm-run-all": "^4.1.5",
 		"onchange": "^6.1.0",
-		"postcss-cli": "^7.1.0"
+		"postcss-cli": "^7.1.0",
+		"terser": "^4.6.7"
 	}
 }
