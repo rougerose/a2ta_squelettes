@@ -15,10 +15,12 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 
 // Zcore
 if (!isset($GLOBALS['z_blocs'])) {
-  $GLOBALS['z_blocs'] = array(
-    'content',
-    'head',
-    'head_js',
-    'header',
-  );
+	$GLOBALS['z_blocs'] = array(
+		'content',
+		'head_js',
+		'head',
+		'header',
+		'extra',
+		'footer',
+	);
 }
