@@ -1,0 +1,30 @@
+/*=============================================>>>>>
+= c-site-header =
+===============================================>>>>>*/
+
+.c-site-header {
+	display: flex;
+}
+
+	.c-site-header__name {
+		display: flex;
+		flex: 2;
+		padding: 28px 0;
+	}
+
+		.c-site-header__logo {
+			flex: 1;
+			align-self: baseline;
+			@include font-size(24px, false);
+			font-weight: bold;
+		}
+
+		.c-site-header__baseline {
+			flex: 1;
+			align-self: baseline;
+			@include font-size(18px, false);
+		}
+
+	.c-site-header__menu-trigger {
+		flex: 0;
+	}

@@ -1,0 +1,17 @@
+/*=============================================>>>>>
+= c-site =
+===============================================>>>>>*/
+
+.c-site {
+	padding-top: $spacing-unit-huge;
+	font-family: $font-text;
+}
+
+
+.c-site__header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: $zindex-header;
+}

@@ -79,10 +79,8 @@
 // SETTINGS
 // @import "settings/example.settings.config";
 @import "inuitcss/settings/settings.core";
-// @import "settings/example.settings.global";
-
-
-
+@import "settings/global";
+@import "settings/colors";
 
 
 // TOOLS
@@ -90,33 +88,30 @@
 @import "inuitcss/tools/tools.clearfix";
 @import "inuitcss/tools/tools.hidden";
 @import "node_modules/sass-mq/mq";
-
-
-
+@import "tools/alias";
 
 
 // GENERIC
 @import "inuitcss/generic/generic.box-sizing";
-@import "inuitcss/generic/generic.normalize";
+@import "generic/normalize";
+// @import "inuitcss/generic/generic.normalize";
 @import "inuitcss/generic/generic.reset";
 @import "inuitcss/generic/generic.shared";
 
 
-
-
-
 // ELEMENTS
+@import "elements/webfonts";
+@import "elements/links";
+//
 // @import "inuitcss/elements/elements.page";
 // @import "inuitcss/elements/elements.headings";
 // @import "inuitcss/elements/elements.images";
 // @import "inuitcss/elements/elements.tables";
 
 
-
-
-
 // OBJECTS
-//
+@import "objects/wrapper";
+@import "inuit-flexgrid/objects/objects.grid";
 // Uncomment and add to this section as necessary.
 // @import "inuitcss/objects/objects.wrapper";
 // @import "inuitcss/objects/objects.layout";
@@ -132,16 +127,19 @@
 // @import "inuitcss/objects/objects.pack";
 
 
-
-
-
 // COMPONENTS
-//
-// Build and include your project’s UI components here.
-// @import "components/example.components.buttons";
+@import "components/carte";
+@import "components/intro-text";
+@import "components/loading-page";
+@import "components/site-intro";
+@import "components/site";
+@import "components/site-header";
+@import "components/site-nav";
+@import "components/spip-admin";
 
-
-
+	// Lib : Hamburgers
+@import "settings/hamburgers";
+@import "hamburgers/_sass/hamburgers/hamburgers";
 
 
 // UTILITIES

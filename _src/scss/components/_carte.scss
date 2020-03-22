@@ -1,0 +1,13 @@
+/*=============================================>>>>>
+= carte =
+===============================================>>>>>*/
+
+
+.c-carte {
+	// Modifier le z-index défini par les css de leaflet
+	.leaflet-pane,
+	.leaflet-top,
+	.leaflet-bottom {
+		z-index: $zindex-map;
+	}
+}

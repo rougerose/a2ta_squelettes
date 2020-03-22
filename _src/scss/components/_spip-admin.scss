@@ -1,0 +1,19 @@
+/*=============================================>>>>>
+= spip-admin =
+===============================================>>>>>*/
+
+.spip-admin-float {
+	right: 0 !important;
+	top: auto !important;
+	bottom: .5rem;
+	z-index: $zindex-spip-admin-float !important;
+
+	.spip-admin-boutons {
+		border-radius: 5px 5px 0 0;
+		padding: .5rem 1rem;
+		font-family: $font-monospace;
+		@include inuit-font-size(10px, 1);
+		font-weight: normal;
+		text-align: left;
+	}
+}

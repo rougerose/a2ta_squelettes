@@ -1,0 +1,15 @@
+/*=============================================>>>>>
+= Alias =
+===============================================>>>>>*/
+
+// ----- $spacing-unit ----- //
+$spacing-unit: $inuit-global-spacing-unit;
+$spacing-unit-tiny: $inuit-global-spacing-unit-tiny;
+$spacing-unit-small: $inuit-global-spacing-unit-small;
+$spacing-unit-large: $inuit-global-spacing-unit-large;
+$spacing-unit-huge: $inuit-global-spacing-unit-huge;
+
+// ----- font-size mixin ----- //
+@mixin font-size($arguments...) {
+	@include inuit-font-size($arguments...);
+}

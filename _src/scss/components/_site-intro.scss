@@ -1,0 +1,10 @@
+
+.c-site-intro {
+	display: flex;
+	padding-top: 40vh;
+}
+
+	.c-site-intro__text {
+		margin: auto;
+		@include font-size(60px);
+	}
