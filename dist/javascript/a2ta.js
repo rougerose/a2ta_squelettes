@@ -1,0 +1,1 @@
+$((function(){var c=$("#hamburger");c.on("click",(function(){c.toggleClass("is-active")}))}));
