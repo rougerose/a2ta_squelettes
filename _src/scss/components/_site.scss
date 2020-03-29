@@ -5,6 +5,10 @@
 .c-site {
 	padding-top: $spacing-unit-huge;
 	font-family: $font-text;
+
+	&.is-locked {
+		overflow: hidden;
+	}
 }
 
 

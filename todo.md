@@ -1,0 +1,1 @@
+- Intro, Texte de présentation : Ajouter une page de configuration du plugin, afin de gérer ce texte, ce qui permet de garder le descriptif du site à un texte de présentation avec une forme ou une longueur moins contrainte.

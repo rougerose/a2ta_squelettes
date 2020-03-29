@@ -1,10 +1,31 @@
 
 .c-site-intro {
 	display: flex;
+	justify-content: center;
 	padding-top: 40vh;
 }
 
+
 	.c-site-intro__text {
-		margin: auto;
-		@include font-size(60px);
+		@include font-size(50px);
 	}
+
+
+		.c-site-intro__text-line {
+			opacity: 0;
+			transform: translateY(120px) translateZ(0);
+			display: block;
+
+			.is-page-ready & {
+				opacity: 1;
+				transform: translateY(0) translateZ(0);
+			}
+
+			.is-page-ready &:first-child {
+				transition: transform 1.2s cubic-bezier(.23,1,.32,1) .05s, opacity 1.2s cubic-bezier(.23,1,.32,1) .05s;
+			}
+
+			.is-page-ready &:nth-child(2) {
+				transition: transform 1.2s cubic-bezier(.23,1,.32,1) .1s, opacity 1.2s cubic-bezier(.23,1,.32,1) .1s;
+			}
+		}

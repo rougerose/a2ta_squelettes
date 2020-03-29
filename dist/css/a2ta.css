@@ -711,12 +711,6 @@ a {
   z-index: 50; }
 
 /*=============================================>>>>>
-= c-intro-text =
-===============================================>>>>>*/
-.c-intro-text__line {
-  display: block; }
-
-/*=============================================>>>>>
 = c-loading-page =
 ===============================================>>>>>*/
 .c-loading-page {
@@ -724,19 +718,35 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
   z-index: 150;
   background-color: #ff8000; }
+  .c-loading-page.is-hidden {
+    height: 0;
+    pointer-events: none; }
 
 .c-site-intro {
   display: flex;
+  justify-content: center;
   padding-top: 40vh; }
 
 .c-site-intro__text {
-  margin: auto;
-  font-size: 60px;
-  font-size: 3.75rem;
-  line-height: 1.1; }
+  font-size: 50px;
+  font-size: 3.125rem;
+  line-height: 1.2; }
+
+.c-site-intro__text-line {
+  opacity: 0;
+  transform: translateY(120px) translateZ(0);
+  display: block; }
+  .is-page-ready .c-site-intro__text-line {
+    opacity: 1;
+    transform: translateY(0) translateZ(0); }
+  .is-page-ready .c-site-intro__text-line:first-child {
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.05s, opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.05s; }
+  .is-page-ready .c-site-intro__text-line:nth-child(2) {
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.1s, opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.1s; }
 
 /*=============================================>>>>>
 = c-site =
@@ -744,6 +754,8 @@ a {
 .c-site {
   padding-top: 96px;
   font-family: "barlow", sans-serif; }
+  .c-site.is-locked {
+    overflow: hidden; }
 
 .c-site__header {
   position: fixed;
