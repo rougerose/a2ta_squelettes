@@ -7,14 +7,9 @@ var a2ta = {
 	},
 
 	loading: function() {
-		var e;
-		swipedetect($("#loading")[0], function(){
-			return e(), false;
+		document.addEventListener('swiped-up', function(e) {
+			console.log(e.target); // element that was swiped
 		});
-		e = function() {
-			$("#loading").addClass("is-hidden");
-		}
-
 	}
 }
 
