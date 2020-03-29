@@ -3,59 +3,40 @@ var a2ta = {
 	body: null,
 	init: function() {
 		this.body = $("body"),
+		this.menu(),
 		this.loading();
 	},
 
-	loading: function() {
-		document.addEventListener('swiped-up', function(e) {
-			console.log(e.target); // element that was swiped
+	menu: function() {
+		var $hamburger = $("#hamburger");
+		$hamburger.on("click", function() {
+			$hamburger.toggleClass("is-active");
 		});
-	}
+	},
+
+	loading: function() {
+		var $loadingContainer = $("#loading"),
+				loadingContainer = $loadingContainer[0];
+
+		loadingContainer.addEventListener('swiped-up', hideLoading);
+		loadingContainer.addEventListener('click', hideLoading);
+
+		this.body.addClass("is-page-ready");
+
+
+		function hideLoading() {
+			$loadingContainer.addClass("is-hidden");
+
+			// Supprimer body.is-locked
+			event.currentTarget.parentNode.classList.remove("is-locked");
+
+			loadingContainer.removeEventListener('swiped-up', hideLoading);
+			loadingContainer.removeEventListener('click', hideLoading);
+		}
+	},
 }
 
 
 $(function() {
 	a2ta.init();
-
-	//
-	// Chargement de la page effectué
-	// var $body = $("body");
-	// $body.addClass("is-page-ready");
-
-	// document.addEventListener("wheel", (evt) => {
-	// 	console.log(evt);
-	// 	// … do stuff with evt
-	// }, { capture: false, passive: true})
-
-	// var scrolling = false;
-
-	// $( window ).on("wheel mousewheel", function() {
-	// 	scrolling = true;
-	// });
-	//
-	// setInterval( function() {
-	// 	if ( scrolling ) {
-	// 		scrolling = false;
-	// 		console.log(event);
-	// 		// Do your thang!
-	// 	}
-	// }, 250 );
-
-
-
-	// $(window).on("wheel mousewheel", function(event) {
-	// 	return $("#loading:hover").length && event.originalEvent.deltaY > 0 ? ($("#loading").addClass("is-hidden"), setTimeout(function() {
-	// 		return setTimeout(function() {return $("body").removeClass("is-locked");}, 100)
-	// 	}, 900)) : void 0;
-	// });
-
-
-	//
-	// Menu hamburgers
-	// -------------------------------------
-	// var $hamburger = $("#hamburger");
-	//
-	// $hamburger.on("click", function() {
-	// 	$hamburger.toggleClass("is-active");
-	// });
 });

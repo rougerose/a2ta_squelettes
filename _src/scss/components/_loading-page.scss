@@ -15,5 +15,6 @@
 	&.is-hidden {
 		height: 0;
 		pointer-events: none;
+		transition: height 1s cubic-bezier(.5,.01,.08,.98);
 	}
 }
