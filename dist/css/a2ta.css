@@ -710,6 +710,10 @@ a {
 .c-carte .leaflet-bottom {
   z-index: 50; }
 
+.c-carte .leaflet-fade-anim .leaflet-tile,
+.c-carte .leaflet-zoom-anim .leaflet-zoom-animated {
+  will-change: auto !important; }
+
 /*=============================================>>>>>
 = c-loading-page =
 ===============================================>>>>>*/
@@ -727,6 +731,9 @@ a {
     pointer-events: none;
     transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
 
+/*=============================================>>>>>
+= c-site-intro =
+===============================================>>>>>*/
 .c-site-intro {
   display: flex;
   justify-content: center;
@@ -740,15 +747,14 @@ a {
 .c-site-intro__text-line {
   opacity: 0;
   transform: translateY(180px) translateZ(0);
-  display: block;
-  will-change: transform, opacity; }
+  display: block; }
   .is-page-ready .c-site-intro__text-line {
     opacity: 1;
     transform: translateY(0) translateZ(0); }
   .is-page-ready .c-site-intro__text-line:first-child {
-    transition: transform 1.2s ease .05s, opacity 1.2s ease .05s; }
+    transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s; }
   .is-page-ready .c-site-intro__text-line:nth-child(2) {
-    transition: transform 1.2s ease .1s, opacity 1.2s ease .1s; }
+    transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s; }
 
 /*=============================================>>>>>
 = c-site =
