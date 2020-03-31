@@ -1,4 +1,12 @@
-<div id="loading" class="c-loading-page" data-swipe-threshold="100">
+<?php
+	include_spip('inc/cookie');
+	if (isset($_COOKIE['a2ta_loading'])) { $showLoading = 'is-hidden'; } else { $showLoading = 'is-visible'; spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600); }
+?>
+<div
+	id="loading"
+	class="c-loading-page <?php echo($showLoading); ?>"
+	data-swipe-threshold="100"
+>
 	<div class="o-wrapper">
 		<div class="o-grid">
 			<div class="o-grid__cell">
@@ -15,3 +23,4 @@
 		</div>
 	</div>
 </div>
+#FILTRE{trim}
