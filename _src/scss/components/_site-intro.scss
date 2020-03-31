@@ -1,3 +1,6 @@
+/*=============================================>>>>>
+= c-site-intro =
+===============================================>>>>>*/
 
 .c-site-intro {
 	display: flex;
@@ -5,28 +8,25 @@
 	padding-top: 40vh;
 }
 
+.c-site-intro__text {
+	@include font-size(50px);
+}
 
-	.c-site-intro__text {
-		@include font-size(50px);
+.c-site-intro__text-line {
+	opacity: 0;
+	transform: translateY(180px) translateZ(0);
+	display: block;
+
+	.is-page-ready & {
+		opacity: 1;
+		transform: translateY(0) translateZ(0);
 	}
 
+	.is-page-ready &:first-child {
+		transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s;
+	}
 
-		.c-site-intro__text-line {
-			opacity: 0;
-			transform: translateY(180px) translateZ(0);
-			display: block;
-			will-change: transform, opacity;
-
-			.is-page-ready & {
-				opacity: 1;
-				transform: translateY(0) translateZ(0);
-			}
-
-			.is-page-ready &:first-child {
-				transition: transform 1.2s ease .05s, opacity 1.2s ease .05s;
-			}
-
-			.is-page-ready &:nth-child(2) {
-				transition: transform 1.2s ease .1s, opacity 1.2s ease .1s;
-			}
-		}
+	.is-page-ready &:nth-child(2) {
+		transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s;
+	}
+}
