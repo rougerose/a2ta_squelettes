@@ -1,7 +1,7 @@
 <?php
 	include_spip('inc/cookie');
 	$showLoading = 'is-visible';
-	//if (isset($_COOKIE['a2ta_loading'])) { $showLoading = 'is-hidden'; } else { $showLoading = 'is-visible'; spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600); }
+	if (isset($_COOKIE['a2ta_loading'])) { $showLoading = 'is-hidden'; } else { $showLoading = 'is-visible'; spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600); }
 ?>
 <div
 	id="loading"
