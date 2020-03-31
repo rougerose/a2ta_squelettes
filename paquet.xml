@@ -1,24 +1,24 @@
 <paquet
-  prefix="a2ta_squelettes"
-  categorie="squelette"
-  version="1.0.0"
-  etat="dev"
-  compatibilite="[3.2.7;3.2.*]"
-  logo=""
-  documentation=""
+	prefix="a2ta_squelettes"
+	categorie="squelette"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.2.7;3.2.*]"
+	logo=""
+	documentation=""
 >
-  <nom>A2TA site</nom>
-  <!-- Les pages publiques du site A2TA -->
-  <auteur lien='http://rouge-rose.net'>christophe le drean</auteur>
+	<nom>A2TA site</nom>
+	<!-- Les pages publiques du site A2TA -->
+	<auteur lien='http://rouge-rose.net'>christophe le drean</auteur>
 
-  <licence>GNU/GPL v3</licence>
+	<licence>GNU/GPL v3</licence>
 
-  <necessite nom="zcore" compatibilite="[2.8.7;]" />
-  <necessite nom="a2ta_associations" compatibilite="[1.0.0;]" />
+	<necessite nom="zcore" compatibilite="[2.8.7;]" />
+	<necessite nom="a2ta_associations" compatibilite="[1.0.0;]" />
 
-  <spip compatibilite="[3.2.0;3.2.*]">
-    <style type="public" source="dist/css/a2ta.css" />
+	<spip compatibilite="[3.2.0;3.2.*]">
+		<style type="public" source="dist/css/a2ta.css" />
 		<script type="public" source="dist/javascript/lib.js" />
 		<script type="public" source="dist/javascript/a2ta.js" />
-  </spip>
+	</spip>
 </paquet>
