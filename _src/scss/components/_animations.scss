@@ -1,0 +1,15 @@
+// =====================================
+// animations
+// =====================================
+
+@keyframes arrowdown {
+	0% {
+		transform: translate(-50%, 0);
+	}
+	50% {
+		transform: translate(-50%, 30%);
+	}
+	100% {
+		transform: translate(-50%, 0);
+	}
+}

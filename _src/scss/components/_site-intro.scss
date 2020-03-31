@@ -1,16 +1,29 @@
-/*=============================================>>>>>
-= c-site-intro =
-===============================================>>>>>*/
+// =====================================
+// c-site-intro
+// =====================================
 
 .c-site-intro {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	padding-top: 40vh;
+
+	> p {
+		text-align: center;
+	}
 }
+
+//
+// c-site-intro__text
+// -------------------------------------
 
 .c-site-intro__text {
 	@include font-size(50px);
 }
+
+//
+// c-site-intro__text-line
+// -------------------------------------
 
 .c-site-intro__text-line {
 	opacity: 0;
@@ -28,5 +41,42 @@
 
 	.is-page-ready &:nth-child(2) {
 		transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s;
+	}
+}
+
+//
+// c-site-intro__next
+// -------------------------------------
+
+.c-site-intro__next {
+	position: relative;
+	opacity: 0;
+	transition: all 0.6s ease 1.5s;
+
+	.is-page-ready & {
+		opacity: 1;
+	}
+}
+
+.c-site-intro__next-trigger {
+	position: absolute;
+	left: 50%;
+	top: $spacing-unit-large + $spacing-unit;
+	display: block;
+	height: 72px;
+	width: 53px;
+	transform: translate(-50%, 0);
+	cursor: pointer;
+	animation: 2.5s linear infinite arrowdown;
+
+	&::after {
+		content: "";
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background: url("../../img/arrowDown.svg") no-repeat;
+		background-size: 100%;
+		background-position: center;
 	}
 }

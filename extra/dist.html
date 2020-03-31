@@ -1,6 +1,7 @@
 <?php
 	include_spip('inc/cookie');
-	if (isset($_COOKIE['a2ta_loading'])) { $showLoading = 'is-hidden'; } else { $showLoading = 'is-visible'; spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600); }
+	$showLoading = 'is-visible';
+	//if (isset($_COOKIE['a2ta_loading'])) { $showLoading = 'is-hidden'; } else { $showLoading = 'is-visible'; spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600); }
 ?>
 <div
 	id="loading"
@@ -15,8 +16,8 @@
 						<span class="c-site-intro__text-line">#NOM_SITE_SPIP</span>
 						<span class="c-site-intro__text-line">#SLOGAN_SITE_SPIP</span>
 					</p>
-					<p class="c-site-intro__text">
-						<span class="c-intro-text__paragraph"></span>
+					<p class="c-site-intro__next">
+						<span class="c-site-intro__next-trigger"></span>
 					</p>
 				</div>
 			</div>
