@@ -6,7 +6,11 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding-top: 40vh;
+	padding-top: 25vh;
+
+	@include mq(l) {
+		padding-top: 40vh;
+	}
 
 	> p {
 		text-align: center;
@@ -18,7 +22,15 @@
 // -------------------------------------
 
 .c-site-intro__text {
-	@include font-size(50px);
+	@include font-size(25px);
+
+	@include mq(m) {
+		@include font-size(40px);
+	}
+
+	@include mq(l) {
+		@include font-size(50px);
+	}
 }
 
 //
@@ -58,13 +70,18 @@
 	}
 }
 
+/*----------- c-site-intro__next-trigger -----------*/
+
+$triggerWidth: 53px;
+$triggerHeight: 72px;
+
 .c-site-intro__next-trigger {
 	position: absolute;
 	left: 50%;
-	top: $spacing-unit-large + $spacing-unit;
+	top: $spacing-unit;
 	display: block;
-	height: 72px;
-	width: 53px;
+	height: ceil(40px / ($triggerWidth / $triggerHeight));
+	width: 40px;
 	transform: translate(-50%, 0);
 	cursor: pointer;
 	animation: 2.5s linear infinite arrowdown;
@@ -79,4 +96,16 @@
 		background-size: 100%;
 		background-position: center;
 	}
+
+	@include mq(m) {
+		top: $spacing-unit-large + $spacing-unit;
+		height: $triggerHeight;
+		width: $triggerWidth;
+	}
+
+	// @include mq(l) {
+	// 	top: $spacing-unit-large + $spacing-unit;
+	// 	height: $triggerHeight;
+	// 	width: $triggerWidth;
+	// }
 }
