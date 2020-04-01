@@ -1,11 +1,11 @@
 var A2ta = {
 	init: function() {
 		(this.body = $("body")),
-			(this.loadingContainer = $("#loading")),
+			(this.loadingIntroContainer = $("#loadingIntro")),
 			this.body.addClass("is-page-ready"),
 			this.menu(),
-			this.loading(),
-			this.loadingEvents();
+			this.loadingIntro(),
+			this.loadingIntroEvents();
 	},
 
 	menu: function() {
@@ -15,20 +15,20 @@ var A2ta = {
 		});
 	},
 
-	loading: function() {
-		if (this.loadingContainer.hasClass("is-visible")) {
+	loadingIntro: function() {
+		if (this.loadingIntroContainer.hasClass("is-visible")) {
 			this.body.addClass("is-locked");
 		}
 	},
 
-	loadingEvents: function() {
-		var container = this.loadingContainer[0];
-		container.addEventListener("swiped-up", hideLoading);
-		container.addEventListener("click", hideLoading);
+	loadingIntroEvents: function() {
+		var container = this.loadingIntroContainer[0];
+		container.addEventListener("swiped-up", hideLoadingIntro);
+		container.addEventListener("click", hideLoadingIntro);
 
-		function hideLoading(event) {
-			container.removeEventListener("swiped-up", hideLoading);
-			container.removeEventListener("click", hideLoading);
+		function hideLoadingIntro(event) {
+			container.removeEventListener("swiped-up", hideLoadingIntro);
+			container.removeEventListener("click", hideLoadingIntro);
 			container.classList.remove("is-visible");
 			container.classList.add("is-hidden");
 			container.parentNode.classList.remove("is-locked");
