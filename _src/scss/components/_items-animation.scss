@@ -1,0 +1,21 @@
+// =====================================
+// c-items-animation
+// =====================================
+
+.c-items-animation {
+}
+
+/*----------- c-item-animation -----------*/
+
+.c-item-animation {
+	transition: transform 1.5s ease 0.5s, opacity 1s ease 0.5s;
+
+	.js & {
+		opacity: 0;
+	}
+
+	.js &.is-visible {
+		transform: none !important;
+		opacity: 1;
+	}
+}

@@ -798,6 +798,15 @@ a {
     transform: rotate(-90deg);
     transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+/*----------- c-item-animation -----------*/
+.c-item-animation {
+  transition: transform 1.5s ease 0.5s, opacity 1s ease 0.5s; }
+  .js .c-item-animation {
+    opacity: 0; }
+  .js .c-item-animation.is-visible {
+    transform: none !important;
+    opacity: 1; }
+
 /*=============================================>>>>>
 = c-loading-page =
 ===============================================>>>>>*/
@@ -896,17 +905,26 @@ a {
   .c-site.is-locked {
     overflow: hidden; }
 
+/*----------- c-site__header -----------*/
 .c-site__header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100; }
+  z-index: 100;
+  transition: transform 1s ease 0.05s, opacity 1s ease 0.05s; }
+  .js .c-site__header {
+    transform: translateY(-90px);
+    opacity: 0; }
+    .js .c-site__header.is-visible {
+      opacity: 1;
+      transform: translateY(0); }
 
 /*=============================================>>>>>
 = c-site-header =
 ===============================================>>>>>*/
-.c-site-header {
+/*----------- c-site-header__inner -----------*/
+.c-site-header__inner {
   display: flex; }
 
 /*----------- c-site-header__name -----------*/
