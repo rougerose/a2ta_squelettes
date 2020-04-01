@@ -79,6 +79,7 @@
 @import "inuitcss/settings/settings.core";
 @import "settings/global";
 @import "settings/colors";
+@import "settings/hamburgers";
 
 // TOOLS
 @import "inuitcss/tools/tools.font-size";
@@ -122,17 +123,14 @@
 
 // COMPONENTS
 @import "components/carte";
+// Lib : Hamburgers
+@import "hamburgers/_sass/hamburgers/hamburgers";
 @import "components/loading-page";
 @import "components/site-intro";
 @import "components/site";
 @import "components/site-header";
 @import "components/site-nav";
 @import "components/spip-admin";
-
-// Lib : Hamburgers
-@import "settings/hamburgers";
-@import "hamburgers/_sass/hamburgers/hamburgers";
-
 @import "components/animations";
 
 // UTILITIES
@@ -147,4 +145,4 @@
 // @import "inuitcss/utilities/utilities.spacings";
 // @import "inuitcss/utilities/utilities.responsive-spacings";
 // @import "inuitcss/utilities/utilities.print";
-// @import "inuitcss/utilities/utilities.hide";
+@import "inuitcss/utilities/utilities.hide";

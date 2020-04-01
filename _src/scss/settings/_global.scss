@@ -6,16 +6,22 @@
 
 $inuit-wrapper-width: 1200px;
 
-
 /*----------- Variable A2TA -----------*/
 
-	/* Fonts */
-	$font-text: 'barlow', sans-serif;
-	$font-heading: 'barlow', sans-serif;
-	$font-monospace: monospace;
+/* Mediaqueries */
+$mq-breakpoints: (
+	s: 320px,
+	m: 640px,
+	l: 1024px
+);
 
-	/* z-index */
-	$zindex-spip-admin-float: 200;
-	$zindex-header: 100;
-	$zindex-loading-page: 150;
-	$zindex-map: 50;
+/* Fonts */
+$font-text: "barlow", sans-serif;
+$font-heading: "barlow", sans-serif;
+$font-monospace: monospace;
+
+/* z-index */
+$zindex-spip-admin-float: 200;
+$zindex-header: 100;
+$zindex-loading-page: 150;
+$zindex-map: 50;
