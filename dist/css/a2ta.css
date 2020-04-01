@@ -76,6 +76,7 @@
 ===============================================>>>>>*/
 /*----------- Variables Inuitcss -----------*/
 /*----------- Variable A2TA -----------*/
+/* Mediaqueries */
 /* Fonts */
 /* z-index */
 /*=============================================>>>>>
@@ -714,140 +715,6 @@ a {
 .c-carte .leaflet-zoom-anim .leaflet-zoom-animated {
   will-change: auto !important; }
 
-/*=============================================>>>>>
-= c-loading-page =
-===============================================>>>>>*/
-.c-loading-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 150;
-  background-color: #ff8000; }
-  .c-loading-page.is-hidden {
-    height: 0;
-    pointer-events: none;
-    transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
-
-.c-site-intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 40vh; }
-  .c-site-intro > p {
-    text-align: center; }
-
-.c-site-intro__text {
-  font-size: 50px;
-  font-size: 3.125rem;
-  line-height: 1.2; }
-
-.c-site-intro__text-line {
-  opacity: 0;
-  transform: translateY(180px) translateZ(0);
-  display: block; }
-  .is-page-ready .c-site-intro__text-line {
-    opacity: 1;
-    transform: translateY(0) translateZ(0); }
-  .is-page-ready .c-site-intro__text-line:first-child {
-    transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s; }
-  .is-page-ready .c-site-intro__text-line:nth-child(2) {
-    transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s; }
-
-.c-site-intro__next {
-  position: relative;
-  opacity: 0;
-  transition: all 0.6s ease 1.5s; }
-  .is-page-ready .c-site-intro__next {
-    opacity: 1; }
-
-.c-site-intro__next-trigger {
-  position: absolute;
-  left: 50%;
-  top: 72px;
-  display: block;
-  height: 72px;
-  width: 53px;
-  transform: translate(-50%, 0);
-  cursor: pointer;
-  -webkit-animation: 2.5s linear infinite arrowdown;
-          animation: 2.5s linear infinite arrowdown; }
-  .c-site-intro__next-trigger::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: url("../../img/arrowDown.svg") no-repeat;
-    background-size: 100%;
-    background-position: center; }
-
-/*=============================================>>>>>
-= c-site =
-===============================================>>>>>*/
-.c-site {
-  padding-top: 96px;
-  font-family: "barlow", sans-serif; }
-  .c-site.is-locked {
-    overflow: hidden; }
-
-.c-site__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100; }
-
-/*=============================================>>>>>
-= c-site-header =
-===============================================>>>>>*/
-.c-site-header {
-  display: flex; }
-
-.c-site-header__name {
-  display: flex;
-  flex: 2;
-  padding: 28px 0; }
-
-.c-site-header__logo {
-  flex: 1;
-  align-self: baseline;
-  font-size: 24px;
-  font-size: 1.5rem;
-  font-weight: bold; }
-
-.c-site-header__baseline {
-  flex: 1;
-  align-self: baseline;
-  font-size: 18px;
-  font-size: 1.125rem; }
-
-.c-site-header__menu-trigger {
-  flex: 0; }
-
-/*=============================================>>>>>
-= site-nav =
-===============================================>>>>>*/
-/*=============================================>>>>>
-= spip-admin =
-===============================================>>>>>*/
-.spip-admin-float {
-  right: 0 !important;
-  top: auto !important;
-  bottom: .5rem;
-  z-index: 200 !important; }
-  .spip-admin-float .spip-admin-boutons {
-    border-radius: 5px 5px 0 0;
-    padding: .5rem 1rem;
-    font-family: monospace;
-    font-size: 10px;
-    font-size: 0.625rem;
-    line-height: 1;
-    font-weight: normal;
-    text-align: left; }
-
 /*!
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
@@ -931,6 +798,184 @@ a {
     transform: rotate(-90deg);
     transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+/*=============================================>>>>>
+= c-loading-page =
+===============================================>>>>>*/
+.c-loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 150;
+  background-color: #ff8000; }
+  .c-loading-page.is-hidden {
+    height: 0;
+    pointer-events: none;
+    transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
+
+.c-site-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 25vh; }
+  @media (min-width: 64em) {
+    .c-site-intro {
+      padding-top: 40vh; } }
+  .c-site-intro > p {
+    text-align: center; }
+
+.c-site-intro__text {
+  font-size: 25px;
+  font-size: 1.5625rem;
+  line-height: 1.44; }
+  @media (min-width: 40em) {
+    .c-site-intro__text {
+      font-size: 40px;
+      font-size: 2.5rem;
+      line-height: 1.2; } }
+  @media (min-width: 64em) {
+    .c-site-intro__text {
+      font-size: 50px;
+      font-size: 3.125rem;
+      line-height: 1.2; } }
+
+.c-site-intro__text-line {
+  opacity: 0;
+  transform: translateY(180px) translateZ(0);
+  display: block; }
+  .is-page-ready .c-site-intro__text-line {
+    opacity: 1;
+    transform: translateY(0) translateZ(0); }
+  .is-page-ready .c-site-intro__text-line:first-child {
+    transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s; }
+  .is-page-ready .c-site-intro__text-line:nth-child(2) {
+    transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s; }
+
+.c-site-intro__next {
+  position: relative;
+  opacity: 0;
+  transition: all 0.6s ease 1.5s; }
+  .is-page-ready .c-site-intro__next {
+    opacity: 1; }
+
+/*----------- c-site-intro__next-trigger -----------*/
+.c-site-intro__next-trigger {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  display: block;
+  height: 55px;
+  width: 40px;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  -webkit-animation: 2.5s linear infinite arrowdown;
+          animation: 2.5s linear infinite arrowdown; }
+  .c-site-intro__next-trigger::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url("../../img/arrowDown.svg") no-repeat;
+    background-size: 100%;
+    background-position: center; }
+  @media (min-width: 40em) {
+    .c-site-intro__next-trigger {
+      top: 72px;
+      height: 72px;
+      width: 53px; } }
+
+/*=============================================>>>>>
+= c-site =
+===============================================>>>>>*/
+.c-site {
+  padding-top: 96px;
+  font-family: "barlow", sans-serif; }
+  .c-site.is-locked {
+    overflow: hidden; }
+
+.c-site__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; }
+
+/*=============================================>>>>>
+= c-site-header =
+===============================================>>>>>*/
+.c-site-header {
+  display: flex; }
+
+/*----------- c-site-header__name -----------*/
+.c-site-header__name {
+  display: flex;
+  flex: 2;
+  padding: 24px 0; }
+
+/*----------- c-site-header__home -----------*/
+.c-site-header__home {
+  display: flex;
+  align-items: baseline; }
+
+/*----------- c-site-header__logo -----------*/
+.c-site-header__logo {
+  margin-right: 0.5rem;
+  font-size: 28px;
+  font-size: 1.75rem;
+  font-weight: bold; }
+
+/*----------- c-site-header__baseline -----------*/
+.c-site-header__baseline {
+  display: none;
+  font-size: 18px;
+  font-size: 1.125rem; }
+  @media (min-width: 33em) {
+    .c-site-header__baseline {
+      display: inline; } }
+
+/*----------- c-site-header__menu-trigger -----------*/
+.c-site-header__menu-trigger {
+  flex: 0; }
+  .c-site-header__menu-trigger .hamburger-box,
+  .c-site-header__menu-trigger .hamburger-inner,
+  .c-site-header__menu-trigger .hamburger-inner::before,
+  .c-site-header__menu-trigger .hamburger-inner::after {
+    width: 30px; }
+  .c-site-header__menu-trigger .hamburger-box {
+    height: 18px; }
+  .c-site-header__menu-trigger .hamburger-inner,
+  .c-site-header__menu-trigger .hamburger-inner::before,
+  .c-site-header__menu-trigger .hamburger-inner::after {
+    height: 3px; }
+  .c-site-header__menu-trigger .hamburger-inner::before {
+    top: -6px; }
+  .c-site-header__menu-trigger .hamburger-inner::after {
+    bottom: -6px; }
+
+/*=============================================>>>>>
+= site-nav =
+===============================================>>>>>*/
+/*=============================================>>>>>
+= spip-admin =
+===============================================>>>>>*/
+.spip-admin-float {
+  right: 0 !important;
+  top: auto !important;
+  bottom: .5rem;
+  z-index: 200 !important; }
+  .spip-admin-float .spip-admin-boutons {
+    border-radius: 5px 5px 0 0;
+    padding: .5rem 1rem;
+    font-family: monospace;
+    font-size: 10px;
+    font-size: 0.625rem;
+    line-height: 1;
+    font-weight: normal;
+    text-align: left; }
+
 @-webkit-keyframes arrowdown {
   0% {
     transform: translate(-50%, 0); }
@@ -957,3 +1002,29 @@ a {
   content: "" !important;
   display: block !important;
   clear: both !important; }
+
+/* ==========================================================================
+   #HIDE
+   ========================================================================== */
+/**
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.u-hidden-visually {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important; }
+
+/**
+ * Hide visually and from screen readers.
+ */
+.u-hidden {
+  display: none !important; }
