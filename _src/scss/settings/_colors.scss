@@ -2,13 +2,16 @@
 = colors =
 ===============================================>>>>>*/
 
-
 $color-black: hsl(0, 0%, 0%);
 $color-white: hsl(0, 100%, 100%);
-$color-orange : hsl(30, 100%, 50%);
+$color-orange: hsl(30, 100%, 50%);
 
-
-
+// Gray
+$color-gray-100: hsl(0, 0, 90%);
+$color-gray-200: hsl(0, 0, 80%);
+// Green
+$color-green: hsl(79, 45%, 43%); //#81a03d
+$color-green-dark: hsl(80, 38%, 36%); //#687f39
 
 // Theme
 $color-loading-page: $color-orange;

@@ -1,0 +1,115 @@
+// =====================================
+// c-selections
+// =====================================
+
+.c-selections {
+}
+
+/*----------- c-selection -----------*/
+
+.c-selection {
+	position: relative;
+	padding-top: $spacing-unit + $spacing-unit-small;
+
+	&::before {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 1px;
+		width: 100%;
+		background-color: $color-gray-100;
+		content: "";
+	}
+
+	&:first-child {
+		padding-top: 0;
+
+		&::before {
+			content: none;
+		}
+	}
+
+	@include mq(m) {
+		margin-bottom: $spacing-unit + $spacing-unit-small;
+	}
+}
+
+/*----------- c-selection__article -----------*/
+
+.c-selection__article {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	@include mq(m) {
+		flex-direction: row;
+	}
+
+	// https://inclusive-components.design/cards/
+	& .c-selection__link:focus {
+		text-decoration: underline;
+	}
+
+	&:focus-within,
+	&:hover .c-selection__link {
+		color: $color-green;
+	}
+
+	&:focus-within .c-selection__link:focus {
+		text-decoration: none;
+	}
+}
+
+/*----------- c-selection__img -----------*/
+
+.c-selection__img {
+	display: flex;
+	margin-bottom: $spacing-unit-small;
+
+	> img {
+		width: 100%;
+	}
+
+	@include mq(m) {
+		flex: 1;
+		margin: 0 $spacing-unit 0 0;
+	}
+}
+
+/*----------- c-selection__body -----------*/
+
+.c-selection__body {
+	@include mq(m) {
+		flex: 2;
+	}
+}
+
+/*----------- c-selection__title -----------*/
+
+.c-selection__title {
+	margin-bottom: $spacing-unit-small;
+	font-weight: normal;
+	@include font-size(20px, $modifier: -1.5);
+}
+
+/*----------- c-selection__link -----------*/
+
+.c-selection__link {
+	transition: color 0.5s ease;
+
+	// https://inclusive-components.design/cards/
+	&::after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		content: "";
+	}
+}
+
+/*----------- c-selection__desc -----------*/
+
+.c-selection__desc {
+	margin-bottom: $spacing-unit + $spacing-unit-small;
+}

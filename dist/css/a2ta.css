@@ -1,76 +1,8 @@
 @charset "UTF-8";
-/* ==========================================================================
-   INUITCSS
-   ========================================================================== */
-/**
- * inuitcss, by @csswizardry
- *
- * github.com/inuitcss | inuitcss.com
- */
-/**
- * This is an example inuitcss manifest file. DO NOT MODIFY THIS FILE DIRECTLY.
- * Instead, copy and paste it into your own CSS directory and make additions,
- * extensions, and modifications there.
- */
-/**
- * CONTENTS
- *
- * SETTINGS
- * Config...............Project-level configuration and feature switches.
- * Core.................inuitcss’ core and setup settings.
- * Global...............Project-wide variables and settings.
- *
- * TOOLS
- * Font-size............A mixin which guarantees baseline-friendly line-heights.
- * Clearfix.............Micro clearfix mixin.
- * Hidden...............Mixin for hiding elements.
- * Sass MQ..............inuitcss’ default media query manager.
- *
- * GENERIC
- * Box-sizing...........Better default `box-sizing`.
- * Normalize.css........A level playing field using @necolas’ Normalize.css.
- * Reset................A tiny reset to complement Normalize.css.
- * Shared...............Sensibly and tersely share some global commonalities
- *                      (particularly useful when managing vertical rhythm).
- *
- * ELEMENTS
- * Page.................Set up our document’s default `font-size` and
- *                      `line-height`.
- * Headings.............Very minimal (i.e. only font-size information) for
- *                      headings 1 through 6.
- * Images...............Base image styles.
- * Tables...............Simple table styles.
- *
- * OBJECTS
- * Wrapper..............Page constraint object.
- * Layout...............Generic layout module.
- * Media................Image- and text-like content side by side. The
- *                      poster-child of OOCSS.
- * Flag.................Table-layout-based advancement on the Media object.
- * List-bare............Lists with no bullets or indents.
- * List-inline..........A list whose items all site in a line.
- * Box..................Simple boxing abstraction.
- * Block................Image-on-top-of-text object.
- * Ratio................A container for maintaining aspect ratio of content.
- * Crop.................Provide a cropping context for media (images, etc.).
- * Table................Classes for manipulating `table`s.
- * Pack.................Pack items into available horizontal space.
- *
- * COMPONENTS
- * Buttons..............An example button component, and how it fits into the
- *                      inuitcss framework.
- *
- * UTILITIES
- * Clearfix.............Bind our clearfix onto a utility class.
- * Widths...............Simple width helper classes.
- * Headings.............Reassigning our heading styles to helper classes.
- * Spacings.............Nudge bits of the DOM around with these spacing
- *                      classes.
- * Responsive-Spacings..Enhances the function of normal spacings for
- *                      responsive usage.
- * Print................Reset-like styles taken from the HTML5 Boilerplate.
- * Hide.................Helper classes to hide content
- */
+/* ========================================================================== INUITCSS ========================================================================== */
+/** inuitcss, by @csswizardry github.com/inuitcss | inuitcss.com */
+/** This is an example inuitcss manifest file. DO NOT MODIFY THIS FILE DIRECTLY. Instead, copy and paste it into your own CSS directory and make additions, extensions, and modifications there. */
+/** CONTENTS SETTINGS Config...............Project-level configuration and feature switches. Core.................inuitcss’ core and setup settings. Global...............Project-wide variables and settings. TOOLS Font-size............A mixin which guarantees baseline-friendly line-heights. Clearfix.............Micro clearfix mixin. Hidden...............Mixin for hiding elements. Sass MQ..............inuitcss’ default media query manager. GENERIC Box-sizing...........Better default `box-sizing`. Normalize.css........A level playing field using @necolas’ Normalize.css. Reset................A tiny reset to complement Normalize.css. Shared...............Sensibly and tersely share some global commonalities (particularly useful when managing vertical rhythm). ELEMENTS Page.................Set up our document’s default `font-size` and `line-height`. Headings.............Very minimal (i.e. only font-size information) for headings 1 through 6. Images...............Base image styles. Tables...............Simple table styles. OBJECTS Wrapper..............Page constraint object. Layout...............Generic layout module. Media................Image- and text-like content side by side. The poster-child of OOCSS. Flag.................Table-layout-based advancement on the Media object. List-bare............Lists with no bullets or indents. List-inline..........A list whose items all site in a line. Box..................Simple boxing abstraction. Block................Image-on-top-of-text object. Ratio................A container for maintaining aspect ratio of content. Crop.................Provide a cropping context for media (images, etc.). Table................Classes for manipulating `table`s. Pack.................Pack items into available horizontal space. COMPONENTS Buttons..............An example button component, and how it fits into the inuitcss framework. UTILITIES Clearfix.............Bind our clearfix onto a utility class. Widths...............Simple width helper classes. Headings.............Reassigning our heading styles to helper classes. Spacings.............Nudge bits of the DOM around with these spacing classes. Responsive-Spacings..Enhances the function of normal spacings for responsive usage. Print................Reset-like styles taken from the HTML5 Boilerplate. Hide.................Helper classes to hide content */
 /*=============================================>>>>>
 = SETTINGS GLOBAL =
 ===============================================>>>>>*/
@@ -85,893 +17,431 @@
 /*=============================================>>>>>
 = Alias =
 ===============================================>>>>>*/
-/* ==========================================================================
-   #BOX-SIZING
-   ========================================================================== */
-/**
- * More sensible default box-sizing:
- * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
- */
-html {
-  box-sizing: border-box; }
+/* ========================================================================== #BOX-SIZING ========================================================================== */
+/** More sensible default box-sizing: css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice */
+html { box-sizing: border-box; }
 
-*, *:before, *:after {
-  box-sizing: inherit; }
+*, *:before, *:after { box-sizing: inherit; }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
-html {
-  line-height: 1.15;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */ }
+/* Document ========================================================================== */
+/** 1. Correct the line height in all browsers. 2. Prevent adjustments of font size after orientation changes in iOS. */
+html { line-height: 1.15; /* 1 */ -webkit-text-size-adjust: 100%; /* 2 */ }
 
-/* Sections
-   ========================================================================== */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0; }
+/* Sections ========================================================================== */
+/** Remove the margin in all browsers. */
+body { margin: 0; }
 
-/**
- * Render the `main` element consistently in IE.
- */
-main {
-  display: block; }
+/** Render the `main` element consistently in IE. */
+main { display: block; }
 
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0; }
+/** Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari. */
+h1 { font-size: 2em; margin: 0.67em 0; }
 
-/* Grouping content
-   ========================================================================== */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */ }
+/* Grouping content ========================================================================== */
+/** 1. Add the correct box sizing in Firefox. 2. Show the overflow in Edge and IE. */
+hr { box-sizing: content-box; /* 1 */ height: 0; /* 1 */ overflow: visible; /* 2 */ }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */ }
+/** 1. Correct the inheritance and scaling of font size in all browsers. 2. Correct the odd `em` font sizing in all browsers. */
+pre { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
 
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent; }
+/* Text-level semantics ========================================================================== */
+/** Remove the gray background on active links in IE 10. */
+a { background-color: transparent; }
 
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  text-decoration: underline;
-  /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
-  /* 2 */ }
+/** 1. Remove the bottom border in Chrome 57- 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. */
+abbr[title] { border-bottom: none; /* 1 */ text-decoration: underline; /* 2 */ -webkit-text-decoration: underline dotted; text-decoration: underline dotted; /* 2 */ }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder; }
+/** Add the correct font weight in Chrome, Edge, and Safari. */
+b, strong { font-weight: bolder; }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */ }
+/** 1. Correct the inheritance and scaling of font size in all browsers. 2. Correct the odd `em` font sizing in all browsers. */
+code, kbd, samp { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
 
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%; }
+/** Add the correct font size in all browsers. */
+small { font-size: 80%; }
 
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline; }
+/** Prevent `sub` and `sup` elements from affecting the line height in all browsers. */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
 
-sub {
-  bottom: -0.25em; }
+sub { bottom: -0.25em; }
 
-sup {
-  top: -0.5em; }
+sup { top: -0.5em; }
 
-/* Embedded content
-   ========================================================================== */
-/**
- * Remove the border on images inside links in IE 10.
- */
-img {
-  border-style: none; }
+/* Embedded content ========================================================================== */
+/** Remove the border on images inside links in IE 10. */
+img { border-style: none; }
 
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */ }
+/* Forms ========================================================================== */
+/** 1. Change the font styles in all browsers. 2. Remove the margin in Firefox and Safari. */
+button, input, optgroup, select, textarea { font-family: inherit; /* 1 */ font-size: 100%; /* 1 */ line-height: 1.15; /* 1 */ margin: 0; /* 2 */ }
 
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-button,
-input {
-  /* 1 */
-  overflow: visible; }
+/** Show the overflow in IE. 1. Show the overflow in Edge. */
+button, input { /* 1 */ overflow: visible; }
 
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-button,
-select {
-  /* 1 */
-  text-transform: none; }
+/** Remove the inheritance of text transform in Edge, Firefox, and IE. 1. Remove the inheritance of text transform in Firefox. */
+button, select { /* 1 */ text-transform: none; }
 
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- */
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button; }
+/** Correct the inability to style clickable types in iOS and Safari. */
+button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
 
-/**
- * Remove the inner border and padding in Firefox.
- */
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0; }
+/** Remove the inner border and padding in Firefox. */
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner { border-style: none; padding: 0; }
 
-/**
- * Restore the focus styles unset by the previous rule.
- */
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText; }
+/** Restore the focus styles unset by the previous rule. */
+button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring { outline: 1px dotted ButtonText; }
 
-/**
- * Correct the padding in Firefox.
- */
-fieldset {
-  padding: 0.35em 0.75em 0.625em; }
+/** Correct the padding in Firefox. */
+fieldset { padding: 0.35em 0.75em 0.625em; }
 
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */ }
+/** 1. Correct the text wrapping in Edge and IE. 2. Correct the color inheritance from `fieldset` elements in IE. 3. Remove the padding so developers are not caught out when they zero out `fieldset` elements in all browsers. */
+legend { box-sizing: border-box; /* 1 */ color: inherit; /* 2 */ display: table; /* 1 */ max-width: 100%; /* 1 */ padding: 0; /* 3 */ white-space: normal; /* 1 */ }
 
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline; }
+/** Add the correct vertical alignment in Chrome, Firefox, and Opera. */
+progress { vertical-align: baseline; }
 
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto; }
+/** Remove the default vertical scrollbar in IE 10+. */
+textarea { overflow: auto; }
 
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */ }
+/** 1. Add the correct box sizing in IE 10. 2. Remove the padding in IE 10. */
+[type="checkbox"], [type="radio"] { box-sizing: border-box; /* 1 */ padding: 0; /* 2 */ }
 
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+/** Correct the cursor style of increment and decrement buttons in Chrome. */
+[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button { height: auto; }
 
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */ }
+/** 1. Correct the odd appearance in Chrome and Safari. 2. Correct the outline style in Safari. */
+[type="search"] { -webkit-appearance: textfield; /* 1 */ outline-offset: -2px; /* 2 */ }
 
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+/** Remove the inner padding in Chrome and Safari on macOS. */
+[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
 
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */ }
+/** 1. Correct the inability to style clickable types in iOS and Safari. 2. Change font properties to `inherit` in Safari. */
+::-webkit-file-upload-button { -webkit-appearance: button; /* 1 */ font: inherit; /* 2 */ }
 
-/* Interactive
-   ========================================================================== */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block; }
+/* Interactive ========================================================================== */
+/* Add the correct display in Edge, IE 10+, and Firefox. */
+details { display: block; }
 
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item; }
+/* Add the correct display in all browsers. */
+summary { display: list-item; }
 
-/* Misc
-   ========================================================================== */
-/**
- * Add the correct display in IE 10+.
- */
-template {
-  display: none; }
+/* Misc ========================================================================== */
+/** Add the correct display in IE 10+. */
+template { display: none; }
 
-/**
- * Add the correct display in IE 10.
- */
-[hidden] {
-  display: none; }
+/** Add the correct display in IE 10. */
+[hidden] { display: none; }
 
-/* ==========================================================================
-   #RESET
-   ========================================================================== */
-/**
- * A very simple reset that sits on top of Normalize.css.
- */
-body,
-h1, h2, h3, h4, h5, h6,
-blockquote, p, pre,
-dl, dd, ol, ul,
-figure,
-hr,
-fieldset, legend {
-  margin: 0;
-  padding: 0; }
+/* ========================================================================== #RESET ========================================================================== */
+/** A very simple reset that sits on top of Normalize.css. */
+body, h1, h2, h3, h4, h5, h6, blockquote, p, pre, dl, dd, ol, ul, figure, hr, fieldset, legend { margin: 0; padding: 0; }
 
-/**
- * Remove trailing margins from nested lists.
- */
-li > ol,
-li > ul {
-  margin-bottom: 0; }
+/** Remove trailing margins from nested lists. */
+li > ol, li > ul { margin-bottom: 0; }
 
-/**
- * Remove default table spacing.
- */
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
+/** Remove default table spacing. */
+table { border-collapse: collapse; border-spacing: 0; }
 
-/**
- * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
- *    on fieldsets.
- */
-fieldset {
-  min-width: 0;
-  /* [1] */
-  border: 0; }
+/** 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;` on fieldsets. */
+fieldset { min-width: 0; /* [1] */ border: 0; }
 
-/* ==========================================================================
-   #SHARED
-   ========================================================================== */
-/**
- * Shared declarations for certain elements.
- */
-/**
- * Always declare margins in the same direction:
- * csswizardry.com/2012/06/single-direction-margin-declarations
- */
-address,
-h1, h2, h3, h4, h5, h6,
-blockquote, p, pre,
-dl, ol, ul,
-figure,
-hr,
-table,
-fieldset {
-  margin-bottom: 24px; }
+/* ========================================================================== #SHARED ========================================================================== */
+/** Shared declarations for certain elements. */
+/** Always declare margins in the same direction: csswizardry.com/2012/06/single-direction-margin-declarations */
+address, h1, h2, h3, h4, h5, h6, blockquote, p, pre, dl, ol, ul, figure, hr, table, fieldset { margin-bottom: 24px; }
 
-/**
- * Consistent indentation for lists.
- */
-dd, ol, ul {
-  margin-left: 24px; }
+/** Consistent indentation for lists. */
+dd, ol, ul { margin-left: 24px; }
 
 /*=============================================>>>>>
 = Webfonts =
 ===============================================>>>>>*/
-@font-face {
-  font-family: 'barlow';
-  src: url("../webfonts/Barlow-Regular.woff2") format("woff2"), url("../webfonts/Barlow-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'barlow'; src: url("../webfonts/Barlow-Regular.woff2") format("woff2"), url("../webfonts/Barlow-Regular.woff") format("woff"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'barlow';
-  src: url("../webfonts/Barlow-Italic.woff2") format("woff2"), url("../webfonts/Barlow-Italic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic; }
+@font-face { font-family: 'barlow'; src: url("../webfonts/Barlow-Italic.woff2") format("woff2"), url("../webfonts/Barlow-Italic.woff") format("woff"); font-weight: normal; font-style: italic; }
 
-@font-face {
-  font-family: 'barlow';
-  src: url("../webfonts/Barlow-Bold.woff2") format("woff2"), url("../webfonts/Barlow-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal; }
+@font-face { font-family: 'barlow'; src: url("../webfonts/Barlow-Bold.woff2") format("woff2"), url("../webfonts/Barlow-Bold.woff") format("woff"); font-weight: bold; font-style: normal; }
 
-@font-face {
-  font-family: 'barlow';
-  src: url("../webfonts/Barlow-BoldItalic.woff2") format("woff2"), url("../webfonts/Barlow-BoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic; }
+@font-face { font-family: 'barlow'; src: url("../webfonts/Barlow-BoldItalic.woff2") format("woff2"), url("../webfonts/Barlow-BoldItalic.woff") format("woff"); font-weight: bold; font-style: italic; }
 
 /*=============================================>>>>>
 = links =
 ===============================================>>>>>*/
-a {
-  text-decoration: none;
-  color: black; }
+a { text-decoration: none; color: black; }
 
 /*=============================================>>>>>
 = wrapper =
 ===============================================>>>>>*/
-.o-wrapper {
-  padding-right: 24px;
-  padding-left: 24px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1200px;
-  width: 100%; }
-  .o-wrapper:after {
-    content: "" !important;
-    display: block !important;
-    clear: both !important; }
-  .o-wrapper--fullscreen {
-    max-width: none; }
+.o-wrapper { padding-right: 24px; padding-left: 24px; margin-right: auto; margin-left: auto; max-width: 1200px; width: 100%; }
 
-/* ==========================================================================
-   #GRID
-   ========================================================================== */
-/**
- * This plugin provides a flexbox grid for inuitcss. Support for IE9 currently
- * prevents inuitcss from using the flexbox layout mode.
- *
- * Cells are full-width and will stack on top of each other by default:
- *
- * <div class="o-grid">
- *   <div class="o-grid__cell">
- *   </div>
- *   <div class="o-grid__cell">
- *   </div>
- * </div>
- *
- * Cells will in most cases be accompanied by utility classes that divide
- * the grid into fractions. These are provided by inuitcss:
- *
- * <div class="o-grid">
- *   <div class="o-grid__cell u-1/2">
- *   </div>
- *   <div class="o-grid__cell u-1/2">
- *   </div>
- * </div>
- *
- * Several modifier classes are provided. For example, `o-grid--auto` will
- * divide the space equally between all containing cells without the need
- * for width utility classes.
- *
- * <div class="o-grid--auto">
- *   <div class="o-grid__cell">
- *   </div>
- *   <div class="o-grid__cell">
- *   </div>
- * </div>
- */
-/* The grid
-   ========================================================================== */
-.o-grid {
-  display: flex;
-  flex-flow: row wrap;
-  list-style: none;
-  padding: 0; }
+.o-wrapper:after { content: "" !important; display: block !important; clear: both !important; }
 
-/**
- * 1. Cells are full-width and stack on top of each other by default.
- */
-.o-grid__cell {
-  flex: 0 1 auto;
-  width: 100%;
-  /* [1] */ }
+.o-wrapper--fullscreen { max-width: none; }
 
-/* Gutters
-   ========================================================================== */
-/**
- * 1. The map $inuit-flexgrid-spacing-sizes contains a `null` key which
- *    will be our default gutter size.
- * 2. Add a negative margin on one side only. That way we aren't required to use
- *    a wrapper with the same amount of spacing, though it's common to do so.
- * 3. Neutralize the left margin on `o-grid`.
- */
-.o-grid {
-  /* [1] */
-  margin-left: -24px;
-  /* [2] */ }
-  .o-grid > .o-grid__cell {
-    padding-left: 24px;
-    /* [3] */ }
+/* ========================================================================== #GRID ========================================================================== */
+/** This plugin provides a flexbox grid for inuitcss. Support for IE9 currently prevents inuitcss from using the flexbox layout mode. Cells are full-width and will stack on top of each other by default: <div class="o-grid"> <div class="o-grid__cell"> </div> <div class="o-grid__cell"> </div> </div> Cells will in most cases be accompanied by utility classes that divide the grid into fractions. These are provided by inuitcss: <div class="o-grid"> <div class="o-grid__cell u-1/2"> </div> <div class="o-grid__cell u-1/2"> </div> </div> Several modifier classes are provided. For example, `o-grid--auto` will divide the space equally between all containing cells without the need for width utility classes. <div class="o-grid--auto"> <div class="o-grid__cell"> </div> <div class="o-grid__cell"> </div> </div> */
+/* The grid ========================================================================== */
+.o-grid { display: flex; flex-flow: row wrap; list-style: none; padding: 0; }
 
-.o-grid--tiny {
-  /* [1] */
-  margin-left: -6px;
-  /* [2] */ }
-  .o-grid--tiny > .o-grid__cell {
-    padding-left: 6px;
-    /* [3] */ }
+/** 1. Cells are full-width and stack on top of each other by default. */
+.o-grid__cell { flex: 0 1 auto; width: 100%; /* [1] */ }
 
-.o-grid--small {
-  /* [1] */
-  margin-left: -12px;
-  /* [2] */ }
-  .o-grid--small > .o-grid__cell {
-    padding-left: 12px;
-    /* [3] */ }
+/* Gutters ========================================================================== */
+/** 1. The map $inuit-flexgrid-spacing-sizes contains a `null` key which will be our default gutter size. 2. Add a negative margin on one side only. That way we aren't required to use a wrapper with the same amount of spacing, though it's common to do so. 3. Neutralize the left margin on `o-grid`. */
+.o-grid { /* [1] */ margin-left: -24px; /* [2] */ }
 
-.o-grid--large {
-  /* [1] */
-  margin-left: -48px;
-  /* [2] */ }
-  .o-grid--large > .o-grid__cell {
-    padding-left: 48px;
-    /* [3] */ }
+.o-grid > .o-grid__cell { padding-left: 24px; /* [3] */ }
 
-.o-grid--huge {
-  /* [1] */
-  margin-left: -96px;
-  /* [2] */ }
-  .o-grid--huge > .o-grid__cell {
-    padding-left: 96px;
-    /* [3] */ }
+.o-grid--tiny { /* [1] */ margin-left: -6px; /* [2] */ }
 
-.o-grid--flush {
-  /* [1] */
-  margin-left: 0;
-  /* [2] */ }
-  .o-grid--flush > .o-grid__cell {
-    padding-left: 0;
-    /* [3] */ }
+.o-grid--tiny > .o-grid__cell { padding-left: 6px; /* [3] */ }
 
-/* Automatically size cells by distributing them equally
-   ========================================================================== */
-.o-grid--auto > .o-grid__cell {
-  flex: 1 0 0; }
+.o-grid--small { /* [1] */ margin-left: -12px; /* [2] */ }
 
-/* Horizontal alignment
-   ========================================================================== */
-.o-grid--left {
-  justify-content: flex-start; }
+.o-grid--small > .o-grid__cell { padding-left: 12px; /* [3] */ }
 
-.o-grid--center {
-  justify-content: center; }
+.o-grid--large { /* [1] */ margin-left: -48px; /* [2] */ }
 
-.o-grid--right {
-  justify-content: flex-end; }
+.o-grid--large > .o-grid__cell { padding-left: 48px; /* [3] */ }
 
-.o-grid--between {
-  justify-content: space-between; }
+.o-grid--huge { /* [1] */ margin-left: -96px; /* [2] */ }
 
-.o-grid--around {
-  justify-content: space-around; }
+.o-grid--huge > .o-grid__cell { padding-left: 96px; /* [3] */ }
 
-/* Pull behavior
-   ========================================================================== */
-.o-grid__cell--pull-left {
-  margin-right: auto; }
+.o-grid--flush { /* [1] */ margin-left: 0; /* [2] */ }
 
-.o-grid__cell--pull-right {
-  margin-left: auto; }
+.o-grid--flush > .o-grid__cell { padding-left: 0; /* [3] */ }
 
-/* Vertical alignment
-   ========================================================================== */
-.o-grid--top {
-  align-items: flex-start; }
+/* Automatically size cells by distributing them equally ========================================================================== */
+.o-grid--auto > .o-grid__cell { flex: 1 0 0; }
 
-.o-grid--middle {
-  align-items: center; }
+/* Horizontal alignment ========================================================================== */
+.o-grid--left { justify-content: flex-start; }
 
-.o-grid--bottom {
-  align-items: flex-end; }
+.o-grid--center { justify-content: center; }
 
-.o-grid--baseline {
-  align-items: baseline; }
+.o-grid--right { justify-content: flex-end; }
 
-.o-grid--stretch {
-  align-items: stretch; }
+.o-grid--between { justify-content: space-between; }
 
-.o-grid__cell--top {
-  align-self: flex-start; }
+.o-grid--around { justify-content: space-around; }
 
-.o-grid__cell--middle {
-  align-self: center; }
+/* Pull behavior ========================================================================== */
+.o-grid__cell--pull-left { margin-right: auto; }
 
-.o-grid__cell--bottom {
-  align-self: flex-end; }
+.o-grid__cell--pull-right { margin-left: auto; }
 
-.o-grid__cell--baseline {
-  align-self: baseline; }
+/* Vertical alignment ========================================================================== */
+.o-grid--top { align-items: flex-start; }
 
-.o-grid__cell--stretch {
-  align-self: stretch; }
+.o-grid--middle { align-items: center; }
 
-/* Content distribution
-   ========================================================================== */
-.o-grid--reverse {
-  flex-direction: row-reverse; }
+.o-grid--bottom { align-items: flex-end; }
 
-.o-grid--column {
-  flex-direction: column; }
+.o-grid--baseline { align-items: baseline; }
 
-.o-grid--column-reverse {
-  flex-direction: column-reverse; }
+.o-grid--stretch { align-items: stretch; }
+
+.o-grid__cell--top { align-self: flex-start; }
+
+.o-grid__cell--middle { align-self: center; }
+
+.o-grid__cell--bottom { align-self: flex-end; }
+
+.o-grid__cell--baseline { align-self: baseline; }
+
+.o-grid__cell--stretch { align-self: stretch; }
+
+/* Content distribution ========================================================================== */
+.o-grid--reverse { flex-direction: row-reverse; }
+
+.o-grid--column { flex-direction: column; }
+
+.o-grid--column-reverse { flex-direction: column-reverse; }
+
+/* ========================================================================== #LIST-BARE ========================================================================== */
+/** Strip list-like appearance from lists by removing their bullets and any indentation. Note: Declaring the item class might not be necessary everywhere, but is for example in <dl> lists for the <dd> children. */
+.o-list-bare { list-style: none; margin-left: 0; }
+
+.o-list-bare__item { margin-left: 0; }
 
 /*=============================================>>>>>
 = carte =
 ===============================================>>>>>*/
-.c-carte .leaflet-pane,
-.c-carte .leaflet-top,
-.c-carte .leaflet-bottom {
-  z-index: 50; }
+.c-carte { margin-bottom: 48px; }
 
-.c-carte .leaflet-fade-anim .leaflet-tile,
-.c-carte .leaflet-zoom-anim .leaflet-zoom-animated {
-  will-change: auto !important; }
+.c-carte .leaflet-pane, .c-carte .leaflet-top, .c-carte .leaflet-bottom { z-index: 50; }
 
-/*!
- * Hamburgers
- * @description Tasty CSS-animated hamburgers
- * @author Jonathan Suh @jonsuh
- * @site https://jonsuh.com/hamburgers
- * @link https://github.com/jonsuh/hamburgers
- */
-.hamburger {
-  padding: 0 0;
-  display: inline-block;
-  cursor: pointer;
-  transition-property: opacity, -webkit-filter;
-  transition-property: opacity, filter;
-  transition-property: opacity, filter, -webkit-filter;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  font: inherit;
-  color: inherit;
-  text-transform: none;
-  background-color: transparent;
-  border: 0;
-  margin: 0;
-  overflow: visible; }
-  .hamburger:hover {
-    opacity: 1; }
-  .hamburger.is-active:hover {
-    opacity: 1; }
-  .hamburger.is-active .hamburger-inner,
-  .hamburger.is-active .hamburger-inner::before,
-  .hamburger.is-active .hamburger-inner::after {
-    background-color: #000; }
+.c-carte .leaflet-fade-anim .leaflet-tile, .c-carte .leaflet-zoom-anim .leaflet-zoom-animated { will-change: auto !important; }
 
-.hamburger-box {
-  width: 40px;
-  height: 24px;
-  display: inline-block;
-  position: relative; }
+/*! Hamburgers @description Tasty CSS-animated hamburgers @author Jonathan Suh @jonsuh @site https://jonsuh.com/hamburgers @link https://github.com/jonsuh/hamburgers */
+.hamburger { padding: 0 0; display: inline-block; cursor: pointer; transition-property: opacity, -webkit-filter; transition-property: opacity, filter; transition-property: opacity, filter, -webkit-filter; transition-duration: 0.15s; transition-timing-function: linear; font: inherit; color: inherit; text-transform: none; background-color: transparent; border: 0; margin: 0; overflow: visible; }
 
-.hamburger-inner {
-  display: block;
-  top: 50%;
-  margin-top: -2px; }
-  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
-    height: 4px;
-    background-color: #000;
-    border-radius: 4px;
-    position: absolute;
-    transition-property: transform;
-    transition-duration: 0.15s;
-    transition-timing-function: ease; }
-  .hamburger-inner::before, .hamburger-inner::after {
-    content: "";
-    display: block; }
-  .hamburger-inner::before {
-    top: -10px; }
-  .hamburger-inner::after {
-    bottom: -10px; }
+.hamburger:hover { opacity: 1; }
 
-/*
-   * Squeeze
-   */
-.hamburger--squeeze .hamburger-inner {
-  transition-duration: 0.075s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
-  .hamburger--squeeze .hamburger-inner::before {
-    transition: top 0.075s 0.12s ease, opacity 0.075s ease; }
-  .hamburger--squeeze .hamburger-inner::after {
-    transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+.hamburger.is-active:hover { opacity: 1; }
 
-.hamburger--squeeze.is-active .hamburger-inner {
-  transform: rotate(45deg);
-  transition-delay: 0.12s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-  .hamburger--squeeze.is-active .hamburger-inner::before {
-    top: 0;
-    opacity: 0;
-    transition: top 0.075s ease, opacity 0.075s 0.12s ease; }
-  .hamburger--squeeze.is-active .hamburger-inner::after {
-    bottom: 0;
-    transform: rotate(-90deg);
-    transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
+.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::before, .hamburger.is-active .hamburger-inner::after { background-color: #000; }
+
+.hamburger-box { width: 40px; height: 24px; display: inline-block; position: relative; }
+
+.hamburger-inner { display: block; top: 50%; margin-top: -2px; }
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after { width: 40px; height: 4px; background-color: #000; border-radius: 4px; position: absolute; transition-property: transform; transition-duration: 0.15s; transition-timing-function: ease; }
+
+.hamburger-inner::before, .hamburger-inner::after { content: ""; display: block; }
+
+.hamburger-inner::before { top: -10px; }
+
+.hamburger-inner::after { bottom: -10px; }
+
+/* Squeeze */
+.hamburger--squeeze .hamburger-inner { transition-duration: 0.075s; transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+
+.hamburger--squeeze .hamburger-inner::before { transition: top 0.075s 0.12s ease, opacity 0.075s ease; }
+
+.hamburger--squeeze .hamburger-inner::after { transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+
+.hamburger--squeeze.is-active .hamburger-inner { transform: rotate(45deg); transition-delay: 0.12s; transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.hamburger--squeeze.is-active .hamburger-inner::before { top: 0; opacity: 0; transition: top 0.075s ease, opacity 0.075s 0.12s ease; }
+
+.hamburger--squeeze.is-active .hamburger-inner::after { bottom: 0; transform: rotate(-90deg); transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 /*----------- c-item-animation -----------*/
-.c-item-animation {
-  transition: transform 1.5s ease 0.5s, opacity 1s ease 0.5s; }
-  .js .c-item-animation {
-    opacity: 0; }
-  .js .c-item-animation.is-visible {
-    transform: none !important;
-    opacity: 1; }
+.c-item-animation { transition: transform 1.5s ease 0.5s, opacity 1s ease 0.5s; }
+
+.js .c-item-animation { opacity: 0; }
+
+.js .c-item-animation.is-visible { transform: none !important; opacity: 1; }
 
 /*=============================================>>>>>
 = c-loading-page =
 ===============================================>>>>>*/
-.c-loading-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 150;
-  background-color: #ff8000; }
-  .c-loading-page.is-hidden {
-    height: 0;
-    pointer-events: none;
-    transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
+.c-loading-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 150; background-color: #ff8000; }
 
-.c-site-intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 25vh; }
-  @media (min-width: 64em) {
-    .c-site-intro {
-      padding-top: 40vh; } }
-  .c-site-intro > p {
-    text-align: center; }
+.c-loading-page.is-hidden { height: 0; pointer-events: none; transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
 
-.c-site-intro__text {
-  font-size: 25px;
-  font-size: 1.5625rem;
-  line-height: 1.44; }
-  @media (min-width: 40em) {
-    .c-site-intro__text {
-      font-size: 40px;
-      font-size: 2.5rem;
-      line-height: 1.2; } }
-  @media (min-width: 64em) {
-    .c-site-intro__text {
-      font-size: 50px;
-      font-size: 3.125rem;
-      line-height: 1.2; } }
+/*----------- c-selection -----------*/
+.c-selection { position: relative; padding-top: 36px; }
 
-.c-site-intro__text-line {
-  opacity: 0;
-  transform: translateY(180px) translateZ(0);
-  display: block; }
-  .is-page-ready .c-site-intro__text-line {
-    opacity: 1;
-    transform: translateY(0) translateZ(0); }
-  .is-page-ready .c-site-intro__text-line:first-child {
-    transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s; }
-  .is-page-ready .c-site-intro__text-line:nth-child(2) {
-    transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s; }
+.c-selection::before { position: absolute; left: 0; top: 0; height: 1px; width: 100%; background-color: #e6e6e6; content: ""; }
 
-.c-site-intro__next {
-  position: relative;
-  opacity: 0;
-  transition: all 0.6s ease 1.5s; }
-  .is-page-ready .c-site-intro__next {
-    opacity: 1; }
+.c-selection:first-child { padding-top: 0; }
+
+.c-selection:first-child::before { content: none; }
+
+@media (min-width: 40em) { .c-selection { margin-bottom: 36px; } }
+
+/*----------- c-selection__article -----------*/
+.c-selection__article { position: relative; display: flex; flex-direction: column; }
+
+@media (min-width: 40em) { .c-selection__article { flex-direction: row; } }
+
+.c-selection__article .c-selection__link:focus { text-decoration: underline; }
+
+.c-selection__article:focus-within, .c-selection__article:hover .c-selection__link { color: #809f3c; }
+
+.c-selection__article:focus-within .c-selection__link:focus { text-decoration: none; }
+
+/*----------- c-selection__img -----------*/
+.c-selection__img { display: flex; margin-bottom: 12px; }
+
+.c-selection__img > img { width: 100%; }
+
+@media (min-width: 40em) { .c-selection__img { flex: 1; margin: 0 24px 0 0; } }
+
+/*----------- c-selection__body -----------*/
+@media (min-width: 40em) { .c-selection__body { flex: 2; } }
+
+/*----------- c-selection__title -----------*/
+.c-selection__title { margin-bottom: 12px; font-weight: normal; font-size: 20px; font-size: 1.25rem; line-height: 1.05; }
+
+/*----------- c-selection__link -----------*/
+.c-selection__link { transition: color 0.5s ease; }
+
+.c-selection__link::after { position: absolute; left: 0; top: 0; right: 0; bottom: 0; content: ""; }
+
+/*----------- c-selection__desc -----------*/
+.c-selection__desc { margin-bottom: 36px; }
+
+.c-site-intro { display: flex; flex-direction: column; justify-content: center; padding-top: 25vh; }
+
+@media (min-width: 64em) { .c-site-intro { padding-top: 40vh; } }
+
+.c-site-intro > p { text-align: center; }
+
+.c-site-intro__text { font-size: 25px; font-size: 1.5625rem; line-height: 1.44; }
+
+@media (min-width: 40em) { .c-site-intro__text { font-size: 40px; font-size: 2.5rem; line-height: 1.2; } }
+
+@media (min-width: 64em) { .c-site-intro__text { font-size: 50px; font-size: 3.125rem; line-height: 1.2; } }
+
+.c-site-intro__text-line { opacity: 0; transform: translateY(180px) translateZ(0); display: block; }
+
+.is-page-ready .c-site-intro__text-line { opacity: 1; transform: translateY(0) translateZ(0); }
+
+.is-page-ready .c-site-intro__text-line:first-child { transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s; }
+
+.is-page-ready .c-site-intro__text-line:nth-child(2) { transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s; }
+
+.c-site-intro__next { position: relative; opacity: 0; transition: all 0.6s ease 1.5s; }
+
+.is-page-ready .c-site-intro__next { opacity: 1; }
 
 /*----------- c-site-intro__next-trigger -----------*/
-.c-site-intro__next-trigger {
-  position: absolute;
-  left: 50%;
-  top: 24px;
-  display: block;
-  height: 55px;
-  width: 40px;
-  transform: translate(-50%, 0);
-  cursor: pointer;
-  -webkit-animation: 2.5s linear infinite arrowdown;
-          animation: 2.5s linear infinite arrowdown; }
-  .c-site-intro__next-trigger::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: url("../../img/arrowDown.svg") no-repeat;
-    background-size: 100%;
-    background-position: center; }
-  @media (min-width: 40em) {
-    .c-site-intro__next-trigger {
-      top: 72px;
-      height: 72px;
-      width: 53px; } }
+.c-site-intro__next-trigger { position: absolute; left: 50%; top: 24px; display: block; height: 55px; width: 40px; transform: translate(-50%, 0); cursor: pointer; -webkit-animation: 2.5s linear infinite arrowdown; animation: 2.5s linear infinite arrowdown; }
+
+.c-site-intro__next-trigger::after { content: ""; display: block; position: absolute; height: 100%; width: 100%; background: url("../../img/arrowDown.svg") no-repeat; background-size: 100%; background-position: center; }
+
+@media (min-width: 40em) { .c-site-intro__next-trigger { top: 72px; height: 72px; width: 53px; } }
 
 /*=============================================>>>>>
 = c-site =
 ===============================================>>>>>*/
-.c-site {
-  padding-top: 96px;
-  font-family: "barlow", sans-serif; }
-  .c-site.is-locked {
-    overflow: hidden; }
+.c-site { padding-top: 96px; font-family: "barlow", sans-serif; }
+
+.c-site.is-locked { overflow: hidden; }
 
 /*----------- c-site__header -----------*/
-.c-site__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  transition: transform 1s ease 0.05s, opacity 1s ease 0.05s; }
-  .js .c-site__header {
-    transform: translateY(-90px);
-    opacity: 0; }
-    .js .c-site__header.is-visible {
-      opacity: 1;
-      transform: translateY(0); }
+.c-site__header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; transition: transform 1s ease 0.05s, opacity 1s ease 0.05s; }
+
+.js .c-site__header { transform: translateY(-90px); opacity: 0; }
+
+.js .c-site__header.is-visible { opacity: 1; transform: translateY(0); }
 
 /*=============================================>>>>>
 = c-site-header =
 ===============================================>>>>>*/
 /*----------- c-site-header__inner -----------*/
-.c-site-header__inner {
-  display: flex; }
+.c-site-header__inner { display: flex; }
 
 /*----------- c-site-header__name -----------*/
-.c-site-header__name {
-  display: flex;
-  flex: 2;
-  padding: 24px 0; }
+.c-site-header__name { display: flex; flex: 2; padding: 24px 0; }
 
 /*----------- c-site-header__home -----------*/
-.c-site-header__home {
-  display: flex;
-  align-items: baseline; }
+.c-site-header__home { display: flex; align-items: baseline; }
 
 /*----------- c-site-header__logo -----------*/
-.c-site-header__logo {
-  margin-right: 0.5rem;
-  font-size: 28px;
-  font-size: 1.75rem;
-  font-weight: bold; }
+.c-site-header__logo { margin-right: 0.5rem; font-size: 28px; font-size: 1.75rem; font-weight: bold; }
 
 /*----------- c-site-header__baseline -----------*/
-.c-site-header__baseline {
-  display: none;
-  font-size: 18px;
-  font-size: 1.125rem; }
-  @media (min-width: 33em) {
-    .c-site-header__baseline {
-      display: inline; } }
+.c-site-header__baseline { display: none; font-size: 18px; font-size: 1.125rem; }
+
+@media (min-width: 33em) { .c-site-header__baseline { display: inline; } }
 
 /*----------- c-site-header__menu-trigger -----------*/
-.c-site-header__menu-trigger {
-  flex: 0; }
-  .c-site-header__menu-trigger .hamburger-box,
-  .c-site-header__menu-trigger .hamburger-inner,
-  .c-site-header__menu-trigger .hamburger-inner::before,
-  .c-site-header__menu-trigger .hamburger-inner::after {
-    width: 30px; }
-  .c-site-header__menu-trigger .hamburger-box {
-    height: 18px; }
-  .c-site-header__menu-trigger .hamburger-inner,
-  .c-site-header__menu-trigger .hamburger-inner::before,
-  .c-site-header__menu-trigger .hamburger-inner::after {
-    height: 3px; }
-  .c-site-header__menu-trigger .hamburger-inner::before {
-    top: -6px; }
-  .c-site-header__menu-trigger .hamburger-inner::after {
-    bottom: -6px; }
+.c-site-header__menu-trigger { flex: 0; }
+
+.c-site-header__menu-trigger .hamburger-box, .c-site-header__menu-trigger .hamburger-inner, .c-site-header__menu-trigger .hamburger-inner::before, .c-site-header__menu-trigger .hamburger-inner::after { width: 30px; }
+
+.c-site-header__menu-trigger .hamburger-box { height: 18px; }
+
+.c-site-header__menu-trigger .hamburger-inner, .c-site-header__menu-trigger .hamburger-inner::before, .c-site-header__menu-trigger .hamburger-inner::after { height: 3px; }
+
+.c-site-header__menu-trigger .hamburger-inner::before { top: -6px; }
+
+.c-site-header__menu-trigger .hamburger-inner::after { bottom: -6px; }
 
 /*=============================================>>>>>
 = site-nav =
@@ -979,70 +449,25 @@ a {
 /*=============================================>>>>>
 = spip-admin =
 ===============================================>>>>>*/
-.spip-admin-float {
-  right: 0 !important;
-  top: auto !important;
-  bottom: .5rem;
-  z-index: 200 !important; }
-  .spip-admin-float .spip-admin-boutons {
-    border-radius: 5px 5px 0 0;
-    padding: .5rem 1rem;
-    font-family: monospace;
-    font-size: 10px;
-    font-size: 0.625rem;
-    line-height: 1;
-    font-weight: normal;
-    text-align: left; }
+.spip-admin-float { right: 0 !important; top: auto !important; bottom: .5rem; z-index: 200 !important; }
 
-@-webkit-keyframes arrowdown {
-  0% {
-    transform: translate(-50%, 0); }
-  50% {
-    transform: translate(-50%, 30%); }
-  100% {
-    transform: translate(-50%, 0); } }
+.spip-admin-float .spip-admin-boutons { border-radius: 5px 5px 0 0; padding: .5rem 1rem; font-family: monospace; font-size: 10px; font-size: 0.625rem; line-height: 1; font-weight: normal; text-align: left; }
 
-@keyframes arrowdown {
-  0% {
-    transform: translate(-50%, 0); }
-  50% {
-    transform: translate(-50%, 30%); }
-  100% {
-    transform: translate(-50%, 0); } }
+@-webkit-keyframes arrowdown { 0% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 30%); }
+  100% { transform: translate(-50%, 0); } }
 
-/* ==========================================================================
-   #CLEARFIX
-   ========================================================================== */
-/**
- * Attach our clearfix mixin to a utility class.
- */
-.u-clearfix:after {
-  content: "" !important;
-  display: block !important;
-  clear: both !important; }
+@keyframes arrowdown { 0% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 30%); }
+  100% { transform: translate(-50%, 0); } }
 
-/* ==========================================================================
-   #HIDE
-   ========================================================================== */
-/**
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
-.u-hidden-visually {
-  border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-          clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  white-space: nowrap !important;
-  width: 1px !important; }
+/* ========================================================================== #CLEARFIX ========================================================================== */
+/** Attach our clearfix mixin to a utility class. */
+.u-clearfix:after { content: "" !important; display: block !important; clear: both !important; }
 
-/**
- * Hide visually and from screen readers.
- */
-.u-hidden {
-  display: none !important; }
+/* ========================================================================== #HIDE ========================================================================== */
+/** Hide only visually, but have it available for screen readers: http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+.u-hidden-visually { border: 0 !important; clip: rect(0 0 0 0) !important; -webkit-clip-path: inset(50%) !important; clip-path: inset(50%) !important; height: 1px !important; margin: -1px !important; overflow: hidden !important; padding: 0 !important; position: absolute !important; white-space: nowrap !important; width: 1px !important; }
+
+/** Hide visually and from screen readers. */
+.u-hidden { display: none !important; }

@@ -4,113 +4,13 @@
 			autocenterandzoom=non, objets=associations,
 			cluster=oui, style=oui})
 	</div>]
-	<div class="o-wrapper">
-		<div class="c-item-animation js-item" style="margin-top: 48px;">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sequi
-				facere esse aspernatur ipsum perspiciatis, excepturi magnam quas officiis!
-				Minus ad beatae rerum iste sed qui expedita eaque quis magnam?
-			</p>
-		</div>
-	</div>
+	<BOUCLE_actualites(SELECTIONS){identifiant=actualites_accueil}>
+		<BOUCLE_selections_actualites(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
+			<div class="o-wrapper">
+				<div class="c-item-animation js-item">
+					<INCLURE{fond=inclure/liste/selections-actualites, id_selection}/>
+				</div>
+			</div>
+		</BOUCLE_selections_actualites>
+	</BOUCLE_actualites>
 </section>

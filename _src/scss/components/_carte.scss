@@ -3,7 +3,9 @@
 ===============================================>>>>>*/
 
 .c-carte {
-	// Modifier le z-index défini par les css de leaflet
+	margin-bottom: $spacing-unit-large;
+
+	// Surcharger le z-index défini par les css de leaflet
 	.leaflet-pane,
 	.leaflet-top,
 	.leaflet-bottom {

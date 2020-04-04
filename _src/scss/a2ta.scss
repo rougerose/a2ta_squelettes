@@ -112,7 +112,7 @@
 // @import "inuitcss/objects/objects.layout";
 // @import "inuitcss/objects/objects.media";
 // @import "inuitcss/objects/objects.flag";
-// @import "inuitcss/objects/objects.list-bare";
+@import "inuitcss/objects/objects.list-bare";
 // @import "inuitcss/objects/objects.list-inline";
 // @import "inuitcss/objects/objects.box";
 // @import "inuitcss/objects/objects.block";
@@ -128,11 +128,13 @@
 //
 @import "components/items-animation";
 @import "components/loading-page";
+@import "components/selections";
 @import "components/site-intro";
 @import "components/site";
 @import "components/site-header";
 @import "components/site-nav";
 @import "components/spip-admin";
+@import "components/text";
 @import "components/animations";
 
 // UTILITIES

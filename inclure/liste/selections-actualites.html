@@ -1,0 +1,15 @@
+<ul class="o-list-bare c-selections">
+	<BOUCLE_liste_selections_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
+		<li class="o-list-bare__item c-selection">
+			<article class="c-selection__article">
+				<picture class="c-selection__img">
+					<img src="[(#LOGO_SELECTIONS_CONTENU|image_reduire{376,0}|extraire_attribut{src})]" class="no-adapt-img" alt="">
+				</picture>
+				<div class="c-selection__body">
+					<h2 class="c-selection__title"><a href="#URL" class="c-selection__link">#TITRE</a></h2>
+					[<div class="c-selection__desc">(#DESCRIPTIF)</div>]
+				</div>
+			</article>
+		</li>
+	</BOUCLE_liste_selections_actualites>
+</ul>
