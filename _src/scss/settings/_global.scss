@@ -21,7 +21,9 @@ $font-heading: "barlow", sans-serif;
 $font-monospace: monospace;
 
 /* z-index */
-$zindex-spip-admin-float: 200;
-$zindex-header: 100;
-$zindex-loading-page: 150;
-$zindex-map: 50;
+$zindex-spip-admin-float: 20;
+$zindex-loading-page: 15;
+$zindex-header: 10;
+$zindex-map: 5;
+$zindex-main: 1;
+$zindex-footer: 0;

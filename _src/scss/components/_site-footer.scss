@@ -1,0 +1,44 @@
+// ========================================
+// c-site-footer
+// ========================================
+
+.c-site-footer {
+	color: lighten($color-black, 30%);
+}
+
+// ---------------- c-site-footer__identity ---------------- //
+
+.c-site-footer__identity {
+	// border-bottom: 1px solid lighten($color-orange-100, 5%);
+}
+
+// ---------------- c-site-footer__name ---------------- //
+
+.c-site-footer__name {
+	display: flex;
+	flex-direction: column;
+}
+
+// ---------------- c-site-footer__logo ---------------- //
+
+.c-site-footer__logo {
+	@include font-size(28px);
+	font-weight: bold;
+}
+
+// ---------------- c-site-footer__baseline ---------------- //
+
+.c-site-footer__baseline {
+	@include font-size(15px);
+}
+
+// ---------------- c-site-footer__desc ---------------- //
+
+.c-site-footer__desc {
+}
+
+// ---------------- c-site-footer__text ---------------- //
+
+.c-site-footer__text {
+	@include font-size(15px, $modifier: -0.5);
+}

@@ -3,6 +3,7 @@ var A2ta = {
 		(this.body = $("body")),
 			(this.loadingIntroContainer = $("#loadingIntro")),
 			(this.header = $("#header")),
+			(this.footer = $("#footer")),
 			(this.contentItems = $("section.js-items .js-item")),
 			this.body.addClass("is-page-ready"),
 			this.loadingContent(),
@@ -14,11 +15,13 @@ var A2ta = {
 
 	loadingContent: function() {
 		if (this.loadingIntroContainer[0].classList.contains("is-hidden")) {
-			var header = this.header[0],
-				items = this.contentItems;
+			var els = [this.contentItems, this.header, this.footer];
+
+			// Ajouter la hauteur du pied de page en marge basse de l'élément body.
+			this.body.css({ "padding-bottom": this.footer.css("height") });
+
 			setTimeout(function() {
-				header.classList.add("is-visible");
-				$.each(items, function() {
+				$.each(els, function() {
 					$(this).addClass("is-visible");
 				});
 			}, 900);
