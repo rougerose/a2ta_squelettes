@@ -6,7 +6,7 @@
 	padding-top: $spacing-unit-huge;
 	height: 100%;
 	font-family: $font-text;
-	background-color: #fafafa;
+	background-color: $color-white-page;
 
 	&.is-locked {
 		overflow: hidden;
@@ -22,6 +22,8 @@
 	width: 100%;
 	z-index: $zindex-header;
 	transition: transform 1s ease 0.05s, opacity 1s ease 0.05s;
+	background-color: $color-white-page;
+	box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.26);
 
 	.js & {
 		transform: translateY(-100%);
@@ -39,7 +41,8 @@
 .c-site__main {
 	position: relative;
 	z-index: $zindex-main;
-	background-color: #fafafa;
+	padding-bottom: $spacing-unit;
+	background-color: $color-white-page;
 }
 
 // ---------------- c-site__footer ---------------- //
