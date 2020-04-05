@@ -176,7 +176,9 @@ a { text-decoration: none; color: black; }
 
 .o-wrapper:after { content: "" !important; display: block !important; clear: both !important; }
 
-.o-wrapper--fullscreen { max-width: none; }
+.o-wrapper--full { max-width: none; }
+
+.o-wrapper--narrow { max-width: 1000px; }
 
 /* ========================================================================== #GRID ========================================================================== */
 /** This plugin provides a flexbox grid for inuitcss. Support for IE9 currently prevents inuitcss from using the flexbox layout mode. Cells are full-width and will stack on top of each other by default: <div class="o-grid"> <div class="o-grid__cell"> </div> <div class="o-grid__cell"> </div> </div> Cells will in most cases be accompanied by utility classes that divide the grid into fractions. These are provided by inuitcss: <div class="o-grid"> <div class="o-grid__cell u-1/2"> </div> <div class="o-grid__cell u-1/2"> </div> </div> Several modifier classes are provided. For example, `o-grid--auto` will divide the space equally between all containing cells without the need for width utility classes. <div class="o-grid--auto"> <div class="o-grid__cell"> </div> <div class="o-grid__cell"> </div> </div> */
@@ -400,13 +402,13 @@ a { text-decoration: none; color: black; }
 
 .c-site.is-locked { overflow: hidden; }
 
-.c-site__header { position: fixed; top: 0; left: 0; width: 100%; z-index: 10; transition: transform 1s ease 0.05s, opacity 1s ease 0.05s; }
+.c-site__header { position: fixed; top: 0; left: 0; width: 100%; z-index: 10; transition: transform 1s ease 0.05s, opacity 1s ease 0.05s; background-color: #fafafa; box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.26); }
 
 .js .c-site__header { transform: translateY(-100%); opacity: 0; }
 
 .js .c-site__header.is-visible { opacity: 1; transform: none; }
 
-.c-site__main { position: relative; z-index: 1; background-color: #fafafa; }
+.c-site__main { position: relative; z-index: 1; padding-bottom: 24px; background-color: #fafafa; }
 
 .c-site__footer { padding: 24px 0; background-color: #dbd1c7; }
 
@@ -433,7 +435,7 @@ a { text-decoration: none; color: black; }
 .c-site-header__inner { display: flex; }
 
 /*----------- c-site-header__name -----------*/
-.c-site-header__name { display: flex; flex: 2; padding: 24px 0; }
+.c-site-header__name { display: flex; flex: 2; padding: 12px 0; }
 
 /*----------- c-site-header__home -----------*/
 .c-site-header__home { display: flex; align-items: baseline; }
