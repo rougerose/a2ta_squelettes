@@ -11,7 +11,11 @@
 	max-width: $inuit-wrapper-width;
 	width: 100%;
 
-	&--fullscreen {
+	&--full {
 		max-width: none;
+	}
+
+	&--narrow {
+		max-width: $inuit-wrapper-width - 200px;
 	}
 }
