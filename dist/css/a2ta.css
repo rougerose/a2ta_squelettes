@@ -342,7 +342,7 @@ a { text-decoration: none; color: black; }
 
 .c-selection__article .c-selection__link:focus { text-decoration: underline; }
 
-.c-selection__article:focus-within, .c-selection__article:hover .c-selection__link { color: #809f3c; }
+.c-selection__article:focus-within, .c-selection__article:hover .c-selection__link { color: #ff8000; }
 
 .c-selection__article:focus-within .c-selection__link:focus { text-decoration: none; }
 
