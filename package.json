@@ -20,7 +20,7 @@
 		"build:css": "run-p scss postcss",
 		"build": "run-s build:*",
 		"watch:scss": "onchange '_src/scss' -- run-p build:css",
-		"watch:js": "onchange '_src/javascript' -- run-s build:js",
+		"watch:js": "onchange '_src/javascript' -- run-p build:js",
 		"watch": "run-p watch:*",
 		"dev-watch": "NODE_ENV='development' yarn watch",
 		"dev": "NODE_ENV='development' yarn build",
