@@ -15,7 +15,7 @@
 		"scss": "node-sass _src/scss/ --include-path node_modules/ --output-style compact -o dist/css",
 		"postcss": "postcss dist/css/a2ta.css -o dist/css/a2ta.css",
 		"prebuild": "run-s clean copy:*",
-		"build:js": "terser _src/javascript/a2ta.js -c -o dist/javascript/a2ta.js",
+		"build:js": "terser _src/javascript/a2ta.js -c -o dist/javascript/a2ta.js && terser _src/javascript/a2ta_map.js -c -o dist/javascript/a2ta_map.js",
 		"build:jsLib": "terser node_modules/swiped-events/dist/swiped-events.min.js -o dist/javascript/lib.js",
 		"build:css": "run-p scss postcss",
 		"build": "run-s build:*",

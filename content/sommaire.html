@@ -1,9 +1,9 @@
 <section class="c-items-animation js-items">
-	[<div class="c-carte c-item-animation js-item">
-		(#INCLURE{fond=modeles/carte_gis,
-			autocenterandzoom=non, objets=associations,
-			cluster=oui, style=oui})
-	</div>]
+	<INCLURE{fond=inclure/carte-a2ta, class="c-item-animation js-item"}/>
+	<form>
+		[(#SET{params, #ARRAY{limite, 15}|json_encode{1}|attribut_html})]
+		<input type="text" value="" data-selecteur="association" data-select-php="oui" data-select-params="[(#GET{params})]" />
+	</form>
 	<BOUCLE_actualites(SELECTIONS){identifiant=actualites_accueil}>
 		<BOUCLE_selections_actualites(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
 			<div class="o-wrapper o-wrapper--narrow">

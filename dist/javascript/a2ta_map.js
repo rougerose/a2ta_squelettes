@@ -1,0 +1,1 @@
+function a2ta_map(mapObject){var id=mapObject.options.mapId;$("#map"+id).on("ready",(function(){this.map.zoomControl.setPosition("topright")}))}
