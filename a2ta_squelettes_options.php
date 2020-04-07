@@ -24,3 +24,7 @@ if (!isset($GLOBALS['z_blocs'])) {
 		'footer',
 	);
 }
+
+if (!defined('_SELECTEUR_GENERIQUE_ACTIVER_PUBLIC')) {
+	define('_SELECTEUR_GENERIQUE_ACTIVER_PUBLIC', true);
+}
