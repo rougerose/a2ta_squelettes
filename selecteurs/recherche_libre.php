@@ -21,88 +21,96 @@ function selecteurs_recherche_libre() {
 		$limite = $limite_perso;
 	}
 
-	// Les tables sur lesquelles on recherche.
-	// Renseigner préalablement les éléments essentiels
-	// pour aller au plus simple :
-	// 	- le titre est soit un nom, soit un titre
-	// 	- éventuellement un descriptif
-	// 	- un critère supplémentaire (mot.id_groupe par exemple)
-	//
-	// La clé primaire et le nom de l'objet sont recherchés par les fonctions
-	// dédiées de spip.
-	//
+	// Les requetes sont explicitées de manière détaillée, ce n'est peut-être pas
+	// le mieux pour la qualité du code, mais ça permet de viser au plus juste.
 	$tables = array(
-		'spip_associations' => array(
-			'titre' => 'nom',
-			'desc' => '',
-			'like' => 'nom'
+		// les associations liées à un point GIS.
+		'association' => array(
+			'cle' => 'id_association', //
+			'titre' => 'nom', // équivalent titre de la table ou de la requête.
+			'select' => array('l1.id_association', 'l1.nom'),
+			'from' => array(
+				'spip_associations AS l1',
+				'INNER JOIN spip_gis_liens AS l2 ON (l2.id_objet = l1.id_association AND l2.objet = "association")',
+				'INNER JOIN spip_gis AS l3 ON (l3.id_gis = l2.id_gis)'
+			),
+			'where' => array(
+				'l1.nom LIKE '.sql_quote("%${search}%"),
+				'l1.statut = "publie"'
+			),
+			'groupby' => array('l1.id_association'),
+			'orderby' => array('l1.nom')
 		),
-		'spip_adresses' => array(
-			'titre' => 'ville',
-			'desc' => '',
-			'like' => 'ville'
-		),
-		'spip_mots' => array(
+
+		// les mots-clés liées à une association qui elle-même est liée à un point GIS.
+		'mot' => array(
+			'cle' => 'id_mot',
 			'titre' => 'titre',
-			'desc' => 'descriptif',
-			'like' => array('concat' => 'titre, descriptif'),
-			'critere' => array('id_groupe' => 1)
+			'complement' => 'descriptif',
+			'select' => array('l1.id_mot', 'l1.titre', 'l1.descriptif'),
+			'from' => array(
+				'spip_mots AS l1',
+				'INNER JOIN spip_mots_liens AS l2 ON (l2.id_mot = l1.id_mot)',
+				'INNER JOIN spip_associations AS l3 ON (l3.id_association = l2.id_objet AND l2.objet="association")',
+				'INNER JOIN spip_gis_liens AS l4 ON (l3.id_association = l4.id_objet AND l4.objet="association")'
+			),
+			'where' => array(
+				'l1.titre LIKE '.sql_quote("%${search}%").' OR l1.descriptif LIKE '.sql_quote("%${search}%"),
+				'l3.statut = "publie"',
+				'l1.id_groupe=1',
+			),
+			'groupby' => array('l1.id_mot'),
+			'orderby' => array('l1.titre')
+		),
+
+		// Les villes (de la table spip_adresses)liées à une association qui est liée elle-même à un point GIS
+		'ville' => array(
+			'cle' => 'ville',
+			'titre' => 'ville',
+			'select' => array('l1.ville'),
+			'from' => array(
+				'spip_adresses AS l1',
+				'INNER JOIN spip_adresses_liens AS l2 ON (l2.id_adresse = l1.id_adresse)',
+				'INNER JOIN spip_associations AS l3 ON (l2.id_objet = l3.id_association AND l2.objet = "association")',
+				'INNER JOIN spip_gis_liens AS l4 ON (l4.objet = "association" AND l4.id_objet = l3.id_association)'
+			),
+			'where' => array(
+				'l1.ville LIKE '.sql_quote("%${search}%"),
+				'l3.statut = "publie"'
+			),
+			'groupby' => array('l1.ville'),
+			'orderby' => array('l1.ville')
 		)
 	);
 
-	foreach ($tables as $table => $requete) {
-		$objet = objet_type($table);
-		$cle = id_table_objet($table);
+	foreach ($tables as $objet => $requete) {
+		$from = implode(' ', $requete['from']);
+		$cle = $requete['cle'];
 		$titre = $requete['titre'];
-		$desc = $requete['desc'];
-		$where = '';
-		$field = '';
-		$like = $requete['like'];
-		$critere = $requete['critere'];
+		$complement = isset($requete['complement']) ? $requete['complement'] : '';
 
-		if (is_array($critere) and count($critere)) {
-			foreach ($critere as $key => $value) {
-				if ($where) {
-					$where .= ' AND ';
-				}
-				$where .= '(' . $key . '=' . $value . ')';
-			}
-		}
+		$rows = sql_allfetsel(
+			$requete['select'],
+			$from,
+			$requete['where'],
+			$requete['groupby'],
+			$requete['orderby'],
+			"0, $limite"
+		);
 
-		if ($like) {
-			if ($where) {
-				$where .= ' AND ';
-			}
+		if ($rows) {
 
-			if (is_array($like) and $like['concat']) {
-				$field = $like['concat'];
-				$where .= 'CONCAT(' . $like['concat'] .') LIKE ';
-			} else {
-				$field = $like;
-				$where .= $like . ' LIKE ';
-			}
-		}
+			foreach ($rows as $row) {
+				// Attention: pour ville, c'est une chaîne (nom de la ville recherchée) et non un nombre.
+				$id_objet = $row[$cle];
 
-		if ($trouves = sql_allfetsel(
-				$cle . ',' . $field,
-				$table,
-				$where . sql_quote("%${search}%"),
-				$titre,
-				'',
-				"0, $limite"
-			)
-		) {
-			foreach ($trouves as $res) {
-				$id_objet = $res[$cle];
-				$label = filtrer_entites($res[$titre]);
+				$label = filtrer_entites($row[$titre]);
 
-				// Ajouter l'éventuel descriptif.
-				if ($res[$desc]) {
-					$label .= ' ('. filtrer_entites($res[$desc]) .')';
+				if ($complement and $cpt = $row[$complement]) {
+					$label .= ' ('. filtrer_entites($cpt) .')';
 				}
 
-				// value affiche une valeur "technique", le js prend en charge
-				// d'afficher une valeur plus explicite pour l'utilisateur.
+				// "value" est une valeur "technique", le js affiche uniquement le "label"
 				$resultats[] = array(
 					'label' => $label,
 					'value' => $objet.':'.$id_objet,
@@ -110,5 +118,6 @@ function selecteurs_recherche_libre() {
 			}
 		}
 	}
+
 	return json_encode($resultats);
 }
