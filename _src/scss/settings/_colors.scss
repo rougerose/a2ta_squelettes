@@ -10,8 +10,15 @@ $color-orange: hsl(30, 100%, 50%);
 $color-white-page: hsl(0, 0%, 98%);
 
 // Gray
-$color-gray-100: hsl(0, 0, 90%);
-$color-gray-200: hsl(0, 0, 80%);
+$color-gray-100: hsla(210, 17%, 98%, 1);
+$color-gray-200: hsla(207, 22%, 90%, 1);
+$color-gray-300: hsla(210, 24%, 87%, 1);
+$color-gray-400: hsla(208, 17%, 83%, 1);
+$color-gray-500: hsla(209, 24%, 74%, 1);
+$color-gray-600: hsla(215, 17%, 63%, 1);
+$color-gray-700: hsla(214, 11%, 49%, 1);
+$color-gray-800: hsla(215, 17%, 30%, 1);
+$color-gray-900: hsla(215, 23%, 16%, 1);
 
 // Green
 $color-green: hsl(79, 45%, 43%); //#81a03d
@@ -22,3 +29,9 @@ $color-orange-100: hsla(30, 21%, 82%, 1);
 
 // Theme
 $color-loading-page: $color-orange;
+
+// Formulaire recherche carte et éléments associés //
+$color-bg-form-carte: lighten($color-gray-800, 10%);
+$color-form-text: $color-gray-100;
+$color-form-carte: $color-gray-800;
+$color-hover-form-carte-color: lighten($color-gray-800, 5%);

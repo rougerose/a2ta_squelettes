@@ -2,14 +2,18 @@
 // c-selections
 // =====================================
 
+$selection-margin: $spacing-unit + $spacing-unit-small;
+
 .c-selections {
+	padding-top: $selection-margin;
+	margin-bottom: 0;
 }
 
 /*----------- c-selection -----------*/
 
 .c-selection {
 	position: relative;
-	padding-top: $spacing-unit + $spacing-unit-small;
+	padding-top: $selection-margin;
 
 	&::before {
 		position: absolute;
@@ -30,7 +34,7 @@
 	}
 
 	@include mq(m) {
-		margin-bottom: $spacing-unit + $spacing-unit-small;
+		margin-bottom: $selection-margin;
 	}
 }
 

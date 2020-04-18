@@ -3,8 +3,9 @@
 // ========================================
 
 .c-site {
-	padding-top: $spacing-unit-huge;
-	height: 100%;
+	padding-top: $headerHeight;
+	// La marge basse est calculée par javascript
+	// height: 100%;
 	font-family: $font-text;
 	background-color: $color-white-page;
 

@@ -120,14 +120,19 @@
 // @import "inuitcss/objects/objects.crop";
 // @import "inuitcss/objects/objects.table";
 // @import "inuitcss/objects/objects.pack";
+@import "objects/form";
+@import "objects/icon";
 
 // COMPONENTS
+@import "components/btn";
 @import "components/carte";
 // Lib : Hamburgers
 @import "hamburgers/_sass/hamburgers/hamburgers";
 //
+@import "components/form-carte";
 @import "components/items-animation";
 @import "components/loading-page";
+@import "components/message";
 @import "components/selections";
 @import "components/site-intro";
 @import "components/site";

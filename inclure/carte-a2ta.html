@@ -1,9 +1,13 @@
 [(#SET{mapID, 1})]
 [<div class="c-carte #ENV{class}">
 	(#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID},
-		autocenterandzoom=non, objets=associations,
-		cluster=oui, style=oui})
-
-		[(#REM) Récupérer l'objet carte]
-		<script type="text/javascript">callback_map[(#GET{mapID})] = function(map) {a2ta_map(map);};</script>
+		autocenterandzoom=non, objets=associations, utiliser_bb=oui,
+		cluster=oui, style=non})
+		[(#REM) Récupérer l'objet carte grâce au callback de GIS]
+		<script type="text/javascript">callback_map[(#GET{mapID})] = function(map) {A2taMap.init(map);}</script>
+		<div class="c-carte__inner">
+			<div class="ajax">#FORMULAIRE_RECHERCHE_CARTE</div>
+			<div class="c-carte__menu-autocomplete js-listAutocomplete" id="listAutocomplete"></div>
+			<div id="listCriteres" class="js-listCriteres"></div>
+		</div>
 </div>]

@@ -113,7 +113,7 @@ function selecteurs_recherche_libre() {
 				// "value" est une valeur "technique", le js affiche uniquement le "label"
 				$resultats[] = array(
 					'label' => $label,
-					'value' => $objet.':'.$id_objet,
+					'value' => $cle.':'.$id_objet,
 				);
 			}
 		}

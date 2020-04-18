@@ -1,7 +1,56 @@
-function a2ta_map(mapObject) {
-	var id = mapObject.options.mapId,
-		Map = $("#map" + id);
-	Map.on("ready", function() {
-		this.map.zoomControl.setPosition("topright");
-	});
-}
+var A2taMap = {
+	jqCarte: {},
+	objCarte: {},
+	self: {},
+	init: function (mapObject) {
+		self = this;
+		self.objCarte = mapObject;
+		self.getJqCarte(self.objCarte);
+		self.jqCarte.on("ready", function () {
+			// Options et fonctions de GIS/Leaflet sont accessibles
+			// depuis self.objCarte uniquement.
+			self.setZoomControl();
+		});
+	},
+
+	getJqCarte: function (mapObject) {
+		var id = mapObject.options.mapId,
+			m = $("#map" + id);
+		return (self.jqCarte = m);
+	},
+
+	setZoomControl: function () {
+		self.objCarte.zoomControl.setPosition("bottomleft");
+	},
+
+	// Utiliser une fonction spécifique qui reprend l'essentiel
+	// de la fonction parseGeoJson de GIS mais sans les options
+	// de zoom, difficile à maîtriser et qui sont ajoutées par GIS
+	// dans centerAndZoom
+	parseJson: function (json) {
+		var map = self.objCarte;
+		var markers = [];
+		map.markerCluster = L.markerClusterGroup(map.options.clusterOptions).addTo(
+			map
+		);
+		$.each(json.features, function (i, feature) {
+			if (
+				feature.geometry.type === "Point" &&
+				feature.geometry.coordinates[0]
+			) {
+				var marker = L.marker([
+					feature.geometry.coordinates[1],
+					feature.geometry.coordinates[0],
+				]);
+				map.setGeoJsonFeatureIcon(feature, marker);
+				map.setGeoJsonFeaturePopup(feature, marker);
+				marker.feature = feature;
+				marker.id = feature.id;
+				markers.push(marker);
+			}
+		});
+		map.markerCluster.addLayers(markers);
+		var bounds = map.markerCluster.getBounds();
+		map.fitBounds(bounds);
+	},
+};

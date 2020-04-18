@@ -267,14 +267,45 @@ a { text-decoration: none; color: black; }
 
 .o-list-bare__item { margin-left: 0; }
 
-/*=============================================>>>>>
-= carte =
-===============================================>>>>>*/
-.c-carte { margin-bottom: 48px; }
+.o-form__input { padding: 0.375rem; width: 100%; border: none; }
+
+.o-icon-24 { height: 24px; width: 24px; }
+
+.c-btn { display: inline-block; margin: 0; padding: 0; border: none; vertical-align: middle; text-align: center; cursor: pointer; background-color: transparent; }
+
+.c-carte { position: relative; }
 
 .c-carte .leaflet-pane, .c-carte .leaflet-top, .c-carte .leaflet-bottom { z-index: 5; }
 
 .c-carte .leaflet-fade-anim .leaflet-tile, .c-carte .leaflet-zoom-anim .leaflet-zoom-animated { will-change: auto !important; }
+
+.c-carte .carte_gis { width: 100%; height: calc(100vh - 100px); }
+
+.c-carte__inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 6; padding: 24px 12px 12px; pointer-events: none; }
+
+.c-carte__recherche { box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5); }
+
+.c-carte__criteres { position: relative; display: flex; margin: 12px 0 0; }
+
+.c-carte__critere { display: flex; padding: 6px; margin: 3px; margin-left: 0; box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5); pointer-events: auto; background-color: #556377; color: #f9fafb; font-size: 14px; font-size: 0.875rem; line-height: 1.07143; }
+
+.c-carte__critere-label { margin-right: 6px; }
+
+.c-carte__critere-btn { position: relative; width: 1rem; height: 1rem; border-radius: 1rem; background-color: #1f2732; transition: background-color 0.5s ease; }
+
+.c-carte__critere-btn::before, .c-carte__critere-btn::after { position: absolute; top: 0.1875rem; left: 0.4375rem; height: 0.625rem; width: 0.125rem; content: ""; background-color: #6f7b8b; transition: background-color 0.5s ease; }
+
+.c-carte__critere-btn::before { transform: rotate(45deg); }
+
+.c-carte__critere-btn::after { transform: rotate(-45deg); }
+
+.c-carte__critere-btn:hover { background-color: #6f7b8b; }
+
+.c-carte__critere-btn:hover::before, .c-carte__critere-btn:hover::after { background-color: #1f2732; }
+
+.c-carte__menu-autocomplete { position: absolute; z-index: 6; }
+
+.c-carte__message { padding: 6px; }
 
 /*! Hamburgers @description Tasty CSS-animated hamburgers @author Jonathan Suh @jonsuh @site https://jonsuh.com/hamburgers @link https://github.com/jonsuh/hamburgers */
 .hamburger { padding: 0 0; display: inline-block; cursor: pointer; transition-property: opacity, -webkit-filter; transition-property: opacity, filter; transition-property: opacity, filter, -webkit-filter; transition-duration: 0.15s; transition-timing-function: linear; font: inherit; color: inherit; text-transform: none; background-color: transparent; border: 0; margin: 0; overflow: visible; }
@@ -310,6 +341,34 @@ a { text-decoration: none; color: black; }
 
 .hamburger--squeeze.is-active .hamburger-inner::after { bottom: 0; transform: rotate(-90deg); transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+.c-form-carte { position: relative; z-index: 6; display: flex; padding: 6px; background-color: #556377; pointer-events: auto; }
+
+.c-form-carte__libre { display: flex; flex: 1; }
+
+.c-form-carte__label { position: relative; }
+
+.c-form-carte__icon-search { position: absolute; left: 0.1875rem; top: 0.1875rem; }
+
+.c-form-carte__icon-search > .o-icon-search { fill: #f9fafb; }
+
+.c-form-carte__input { background-color: #3f4a5a; color: #f9fafb; text-indent: 28px; transition: background-color 0.5s ease; }
+
+.c-form-carte__input:focus { background-color: #4a5768; }
+
+.c-form-carte__options { display: flex; margin-left: 12px; flex: 0; }
+
+.c-form-carte__btnOpt { padding: 0 12px; height: 100%; background-color: #3f4a5a; transition: background-color 0.5s ease; }
+
+.c-form-carte__btnOpt > .o-icon-options { fill: #1f2732; transition: fill 0.5s ease; }
+
+.c-form-carte__btnOpt > .o-icon-options circle { fill: #6f7b8b; transition: fill 0.5s ease; }
+
+.c-form-carte__btnOpt:hover, .c-form-carte__btnOpt:focus { background-color: #4a5768; }
+
+.c-form-carte__btnOpt:hover > .o-icon-options, .c-form-carte__btnOpt:focus > .o-icon-options { fill: #6f7b8b; }
+
+.c-form-carte__btnOpt:hover > .o-icon-options circle, .c-form-carte__btnOpt:focus > .o-icon-options circle { fill: #f9fafb; }
+
 /*----------- c-item-animation -----------*/
 .c-item-animation { transition: transform 1.5s ease 0.5s, opacity 1s ease 0.5s; }
 
@@ -324,10 +383,14 @@ a { text-decoration: none; color: black; }
 
 .c-loading-page.is-hidden { height: 0; pointer-events: none; transition: height 1s cubic-bezier(0.5, 0.01, 0.08, 0.98); }
 
+.c-message { background-color: #adbdcd; padding: 12px 6px; }
+
+.c-selections { padding-top: 36px; margin-bottom: 0; }
+
 /*----------- c-selection -----------*/
 .c-selection { position: relative; padding-top: 36px; }
 
-.c-selection::before { position: absolute; left: 0; top: 0; height: 1px; width: 100%; background-color: #e6e6e6; content: ""; }
+.c-selection::before { position: absolute; left: 0; top: 0; height: 1px; width: 100%; background-color: #f9fafb; content: ""; }
 
 .c-selection:first-child { padding-top: 0; }
 
@@ -398,7 +461,7 @@ a { text-decoration: none; color: black; }
 
 @media (min-width: 40em) { .c-site-intro__next-trigger { top: 72px; height: 72px; width: 53px; } }
 
-.c-site { padding-top: 96px; height: 100%; font-family: "barlow", sans-serif; background-color: #fafafa; }
+.c-site { padding-top: 56px; font-family: "barlow", sans-serif; background-color: #fafafa; }
 
 .c-site.is-locked { overflow: hidden; }
 

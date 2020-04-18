@@ -1,10 +1,9 @@
-/*=============================================>>>>>
-= carte =
-===============================================>>>>>*/
+// ========================================
+// c-carte
+// ========================================
 
 .c-carte {
-	margin-bottom: $spacing-unit-large;
-
+	position: relative;
 	// Surcharger le z-index défini par les css de leaflet
 	.leaflet-pane,
 	.leaflet-top,
@@ -12,8 +11,119 @@
 		z-index: $zindex-map;
 	}
 
+	// Désactiver will-change (en nombre trop important selon Firefox)
 	.leaflet-fade-anim .leaflet-tile,
 	.leaflet-zoom-anim .leaflet-zoom-animated {
 		will-change: auto !important;
 	}
+
+	// leaflet-control-container
+	.leaflet-control-container {
+	}
+
+	// Carte générée par le plugin
+	.carte_gis {
+		width: 100%;
+		height: calc(100vh - 100px);
+	}
+}
+
+// ---------------- c-carte__inner ---------------- //
+
+.c-carte__inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: $zindex-map + 1;
+	padding: $spacing-unit $spacing-unit-small $spacing-unit-small;
+	pointer-events: none;
+}
+
+// ---------------- c-carte__recherche ---------------- //
+
+.c-carte__recherche {
+	box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+}
+
+// ---------------- c-carte__criteres ---------------- //
+
+.c-carte__criteres {
+	position: relative;
+	display: flex;
+	margin: $spacing-unit-small 0 0;
+}
+
+// ---------------- c-carte__critere ---------------- //
+
+.c-carte__critere {
+	display: flex;
+	padding: $spacing-unit-tiny;
+	margin: $spacing-unit-tiny / 2;
+	margin-left: 0;
+	box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+	pointer-events: auto;
+	background-color: $color-bg-form-carte;
+	color: $color-form-text;
+	@include font-size(14px, $modifier: -1.5);
+}
+
+// ---------------- c-carte__critere-label ---------------- //
+
+.c-carte__critere-label {
+	margin-right: 6px;
+}
+
+// ---------------- c-carte__critere-btn ---------------- //
+
+.c-carte__critere-btn {
+	position: relative;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 1rem;
+	background-color: $color-gray-900;
+	transition: background-color 0.5s ease;
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: (3/16) * 1rem;
+		left: (7/16) * 1rem;
+		height: (10/16) * 1rem;
+		width: (2/16) * 1rem;
+		content: "";
+		background-color: $color-gray-700;
+		transition: background-color 0.5s ease;
+	}
+
+	&::before {
+		transform: rotate(45deg);
+	}
+
+	&::after {
+		transform: rotate(-45deg);
+	}
+
+	&:hover {
+		background-color: $color-gray-700;
+
+		&::before,
+		&::after {
+			background-color: $color-gray-900;
+		}
+	}
+}
+
+// ---------------- c-carte__menu-autocomplete ---------------- //
+
+.c-carte__menu-autocomplete {
+	position: absolute;
+	z-index: $zindex-map + 1;
+}
+
+// ---------------- c-carte__message ---------------- //
+
+.c-carte__message {
+	padding: $spacing-unit-tiny;
 }

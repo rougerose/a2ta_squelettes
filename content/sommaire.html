@@ -1,9 +1,5 @@
 <section class="c-items-animation js-items">
 	<INCLURE{fond=inclure/carte-a2ta, class="c-item-animation js-item"}/>
-	<form>
-		[(#SET{params, #ARRAY{limite, 15}|json_encode{1}|attribut_html})]
-		<input type="text" value="" data-selecteur="association" data-select-php="oui" data-select-params="[(#GET{params})]" />
-	</form>
 	<BOUCLE_actualites(SELECTIONS){identifiant=actualites_accueil}>
 		<BOUCLE_selections_actualites(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
 			<div class="o-wrapper o-wrapper--narrow">
