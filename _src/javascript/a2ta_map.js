@@ -1,14 +1,19 @@
 var A2taMap = {
 	self: {},
 	carte: {},
+	carteDefaultCenter: [],
+	carteDefaultZoom: "",
 	criteresLabelRecherche: [],
 	criteresIdRecherche: [],
 	containerlistCriteres: {},
 	inputCarteRechercheLibre: {},
 	listAcResponse: {},
+
 	init: function (mapObject) {
 		self = this;
 		self.carte = mapObject;
+		self.carteDefaultZoom = self.carte.options.zoom;
+		self.carteDefaultCenter = self.carte.options.center;
 		self.setZoomControl();
 		self.containerlistCriteres = $("#listCriteres");
 		self.inputCarteRechercheLibre = $("#input-carte-recherche-libre");
@@ -59,6 +64,12 @@ var A2taMap = {
 
 		listCriteres += "</ul>";
 		self.containerlistCriteres.html(listCriteres);
+		$(".c-carte__critere-btn").click(function () {
+			var index = this.id.substring(13);
+			self.criteresLabelRecherche.splice(index, 1);
+			self.criteresIdRecherche.splice(index, 1);
+			self.afficherCriteres();
+		});
 		self.chargerGeoPoints();
 	},
 
@@ -98,6 +109,10 @@ var A2taMap = {
 					"?page=gis_json&objets=associations_env&limit=500&" + query
 				).done(function (json) {
 					self.parseJson(json);
+					// Si plus de critères de recherche, vue par défaut de la carte.
+					if (self.criteresIdRecherche.length == 0) {
+						self.carte.setView(self.carteDefaultCenter, self.carteDefaultZoom);
+					}
 				});
 			})
 			.fail(function (jqxhr, textStatus, error) {
