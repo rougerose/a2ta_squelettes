@@ -1,17 +1,25 @@
 <div class="formulaire_spip formulaire_recherche c-carte__recherche">
 	<form id="c-form-carte" action="[(#ENV{action})]" method="post" class="o-form c-form-carte">
 		#ACTION_FORMULAIRE
-		<div class="o-form__groupe c-form-carte__libre">
-			<label class="o-form__label c-form-carte__label" for="input-carte-recherche-libre">
-				[<span class="c-form-carte__icon-search">
-					(#INCLURE{fond=img/icon-search-24.svg, class="o-icon o-icon-search o-icon-24", role="img"})
-				</span>]
-				<span class="u-hidden-visually"><:a2ta:label_recherche_simple:></span>
-			</label>
-			[(#SET{params, #ARRAY{limite, 15}|json_encode|attribut_html})]
-			<input type="text" id="input-carte-recherche-libre" class="o-form__input c-form-carte__input" name="c-recherche-carte-input" value="" data-selecteur="recherche_libre" data-select-php="oui" data-select-params="[(#GET{params})]" data-select-callback="A2taMap.rechercheLibreCb" />
+		<div class="o-form__groupe c-form-carte__recherche-champs">
+			<div class="o-form__groupe c-form-carte__recherche-libre">
+				<label class="o-form__label c-form-carte__label" for="input-carte-recherche-libre">
+					[<span class="c-form-carte__icon-search">
+						(#INCLURE{fond=img/icon-search-24.svg, class="o-icon o-icon-search o-icon-24", role="img"})
+					</span>]
+					<span class="u-hidden-visually"><:a2ta:label_recherche_simple:></span>
+				</label>
+				[(#SET{params, #ARRAY{limite, 15}|json_encode|attribut_html})]
+				<input type="text" id="input-carte-recherche-libre" class="o-form__input c-form-carte__input" name="c-recherche-carte-input" value="" data-selecteur="recherche_libre" data-select-php="oui" data-select-params="[(#GET{params})]" data-select-callback="A2taMap.rechercheLibreCb" />
+			</div>
+			<div class="o-form__groupe c-form-carte__recherche-categories">
+				<ul class="o-list-bare c-form-carte__filtres-categorie">
+					<li class="o-list-bare__item c-form-carte__filtre-categorie"><a href="#activites">Activités</a></li>
+					<li class="o-list-bare__item c-form-carte__filtre-categorie"><a href="#villes">Villes</a></li>
+				</ul>
+			</div>
 		</div>
-		<div class="o-form__groupe c-form-carte__options">
+		<div class="o-form__groupe c-form-carte__recherche-options">
 			[<button type="button" class="c-btn c-form-carte__btnOpt">
 				(#INCLURE{fond=img/icon-options-24.svg, class="o-icon o-icon-options o-icon-24", title="Recherche avancée"})
 			</button>]
