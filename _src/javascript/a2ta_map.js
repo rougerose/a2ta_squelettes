@@ -159,7 +159,6 @@ var A2taMap = {
 	parseJson: function (json) {
 		var map = self.carte;
 		var markers = [];
-		var autres = { type: "FeatureCollection", features: [] };
 		map.markerCluster = L.markerClusterGroup(map.options.clusterOptions).addTo(
 			map
 		);
@@ -177,13 +176,11 @@ var A2taMap = {
 				marker.feature = feature;
 				// marker.id = feature.id;
 				markers.push(marker);
-			} else {
-				autres.features.push(feature);
-				console.log(autres);
 			}
 		});
 		map.markerCluster.addLayers(markers);
 		var bounds = map.markerCluster.getBounds();
-		map.fitBounds(bounds);
+		var options = { maxZoom: 16 };
+		map.fitBounds(bounds, options);
 	},
 };
