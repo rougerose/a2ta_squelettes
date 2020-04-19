@@ -53,7 +53,7 @@ var A2taMap = {
 
 		for (var i = 0; i < self.criteresLabelRecherche.length; i++) {
 			listCriteres +=
-				'<li class="o-liste-bare__item c-carte__critere">' +
+				'<li class="o-list-bare__item c-carte__critere">' +
 				'<span class="c-carte__critere-label">' +
 				self.criteresLabelRecherche[i] +
 				"</span>" +
@@ -116,7 +116,7 @@ var A2taMap = {
 				});
 			})
 			.fail(function (jqxhr, textStatus, error) {
-				var message = getMessageInfoNoResult();
+				var message = self.getMessageNoResult();
 				self.containerlistCriteres.append(message);
 			});
 	},
