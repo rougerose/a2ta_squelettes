@@ -5,22 +5,12 @@ var A2taMap = {
 	init: function (mapObject) {
 		self = this;
 		self.objCarte = mapObject;
-		self.getJqCarte(self.objCarte);
-		self.jqCarte.on("ready", function () {
-			// Options et fonctions de GIS/Leaflet sont accessibles
-			// depuis self.objCarte uniquement.
-			self.setZoomControl();
-		});
-	},
-
-	getJqCarte: function (mapObject) {
-		var id = mapObject.options.mapId,
-			m = $("#map" + id);
-		return (self.jqCarte = m);
+		self.setZoomControl();
 	},
 
 	setZoomControl: function () {
-		self.objCarte.zoomControl.setPosition("bottomleft");
+		self.objCarte.options.zoomControl = false;
+		L.control.zoom({ position: "bottomleft" }).addTo(self.objCarte);
 	},
 
 	// Utiliser une fonction spécifique qui reprend l'essentiel
