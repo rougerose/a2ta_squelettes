@@ -24,12 +24,17 @@
 		"watch": "run-p watch:*",
 		"dev-watch": "NODE_ENV='development' yarn watch",
 		"dev": "NODE_ENV='development' yarn build",
-		"prod": "NODE_ENV='production' yarn build"
+		"prod": "NODE_ENV='production' yarn build",
+		"g-watch": "gulp watch"
 	},
 	"devDependencies": {
 		"autoprefixer": "^9.7.4",
 		"cpy": "^8.1.0",
 		"cssnano": "^4.1.10",
+		"del": "^5.1.0",
+		"gulp": "^4.0.2",
+		"gulp-postcss": "^8.0.0",
+		"gulp-sass": "^4.0.2",
 		"hamburgers": "^1.1.3",
 		"inuit-flexgrid": "^0.4.0",
 		"inuitcss": "^6.0.0",
