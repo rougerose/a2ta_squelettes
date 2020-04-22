@@ -22,8 +22,9 @@
 
 	<spip compatibilite="[3.2.0;3.2.*]">
 		<style type="public" source="dist/css/a2ta.css" />
-		<script type="public" source="dist/javascript/lib.js" />
+		<script type="public" source="dist/javascript/a2taLib.js" />
 		<script type="public" source="dist/javascript/a2ta.js" />
 		<script type="public" source="dist/javascript/a2ta_map.js" />
+		<script type="public" source="dist/javascript/a2taMap.js" />
 	</spip>
 </paquet>
