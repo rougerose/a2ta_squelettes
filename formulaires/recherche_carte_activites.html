@@ -1,0 +1,11 @@
+<section id="activites" class="c-form-carte__section-categories">
+  <div class="o-pack">
+    <BOUCLE_activites(MOTS spip_associations){id_groupe=1}{mots_liens.objet=association}{par titre}>[(#COMPTEUR_BOUCLE|alterner{'<div class="o-pack__item">', ''})]
+        <a href="">#TITRE</a>[(#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
+      </BOUCLE_activites>
+  </div>
+  <ul class="o-list-bare categories">
+
+  </ul>
+</section>
+<section id="villes"></section>

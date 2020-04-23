@@ -1,0 +1,27 @@
+<div class="map-TabsSearch map-TabsSearch-Main">
+	<input class="map-TabsSearch_Control map-TabsSearch-Main_Control" id="tab1" name="tab-control-main" type="radio" checked>
+	<input class="map-TabsSearch_Control map-TabsSearch-Main_Control" id="tab2" name="tab-control-main" type="radio">
+	<ul class="o-list-bare map-TabsSearch_Header">
+		<li class="o-list-bare__item">
+			<label class="map-TabsSearch_HeaderItemLabel" for="tab1" role="button">
+				[(#INCLURE{fond=img/icon-search-24.svg, class="map-TabsSearch_HeaderIcon", role="img"})]
+				<span>Recherche</span>
+			</label>
+		</li>
+		<li class="o-list-bare__item map-TabsSearch_HeaderItem">
+			<label class="map-TabsSearch_HeaderItemLabel" for="tab2" role="button">
+				[(#INCLURE{fond=img/icon-search-24.svg, class="map-TabsSearch_HeaderIcon", role="img"})]
+				<span>Recherche avancée</span>
+			</label>
+		</li>
+	</ul>
+	<div class="map-TabsSearch_Slider"><div class="map-TabsSearch_SliderPosition"></div></div>
+	<div class="map-TabsSearch_Body">
+		<section class="map-TabsSearch_Section">
+			<p>Recherche fulltext</p>
+		</section>
+		<section class="map-TabsSearch_Section">
+			[(#INCLURE{fond=inclure/map-TabsSearch-Inner})]
+		</section>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="map-TabsSearch map-TabsSearch-Inner">
+	<input class="map-TabsSearch_Control map-TabsSearch-Inner_Control" id="tabI1" name="tab-control-inner" type="radio" checked>
+	<input class="map-TabsSearch_Control map-TabsSearch-Inner_Control" id="tabI2" name="tab-control-inner" type="radio">
+	<ul class="o-list-bare map-TabsSearch_Header">
+		<li class="o-list-bare__item map-TabsSearch_HeaderItem">
+			<label class="map-TabsSearch_HeaderItemLabel" for="tabI1" role="button">
+				<span>Villes</span>
+			</label>
+		</li>
+		<li id="mapTriggerCategories" class="o-list-bare__item map-TabsSearch_HeaderItem">
+			<label class="map-TabsSearch_HeaderItemLabel" for="tabI2" role="button">
+				<span>Activités</span>
+			</label>
+		</li>
+	</ul>
+	<div class="map-TabsSearch_Slider"><div class="map-TabsSearch_SliderPosition"></div></div>
+	<div class="map-TabsSearch_Body">
+		<section class="map-TabsSearch_Section">
+			<p>recherche ville</p>
+		</section>
+		<section id="mapSearchCategoriesSection" class="map-TabsSearch_Section map-TabsSearch_Section-Scrollable">
+			<B_activites>
+				<div class="map-SearchCategories">
+					<div class="map-SearchCategories_Content">
+						<BOUCLE_activites(MOTS spip_associations){id_groupe=1}
+							{mots_liens.objet=association}{par titre}>[
+							(#COMPTEUR_BOUCLE|alterner{'<div class="map-SearchCategories_Columns">', ''})]
+								<a href="" class="map-SearchCategory">[(#TITRE)]</a>[
+							(#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
+						</BOUCLE_activites>
+					</div>
+				</div>
+				<div class="map-SearchScroll_Gradrient"></div>
+				<div class="map-SearchScroll_Scrollbar"></div>
+				<div class="map-SearchScroll_ScrollbarFill"></div>
+			</B_activites>
+		</section>
+	</div>
+</div>

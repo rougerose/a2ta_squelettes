@@ -1,7 +1,34 @@
 <div class="formulaire_spip formulaire_recherche c-carte__recherche">
 	<form id="c-form-carte" action="[(#ENV{action})]" method="post" class="o-form c-form-carte">
 		#ACTION_FORMULAIRE
-		<div class="o-form__groupe c-form-carte__recherche-champs">
+		<div class="o-form__groupe "></div>
+		<div class="o-form__groupe c-form-carte__champs">
+			<div class="c-form-carte__champs-fulltxt">
+				<input type="text">
+			</div>
+			<div class="c-form-carte__champs-categories">
+				<ul class="o-list-bare c-form-carte__filtres">
+					<li class="o-list-bare__item c-form-carte__filtre"><a href="#activites">Activités</a></li>
+					<li class="o-list-bare__item c-form-carte__filtre"><a href="#villes">Villes</a></li>
+				</ul>
+				<section id="activites" class="c-form-carte__section">
+					<div class="o-table-layout">
+						<BOUCLE_activites(MOTS spip_associations){id_groupe=1}{mots_liens.objet=association}{par titre}>[(#COMPTEUR_BOUCLE|alterner{'<div class="o-table-layout__cell">', ''})]
+								<a href="">[(#TITRE|couper{15})]</a>[(#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
+						</BOUCLE_activites>
+					</div>
+				</section>
+				<section id="villes">
+
+				</section>
+			</div>
+		</div>
+		<div class="o-form__groupe c-form-carte__options">
+			[<button type="button" class="c-btn c-form-carte__btnOpt">
+				(#INCLURE{fond=img/icon-options-24.svg, class="o-icon o-icon-options o-icon-24", title="Recherche avancée"})
+			</button>]
+		</div>
+		<!-- <div class="o-form__groupe c-form-carte__recherche-champs">
 			<div class="o-form__groupe c-form-carte__recherche-libre">
 				<label class="o-form__label c-form-carte__label" for="input-carte-recherche-libre">
 					[<span class="c-form-carte__icon-search">
@@ -23,6 +50,6 @@
 			[<button type="button" class="c-btn c-form-carte__btnOpt">
 				(#INCLURE{fond=img/icon-options-24.svg, class="o-icon o-icon-options o-icon-24", title="Recherche avancée"})
 			</button>]
-		</div>
+		</div> -->
 	</form>
 </div>
