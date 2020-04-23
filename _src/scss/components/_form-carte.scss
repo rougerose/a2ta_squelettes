@@ -5,76 +5,158 @@
 $form-carte-transition: 0.5s ease;
 
 .c-form-carte {
-	position: relative;
-	z-index: $zindex-map + 1;
 	display: flex;
-	padding: $spacing-unit-tiny;
-	background-color: $color-bg-form-carte;
-	pointer-events: auto;
 }
 
-.c-form-carte__libre {
-	display: flex;
-	flex: 1;
-}
-
-.c-form-carte__label {
-	position: relative;
-}
-
-.c-form-carte__icon-search {
-	position: absolute;
-	left: (3/16) * 1rem;
-	top: (3/16) * 1rem;
-
-	> .o-icon-search {
-		fill: $color-gray-100;
-	}
-}
-
-.c-form-carte__input {
-	background-color: $color-form-carte;
-	color: $color-form-text;
-	text-indent: 28px;
-	transition: background-color $form-carte-transition;
-
-	&:focus {
-		background-color: $color-hover-form-carte-color;
-	}
+.c-form-carte__champs {
+	width: 300px;
 }
 
 .c-form-carte__options {
 	display: flex;
-	margin-left: $spacing-unit-small;
-	flex: 0;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-.c-form-carte__btnOpt {
-	padding: 0 $spacing-unit-small;
-	height: 100%;
-	background-color: $color-form-carte;
-	transition: background-color $form-carte-transition;
-
-	> .o-icon-options {
-		fill: $color-gray-900;
-		transition: fill $form-carte-transition;
-
-		circle {
-			fill: $color-gray-700;
-			transition: fill $form-carte-transition;
-		}
-	}
-
-	&:hover,
-	&:focus {
-		background-color: $color-hover-form-carte-color;
-
-		> .o-icon-options {
-			fill: $color-gray-700;
-
-			circle {
-				fill: $color-form-text;
-			}
-		}
-	}
+.c-form-carte__champs-fulltxt {
+	position: absolute;
+	display: none;
 }
+
+.c-form-carte__filtres {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0;
+}
+
+.c-form-carte__filtre {
+	flex: 1;
+}
+
+.c-form-carte__section {
+	overflow: hidden;
+	overflow-x: auto;
+}
+
+.o-table-layout {
+	display: flex;
+}
+
+// ---------------- c-form-carte__recherche-champs ---------------- //
+
+// .c-form-carte__recherche-champs {
+// 	position: relative;
+// 	z-index: $zindex-map + 1;
+// 	display: flex;
+// 	flex-direction: column;
+// 	flex: 1;
+// }
+
+// ---------------- c-form-carte__recherche-options ---------------- //
+
+// .c-form-carte__recherche-options {
+// 	// display: flex;
+// 	margin-left: $spacing-unit-tiny;
+// 	flex: 0;
+// }
+
+// ---------------- c-form-carte__recherche-libre ---------------- //
+
+// .c-form-carte__recherche-libre {
+// 	display: flex;
+// }
+
+// ---------------- c-form-carte__label ---------------- //
+
+// .c-form-carte__label {
+// 	position: relative;
+// }
+
+// ---------------- c-form-carte__icon-search ---------------- //
+
+// .c-form-carte__icon-search {
+// 	position: absolute;
+// 	left: (3/16) * 1rem;
+// 	top: (3/16) * 1rem;
+//
+// 	> .o-icon-search {
+// 		fill: $color-gray-100;
+// 	}
+// }
+
+// ---------------- c-form-carte__input ---------------- //
+
+// .c-form-carte__input {
+// 	background-color: $color-form-carte;
+// 	color: $color-form-text;
+// 	text-indent: 28px;
+// 	transition: background-color $form-carte-transition;
+//
+// 	&:focus {
+// 		background-color: $color-hover-form-carte-color;
+// 	}
+// }
+
+// ---------------- c-form-carte__btnOpt ---------------- //
+
+// .c-form-carte__btnOpt {
+// 	display: flex;
+// 	align-items: center;
+// 	padding: 0 $spacing-unit-tiny;
+// 	height: 100%;
+// 	background-color: $color-form-carte;
+// 	transition: background-color $form-carte-transition;
+//
+// 	> .o-icon-options {
+// 		fill: $color-gray-900;
+// 		transition: fill $form-carte-transition;
+//
+// 		circle {
+// 			fill: $color-gray-700;
+// 			transition: fill $form-carte-transition;
+// 		}
+// 	}
+//
+// 	&:hover,
+// 	&:focus {
+// 		background-color: $color-hover-form-carte-color;
+//
+// 		> .o-icon-options {
+// 			fill: $color-gray-700;
+//
+// 			circle {
+// 				fill: $color-form-text;
+// 			}
+// 		}
+// 	}
+// }
+
+// ---------------- c-form-carte__recherche-categories ---------------- //
+
+// .c-form-carte__recherche-categories {
+// 	// position: absolute;
+// 	// top: 0;
+// 	// height: 100%;
+// 	// width: 100%;
+// }
+
+// ---------------- c-form-carte__filtres-categorie ---------------- //
+
+// .c-form-carte__filtres-categorie {
+// 	position: absolute;
+// 	top: 0;
+// 	display: flex;
+// 	align-items: center;
+// 	height: 32px;
+// 	margin-bottom: 0;
+// }
+
+// ---------------- c-form-carte__categorie ---------------- //
+
+// .c-form-carte__filtre-categorie {
+// 	flex: 1;
+// }
+//
+// .c-form-carte__section-categories {
+// 	// display: none;
+// }

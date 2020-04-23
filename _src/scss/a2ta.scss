@@ -121,6 +121,7 @@
 // @import "inuitcss/objects/objects.table";
 // @import "inuitcss/objects/objects.pack";
 @import "objects/form";
+@import "objects/list-inline";
 @import "objects/icon";
 
 // COMPONENTS
@@ -132,6 +133,9 @@
 @import "components/form-carte";
 @import "components/items-animation";
 @import "components/loading-page";
+@import "components/map-SearchCategories";
+@import "components/map-SearchScroll";
+@import "components/map-TabsSearch";
 @import "components/message";
 @import "components/selections";
 @import "components/site-intro";

@@ -12,7 +12,7 @@ $inuit-wrapper-width: 1200px;
 $mq-breakpoints: (
 	s: 320px,
 	m: 640px,
-	l: 1024px
+	l: 1024px,
 );
 
 /* Fonts */
@@ -33,3 +33,5 @@ $zindex-header: 10;
 $zindex-map: 5;
 $zindex-main: 1;
 $zindex-footer: 0;
+
+$scrollbar-height: 10px;

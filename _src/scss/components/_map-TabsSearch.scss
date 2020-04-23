@@ -1,0 +1,159 @@
+// ========================================
+// map-TabsSearch
+// ========================================
+
+// Source : https://codepen.io/woranov/pen/NRqLWK
+
+//
+// Les règles existent en 2 variantes. La première (-Main) englobe
+// la seconde (-Inner).
+//
+
+.map-TabsSearch {
+	// -- Variante 1 --
+	&-Main {
+		background-color: $color-white;
+		width: 300px;
+		padding: $spacing-unit-tiny;
+		box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+	}
+	// -- Variante 2 --
+	// &-Inner {}
+}
+
+.map-TabsSearch_Header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	flex-wrap: wrap;
+	margin-bottom: $spacing-unit-tiny / 2;
+}
+
+.map-TabsSearch_HeaderItem {
+	width: 50%;
+	text-align: center;
+}
+
+.map-TabsSearch_HeaderItemLabel {
+	@include font-size(14px);
+	color: $color-gray-500;
+	cursor: pointer;
+	transition: color 0.2s ease-in-out;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color-gray-800;
+
+		.map-TabsSearch_HeaderIcon {
+			fill: $color-gray-800;
+		}
+	}
+}
+
+.map-TabsSearch_HeaderIcon {
+	height: 24px;
+	width: 24px;
+	vertical-align: bottom;
+	fill: $color-gray-500;
+	transition: fill 0.2s ease-in-out;
+}
+
+.map-TabsSearch_Slider {
+	position: relative;
+	width: 50%;
+	transition: all 0.33s ease;
+}
+
+.map-TabsSearch_SliderPosition {
+	position: relative;
+	width: 50px;
+	max-width: 100%;
+	margin: 0 auto;
+	height: 2px;
+	background-color: $color-gray-800;
+}
+
+.map-TabsSearch_Body {
+	margin-top: $spacing-unit-tiny / 2;
+}
+
+.map-TabsSearch_Section {
+	position: relative;
+	display: none;
+	animation: {
+		name: mapTabsContent;
+		direction: normal;
+		duration: 0.3s;
+		timing-function: ease-in-out;
+		iteration-count: 1;
+	}
+
+	&-Scrollable {
+		padding-bottom: $scrollbar-height;
+	}
+}
+
+.map-TabsSearch-Main_Control,
+.map-TabsSearch-Inner_Control {
+	display: none;
+
+	&:nth-of-type(1):checked {
+		& ~ ul {
+			& > li:nth-child(1) {
+				& label {
+					cursor: default;
+					color: $color-gray-800;
+					& .map-TabsSearch_HeaderIcon {
+						fill: $color-gray-800;
+					}
+				}
+			}
+		}
+
+		& ~ .map-TabsSearch_Slider {
+			transform: translateX(0%);
+		}
+
+		& ~ .map-TabsSearch_Body {
+			& > section:nth-child(1) {
+				display: block;
+			}
+		}
+	}
+
+	&:nth-of-type(2):checked {
+		& ~ ul {
+			& > li:nth-child(2) {
+				& label {
+					cursor: default;
+					color: $color-gray-800;
+					& .map-TabsSearch_HeaderIcon {
+						fill: $color-gray-800;
+					}
+				}
+			}
+		}
+
+		& ~ .map-TabsSearch_Slider {
+			transform: translateX(100%);
+		}
+
+		& ~ .map-TabsSearch_Body {
+			& > section:nth-child(2) {
+				display: block;
+			}
+		}
+	}
+}
+
+@keyframes mapTabsContent {
+	from {
+		opacity: 0;
+		transform: translateY(5%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}

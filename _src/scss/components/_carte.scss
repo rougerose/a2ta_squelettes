@@ -34,17 +34,17 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
 	z-index: $zindex-map + 1;
-	padding: $spacing-unit $spacing-unit-small $spacing-unit-small;
-	pointer-events: none;
+	padding: $spacing-unit-small 0 0 $spacing-unit-small;
+	// pointer-events: none;
 }
 
 // ---------------- c-carte__recherche ---------------- //
 
 .c-carte__recherche {
 	box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+	padding: $spacing-unit-tiny;
+	background-color: $color-bg-form-carte;
 }
 
 // ---------------- c-carte__criteres ---------------- //
@@ -63,7 +63,7 @@
 	margin: $spacing-unit-tiny / 2;
 	margin-left: 0;
 	box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
-	pointer-events: auto;
+	// pointer-events: auto;
 	background-color: $color-bg-form-carte;
 	color: $color-form-text;
 	@include font-size(14px, $modifier: -1.5);
