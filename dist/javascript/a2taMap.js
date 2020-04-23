@@ -7,7 +7,7 @@ var A2taMap = {
 	criteresIdRecherche: [],
 	containerlistCriteres: {},
 	inputCarteRechercheLibre: {},
-	listAcResponse: {},
+	listAutocompleteResponse: {},
 
 	init: function (mapObject) {
 		self = this;
@@ -17,12 +17,24 @@ var A2taMap = {
 		self.setZoomControl();
 		self.containerlistCriteres = $("#listCriteres");
 		self.inputCarteRechercheLibre = $("#input-carte-recherche-libre");
-		self.listAcResponse = $("#listAutocompleteResponse");
+		self.listAutocompleteResponse = $("#listAutocompleteResponse");
+		self.searchInit();
 		$(self.ready);
 	},
 
 	ready: function () {
 		self.rechercheLibreNoResult();
+	},
+
+	searchInit: function () {
+		var search = document.body.querySelector(".map-TabsSearch"),
+			searchCategories = search.querySelector("#mapSearchCategoriesSection"),
+			triggerCategories = search.querySelector("#mapTriggerCategories");
+
+		const buildScroll = function () {
+			buildScrollableElement(searchCategories);
+		};
+		triggerCategories.addEventListener("click", buildScroll, false);
 	},
 
 	setZoomControl: function () {
@@ -43,8 +55,7 @@ var A2taMap = {
 
 		this.value = "";
 
-		// empêcher de poursuivre avec le fonctionnement
-		// par défaut sur l'événement select
+		// Bloquer le fonctionnement par défaut sur select event.
 		return false;
 	},
 
@@ -77,7 +88,8 @@ var A2taMap = {
 		self.carte.removeAllMarkers();
 		var parametres = { id_association: [], id_mot: [], ville: [], limit: 500 };
 
-		// Construire la requête. Les critères sont stockés ainsi :
+		// Construire la requête.
+		// Les critères sont stockés ainsi :
 		// "id_nomObjet:identifiant numérique objet".
 		for (var i = 0; i < self.criteresIdRecherche.length; i++) {
 			var p = self.criteresIdRecherche[i].split(":");
@@ -102,14 +114,15 @@ var A2taMap = {
 				$.each(json.collection.items, function (key, item) {
 					associationsList.id_association[key] = item.data[0].value;
 				});
-				// Récupérer les infos de géolocalisation depuis le squelette
-				// json/gis_associations_env
+				// Récupérer les infos de géolocalisation
+				// depuis le squelette "json/gis_associations_env"
 				var query = $.param(associationsList);
 				$.getJSON(
 					"?page=gis_json&objets=associations_env&limit=500&" + query
 				).done(function (json) {
 					self.parseJson(json);
-					// Si plus de critères de recherche, vue par défaut de la carte.
+					// S'il n'y a plus de critères de recherche,
+					// afficher la vue par défaut de la carte.
 					if (self.criteresIdRecherche.length == 0) {
 						self.carte.setView(self.carteDefaultCenter, self.carteDefaultZoom);
 					}
@@ -134,9 +147,9 @@ var A2taMap = {
 				var inputVal = this.value;
 
 				if (inputVal) {
-					self.listAcResponse.css("width", width + "px");
+					self.listAutocompleteResponse.css("width", width + "px");
 					var message = self.getMessageNoResult(inputVal);
-					self.listAcResponse.html(message);
+					self.listAutocompleteResponse.html(message);
 					$(this).on("blur", self.cancelMessageNoResult);
 					// $(this).off("blur", self.cancelMessageNoResult);
 				}
@@ -148,16 +161,16 @@ var A2taMap = {
 
 	getMessageNoResult: function (value) {
 		var message = "",
-			messageT = "";
+			messageTxt = "";
 
 		if (value) {
-			messageT = "Aucun résultat pour « " + value + " »";
+			messageTxt = "Aucun résultat pour « " + value + " »";
 		} else {
-			messageT = "Aucun résultat";
+			messageTxt = "Aucun résultat";
 		}
 
 		message = '<div id="infoNoResult" class="c-message c-message--info">';
-		message += messageT;
+		message += messageTxt;
 		message += "</div>";
 
 		return message;
@@ -167,10 +180,12 @@ var A2taMap = {
 		$("#infoNoResult").css("display", "none");
 	},
 
-	// Utiliser une fonction spécifique qui reprend l'essentiel
-	// de la fonction parseGeoJson de GIS mais sans les options
-	// de zoom, difficile à maîtriser et qui sont ajoutées par GIS
-	// dans centerAndZoom
+	// Collecter les points.
+	// ---------------------
+	// Utiliser une fonction spécifique, plutôt que celle proposée par
+	// GIS, car cette dernière prendre en compte des options de zoom
+	// et de centre ("centerAndZoom") par défaut du plugin difficiles
+	// à maîtriser.
 	parseJson: function (json) {
 		var map = self.carte;
 		var markers = [];
@@ -199,3 +214,89 @@ var A2taMap = {
 		map.fitBounds(bounds, options);
 	},
 };
+
+// Adapté de https://medium.com/@sbastienperrot/comment-mettre-en-place-une-scrollbar-universelle-en-pur-javascript-8af0f522cad6
+
+var buildScrollableElement = function (elt) {
+	var scrollableContainer = elt.firstElementChild,
+		scrollbar = elt.querySelector(".map-SearchScroll_Scrollbar"),
+		scrollbarFill = elt.querySelector(".map-SearchScroll_ScrollbarFill"),
+		boxSize = elt.clientWidth,
+		scrollSize = scrollableContainer.scrollWidth,
+		toScrollSize = scrollSize - boxSize,
+		scrollbarSize = 0;
+
+	// Définir la taille de la scrollbar et de son conteneur
+	scrollbarFill.style.transform = "translate3d(0, 0, 0)";
+	scrollbarFill.style.width = 100 * (boxSize / scrollSize) + "%";
+	scrollbarSize = scrollbarFill.clientWidth;
+	scrollbarFill.style.zIndex = boxSize >= scrollSize ? -1 : 2;
+	scrollbar.style.zIndex = boxSize >= scrollSize ? -1 : 1;
+
+	// Déplacement de la scrollbar avec le scroll
+	var rafTimer, scrollPosition;
+
+	const setScroll = function () {
+		scrollbarFill.style.transform =
+			"translate3d(" + scrollPosition + "px, 0, 0)";
+	};
+
+	scrollableContainer.addEventListener("scroll", function (event) {
+		cancelAnimationFrame(rafTimer);
+		scrollPosition = boxSize * (event.target.scrollLeft / scrollSize);
+		rafTimer = requestAnimationFrame(setScroll);
+	});
+
+	// Click sur la scrollbar
+	const onScrollbarClick = function (event) {
+		scrollableContainer.scrollLeft = scrollSize * (event.offsetX / boxSize);
+	};
+	scrollbar.addEventListener("mousedown", onScrollbarClick, false);
+
+	// Drag & Drop sur la scrollbar
+	var offsetStart = null;
+
+	const onScrollbarFillMousedown = function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		offsetStart =
+			event.offsetX + scrollableContainer.getBoundingClientRect().left;
+		elt.addEventListener("mousemove", onScrollbarFillMousemove, false);
+		elt.addEventListener("mouseup", onScrollbarFillMouseup, false);
+	};
+
+	const onScrollbarFillMousemove = function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		scrollableContainer.scrollLeft =
+			scrollSize * ((event.clientX - offsetStart) / boxSize);
+	};
+
+	const onScrollbarFillMouseup = function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		elt.removeEventListener("mousemove", onScrollbarFillMousemove);
+		elt.removeEventListener("mouseup", onScrollbarFillMousemove);
+	};
+
+	scrollbarFill.addEventListener("mousedown", onScrollbarFillMousedown, false);
+};
+
+// étendre le widget Autocomplete
+$.widget("ui.autocomplete", $.ui.autocomplete, {
+	options: {
+		delay: 500,
+		prefix: "",
+		position: {
+			of: "#listAutocompleteResponse",
+		},
+	},
+
+	_renderItem: function (ul, item) {
+		var label = item.label;
+		if (this.options.prefix) {
+			label = this.options.prefix + " " + label;
+		}
+		return $("<li>").append($("<a>").text(label)).appendTo(ul);
+	},
+});

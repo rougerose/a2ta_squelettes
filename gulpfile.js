@@ -64,7 +64,8 @@ const buildScripts = function (done) {
 
 const buildJsLib = function (done) {
 	return src(options.jsLib.src)
-		.pipe(concat("a2taLib.js"))
+		.pipe(concat("a2taLib.min.js"))
+		.pipe(terser())
 		.pipe(dest(options.jsLib.dest));
 };
 
@@ -79,7 +80,7 @@ const buildStyles = function (done) {
 };
 
 const watchSource = function (done) {
-	watch(options.watch.src, series(exports.default));
+	watch(options.watch.src, parallel(buildScripts, buildStyles));
 	done();
 };
 
@@ -87,7 +88,11 @@ exports.default = series(
 	cleanDist,
 	parallel(buildScripts, buildJsLib, buildStyles)
 );
-exports.watch = series(exports.default, watchSource);
+exports.watch = series(
+	cleanDist,
+	parallel(buildScripts, buildJsLib, buildStyles),
+	watchSource
+);
 exports.clean = cleanDist;
 exports.buildLib = buildJsLib;
 exports.buildJs = buildScripts;
