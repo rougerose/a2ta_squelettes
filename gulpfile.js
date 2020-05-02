@@ -1,99 +1,146 @@
-const { src, dest, series, watch, parallel } = require("gulp");
+const { gulp, src, dest, watch, series, parallel } = require("gulp");
+const fs = require("fs");
+const path = require("path");
+const merge = require("merge-stream");
 const del = require("del");
-const lazypipe = require("lazypipe");
-const flatmap = require("gulp-flatmap");
+const concat = require("gulp-concat");
 const rename = require("gulp-rename");
-// CSS
+const terser = require("gulp-terser-js");
 const sass = require("gulp-sass");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-// JS
-const terser = require("gulp-terser");
-const concat = require("gulp-concat");
 
-sass.compiler = require("node-sass");
+const paths = {
+  js: {
+    src: "_src/js",
+    dest: "dist/js",
+    watch: "_src/js/**/*.js",
+  },
+  jsLib: {
+    src: ["node_modules/swiped-events/dist/swiped-events.min.js"],
+    dest: "dist/javascript/",
+  },
+  scss: {
+    src: "_src/scss/*.scss",
+    dest: "dist/css/",
+    watch: "_src/scss/**/*.scss",
+  },
+  webfonts: {
+    src: [
+      "_src/webfonts/barlow/fonts/woff2/Barlow-Regular.woff2",
+      "_src/webfonts/barlow/fonts/woff2/Barlow-Italic.woff2",
+      "_src/webfonts/barlow/fonts/woff2/Barlow-Bold.woff2",
+      "_src/webfonts/barlow/fonts/woff2/Barlow-BoldItalic.woff2",
+      "_src/webfonts/barlow/fonts/woff/Barlow-Regular.woff",
+      "_src/webfonts/barlow/fonts/woff/Barlow-Italic.woff",
+      "_src/webfonts/barlow/fonts/woff/Barlow-Bold.woff",
+      "_src/webfonts/barlow/fonts/woff/Barlow-BoldItalic.woff",
+    ],
+    dest: "dist/webfonts/",
+  },
+};
 
 const options = {
-	watch: {
-		src: "_src/",
-	},
-	scss: {
-		src: "_src/scss/**/*.scss",
-		dest: "dist/css/",
-		opts: {
-			includePaths: "node_modules/",
-			outputStyle: "compact",
-			errLogToConsole: true,
-		},
-	},
-	js: {
-		src: "_src/javascript/*",
-		dest: "dist/javascript/",
-	},
-	jsLib: {
-		src: ["node_modules/swiped-events/dist/swiped-events.min.js"],
-		dest: "dist/javascript/",
-	},
+  scss: {
+    includePaths: "node_modules/",
+    outputStyle: "compact",
+    sourceComments: false,
+  },
+  jsLib: {
+    name: "a2ta_jsLib",
+  },
 };
 
-const cleanDist = function (done) {
-	del.sync([options.scss.dest, options.js.dest]);
-	return done();
-};
+// Clean
+// ***************************
+function cleanDist(cb) {
+  del.sync([paths.js.dest, paths.scss.dest]);
+  return cb();
+}
 
-const jsTasks = lazypipe()
-	.pipe(dest, options.js.dest)
-	.pipe(rename, { suffix: ".min" })
-	.pipe(terser)
-	.pipe(dest, options.js.dest);
+// SCSS
+// ***************************
+sass.compiler = require("node-sass");
 
-const buildScripts = function (done) {
-	return src(options.js.src).pipe(
-		flatmap(function (stream, file) {
-			if (file.isDirectory()) {
-				src(file.path + "/*.js")
-					.pipe(concat(file.relative + ".js"))
-					.pipe(jsTasks());
-				return stream;
-			}
-			return stream.pipe(jsTasks());
-		})
-	);
-};
+function scssTask() {
+  return src(paths.scss.src)
+    .pipe(sass(options.scss).on("error", sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(dest(paths.scss.dest))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(postcss([cssnano()]))
+    .pipe(dest(paths.scss.dest));
+}
 
-const buildJsLib = function (done) {
-	return src(options.jsLib.src)
-		.pipe(concat("a2taLib.min.js"))
-		.pipe(terser())
-		.pipe(dest(options.jsLib.dest));
-};
+// JS
+// ***************************
+// Compiler les fichiers js dans un sous-dossier
+// et les rassembler dans un fichier unique portant le nom du dossier.
+// https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-task-steps-per-folder.md
+function jsTaskFolders(cb) {
+  let folders = getFolders(paths.js.src);
+  let tasks = folders.map(function (folder) {
+    return src(path.join(paths.js.src, folder, "/*.js"))
+      .pipe(concat(folder + ".js"))
+      .pipe(dest(paths.js.dest))
+      .pipe(terser())
+      .on("error", function (error) {
+        this.emit("end");
+      })
+      .pipe(rename(folder + ".min.js"))
+      .pipe(dest(paths.js.dest));
+  });
+  merge(tasks);
+  cb();
+}
 
-const buildStyles = function (done) {
-	return src(options.scss.src)
-		.pipe(sass(options.scss.opts))
-		.pipe(postcss([autoprefixer()]))
-		.pipe(dest(options.scss.dest))
-		.pipe(rename({ suffix: ".min" }))
-		.pipe(postcss([cssnano]))
-		.pipe(dest(options.scss.dest));
-};
+function getFolders(dir) {
+  return fs.readdirSync(dir).filter(function (file) {
+    return fs.statSync(path.join(dir, file)).isDirectory();
+  });
+}
 
-const watchSource = function (done) {
-	watch(options.watch.src, parallel(buildScripts, buildStyles));
-	done();
-};
+// Les fichiers situés au premier niveau sont compilés séparément.
+function jsTaskRoot() {
+  return src(paths.js.src + "/*.js")
+    .pipe(dest(paths.js.dest))
+    .pipe(terser())
+    .on("error", function (error) {
+      this.emit("end");
+    })
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(dest(paths.js.dest));
+}
 
-exports.default = series(
-	cleanDist,
-	parallel(buildScripts, buildJsLib, buildStyles)
-);
+// Copie
+// ***************************
+
+function copieWebfonts() {
+  return src(paths.webfonts.src).pipe(dest(paths.webfonts.dest));
+}
+
+function copieJsLib() {
+  return src(paths.jsLib.src)
+    .pipe(concat(options.jsLib.name + ".js"))
+    .pipe(dest(paths.jsLib.output));
+}
+
+// Watch
+// ***************************
+function watchFiles() {
+  watch(options.scss.watch, scssTask);
+  watch(options.js.watch, parallel(jsTaskFolders, jsTaskRoot));
+}
+
 exports.watch = series(
-	cleanDist,
-	parallel(buildScripts, buildJsLib, buildStyles),
-	watchSource
+  cleanDist,
+  parallel(jsTaskFolders, jsTaskRoot, scssTask),
+  watchFiles
 );
-exports.clean = cleanDist;
-exports.buildLib = buildJsLib;
-exports.buildJs = buildScripts;
-exports.buildStyles = buildStyles;
+exports.copieFonts = copieWebfonts;
+exports.copieJsLib = copieJsLib;
+exports.default = series(
+  cleanDist,
+  parallel(jsTaskFolders, jsTaskRoot, scssTask)
+);
