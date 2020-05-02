@@ -129,8 +129,8 @@ function copieJsLib() {
 // Watch
 // ***************************
 function watchFiles() {
-  watch(options.scss.watch, scssTask);
-  watch(options.js.watch, parallel(jsTaskFolders, jsTaskRoot));
+  watch(paths.scss.watch, scssTask);
+  watch(paths.js.watch, parallel(jsTaskFolders, jsTaskRoot));
 }
 
 exports.watch = series(
