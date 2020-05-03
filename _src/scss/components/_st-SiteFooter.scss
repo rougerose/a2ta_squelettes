@@ -1,0 +1,74 @@
+// ========================================
+// st-SiteFooter
+// ========================================
+
+.st-SiteFooter {
+  padding: $spacing-unit 0;
+  background-color: $color-orange-100;
+  color: lighten($color-black, 30%);
+
+  // Le pied est en position fixe et masqué par le body.
+  // Le dévoilement du pied se fera par le scroll.
+  // Une marge basse égale à la hauteur du pied de page est appliquée
+  // via javascript.
+  .is-js-ready & {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: $zindex-footer;
+    transform: translateY(100%);
+    transition: transform 1s ease 0.9s;
+
+    &.is-visible {
+      transform: none;
+    }
+  }
+
+  @include mq(m) {
+    padding-top: $spacing-unit-large;
+  }
+}
+
+// ---------------- .st-SiteFooter_SiteIdentity ---------------- //
+
+.st-SiteFooter_SiteIdentity {
+}
+
+// ---------------- .st-SiteFooter_SiteName ---------------- //
+
+.st-SiteFooter_SiteName {
+  display: flex;
+  flex-direction: column;
+}
+
+// ---------------- .st-SiteFooter_SiteLogo ---------------- //
+
+.st-SiteFooter_SiteLogo {
+  @include font-size(28px);
+  font-weight: bold;
+}
+
+// ---------------- .st-SiteFooter_SiteBaseline ---------------- //
+
+.st-SiteFooter_SiteBaseline {
+  @include font-size(15px);
+}
+
+// ---------------- .st-SiteFooter_SiteDesc ---------------- //
+
+.st-SiteFooter_SiteDesc {
+  @include font-size(15px, $modifier: -0.5);
+}
+
+// ---------------- .st-SiteFooter_SiteSocial ---------------- //
+
+.st-SiteFooter_SiteSocial {
+  @include font-size(15px, $modifier: -0.5);
+  > li {
+    &::before {
+      content: "/";
+      margin-right: $spacing-unit-tiny;
+    }
+  }
+}
