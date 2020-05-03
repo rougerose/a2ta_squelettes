@@ -25,6 +25,20 @@ if (!isset($GLOBALS['z_blocs'])) {
 	);
 }
 
+// Formulaire de recherche de la carte : activer le sélecteur générique
 if (!defined('_SELECTEUR_GENERIQUE_ACTIVER_PUBLIC')) {
 	define('_SELECTEUR_GENERIQUE_ACTIVER_PUBLIC', true);
 }
+
+// Modale "chargement du site" :
+// - ajouter si nécessaire un cookie spécifique pour afficher ou pas la modale ;
+// - la valeur de la constante est vérifiée dans extra/dist.html
+include_spip('inc/cookie');
+if (isset($_COOKIE['a2ta_loading'])) {
+  $GLOBALS['a2ta_loading'] = "is-hidden";
+} else {
+  spip_setcookie('a2ta_loading', 'vu', time() + 30 * 24 * 3600);
+  $GLOBALS['a2ta_loading'] = "is-visible";
+}
+// dev uniquement
+//$GLOBALS['a2ta_loading'] = "is-visible";

@@ -1,0 +1,103 @@
+// ========================================
+// lp-SiteIntro
+// ========================================
+
+.lp-SiteIntro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 25vh;
+
+  @include mq(l) {
+    padding-top: 30vh;
+  }
+
+  > p {
+    text-align: center;
+  }
+}
+
+// ---------------- lp-SiteIntro_Text ---------------- //
+
+.lp-SiteIntro_Text {
+  @include font-size(25px);
+
+  @include mq(m) {
+    @include font-size(40px);
+  }
+
+  @include mq(l) {
+    @include font-size(50px);
+  }
+}
+
+// ---------------- lp-SiteIntro_TextLine ---------------- //
+
+.lp-SiteIntro_TextLine {
+  .js & {
+    opacity: 0;
+    transform: translateY(180px) translateZ(0);
+    display: block;
+  }
+
+  .is-js-ready.is-visible & {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+
+  .is-js-ready.is-visible &:first-child {
+    transition: transform 1.2s ease 0.05s, opacity 1.2s ease 0.05s;
+  }
+
+  .is-js-ready.is-visible &:nth-child(2) {
+    transition: transform 1.2s ease 0.1s, opacity 1.2s ease 0.1s;
+  }
+}
+
+// ---------------- lp-SiteIntro_Next ---------------- //
+
+.lp-SiteIntro_Next {
+  .js & {
+    position: relative;
+    opacity: 0;
+    transition: all 0.6s ease 1.5s;
+  }
+
+  .is-js-ready.is-visible & {
+    opacity: 1;
+  }
+}
+
+// ---------------- lp-SiteIntro_NextTrigger ---------------- //
+
+$triggerWidth: 53px;
+$triggerHeight: 72px;
+
+.lp-SiteIntro_NextTrigger {
+  position: absolute;
+  left: 50%;
+  top: $spacing-unit;
+  display: block;
+  height: ceil(40px / ($triggerWidth / $triggerHeight));
+  width: 40px;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  animation: 2.5s linear infinite arrowdown;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url("../../img/arrowDown.svg") no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
+
+  @include mq(m) {
+    top: $spacing-unit-large + $spacing-unit;
+    height: $triggerHeight;
+    width: $triggerWidth;
+  }
+}
