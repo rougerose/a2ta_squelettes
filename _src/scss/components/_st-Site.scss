@@ -1,0 +1,16 @@
+// ========================================
+// st-Site
+// ========================================
+
+// st -> structure
+
+.st-Site {
+  // la marge basse est calculée par javascript
+  padding-top: $headerHeight;
+  font-family: $font-text;
+  background-color: $color-white-page;
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}

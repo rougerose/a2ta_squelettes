@@ -11,7 +11,7 @@
   // Le dévoilement du pied se fera par le scroll.
   // Une marge basse égale à la hauteur du pied de page est appliquée
   // via javascript.
-  .is-js-ready & {
+  .js & {
     position: fixed;
     left: 0;
     bottom: 0;

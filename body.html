@@ -1,10 +1,12 @@
-<body class="page c-site">
-	<header id="header" class="c-site__header c-site-header" role="banner">
-		<INCLURE{fond=header/#ENV{type-page}, env} />
-	</header>
-	<main id="main" class="c-site__main">
-		<INCLURE{fond=content/#ENV{type-page}, env} />
-	</main>
-	<INCLURE{fond=footer/#ENV{type-page}, env} />
+<body class="page st-Site">
+  <header id="siteHeader" class="st-SiteHeader" data-section role="banner">
+    <INCLURE{fond=header/#ENV{type-page}, env} />
+  </header>
+  <main id="siteContent" data-section class="st-SiteContent">
+    <div class="st-SiteContent_Inner">
+      <INCLURE{fond=content/#ENV{type-page}, env} />
+    </div>
+  </main>
+  <INCLURE{fond=footer/#ENV{type-page}, env} />
   <INCLURE{fond=extra/#ENV{type-page}, env} />
 </body>

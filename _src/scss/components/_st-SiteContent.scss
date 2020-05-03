@@ -1,0 +1,23 @@
+// ========================================
+// st-SiteContent
+// ========================================
+
+.st-SiteContent {
+  position: relative;
+  z-index: $zindex-main;
+  padding-bottom: $spacing-unit;
+  background-color: $color-white-page;
+}
+
+.st-SiteContent_Inner {
+  transition: transform 0.7s ease, opacity 0.7s ease;
+
+  .js & {
+    opacity: 0;
+  }
+
+  .js &.is-visible {
+    opacity: 1;
+    transform: none !important;
+  }
+}
