@@ -120,7 +120,6 @@
 // @import "inuitcss/objects/objects.crop";
 // @import "inuitcss/objects/objects.table";
 // @import "inuitcss/objects/objects.pack";
-@import "objects/form";
 @import "objects/list-inline";
 @import "objects/icon";
 
@@ -131,18 +130,28 @@
 @import "hamburgers/_sass/hamburgers/hamburgers";
 //
 @import "components/form-carte";
-@import "components/items-animation";
-@import "components/loading-page";
+
+// LoadingPage / lp-
+@import "components/lp-LoadingPage";
+@import "components/lp-SiteIntro";
+
+@import "components/ms-Autocomplete";
+@import "components/ms-MapSearch";
+@import "components/ms-SearchAdvanced";
+@import "components/ms-SearchForm";
+@import "components/ms-SearchFulltext";
 @import "components/map-SearchCategories";
 @import "components/map-SearchScroll";
 @import "components/map-TabsSearch";
 @import "components/message";
 @import "components/selections";
-@import "components/site-intro";
-@import "components/site";
-@import "components/site-footer";
-@import "components/site-header";
-@import "components/site-nav";
+
+// Structure/st-
+@import "components/st-Site";
+@import "components/st-SiteHeader";
+@import "components/st-SiteContent";
+@import "components/st-SiteFooter";
+
 @import "components/spip-admin";
 @import "components/text";
 @import "components/animations";
