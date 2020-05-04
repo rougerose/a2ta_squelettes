@@ -82,7 +82,6 @@ $triggerHeight: 72px;
   width: 40px;
   transform: translate(-50%, 0);
   cursor: pointer;
-  animation: 2.5s linear infinite arrowdown;
 
   &::after {
     content: "";
@@ -93,6 +92,10 @@ $triggerHeight: 72px;
     background: url("../../img/arrowDown.svg") no-repeat;
     background-size: 100%;
     background-position: center;
+  }
+
+  .lp-LoadingPage.is-visible & {
+    animation: 2.5s linear infinite arrowdown;
   }
 
   @include mq(m) {
