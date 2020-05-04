@@ -14,7 +14,7 @@ $hamburgerRatio: $hamburger-layer-width / $hamburgerHeight;
   z-index: $zindex-header;
   background-color: $color-white-page;
   box-shadow: 0 0.125rem 0.3125rem rgba($color-black, 0.26);
-  transition: transform 1s ease 0.5s, opacity 1s ease 0.5s;
+  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s;
 
   .js & {
     transform: translateY(-100%);
