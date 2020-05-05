@@ -13,16 +13,33 @@ A2ta = (function () {
       menuTriggerID: "hamburger",
     },
     map: {
-      container: ".c-carte",
+      containerID: "a2taMap",
+      defaultLat: "",
+      defaultLng: "",
+      defaultZoom: "",
     },
     search: {
-      containerID: "mapSearch",
+      searchFormID: "mapSearchForm",
       triggerID: "searchTrigger",
+      labelClass: "mp-MapSearchForm_Label",
+      messageID: "searchFormMessage",
+      messageClass: "mp-MapSearchForm_Message mp-MapSearchForm_Message-Info",
+      messageLabelClass: "mp-MapSearchForm_MessageLabel",
+      messageDeleteClass: "btn mp-MapSearchForm_MessageDelete",
+    },
+    keywords: {
+      containerID: "mapSearchKeywords",
+      listClass: "mp-MapSearchKeywords_List",
+      listItemClass: "mp-MapSearchKeywords_ListItem",
+      labelClass: "mp-MapSearchKeywords_Keyword",
+      buttonClass: "btn mp-MapSearchKeywords_DeleteKeyword",
+      buttonID: "deleteKeyword",
     },
   };
 
   var loadingPage = null,
-    mainSection = null;
+    mainSection = null,
+    mapContainer = null;
 
   function init() {
     loadingPage = document.getElementById(config.loadingPage.containerID);
@@ -34,11 +51,14 @@ A2ta = (function () {
     // Préparer l'animation de l'élément <main>
     mainSection = document.querySelector("main" + config.sitePage.sections);
     var translateValue = window.innerHeight / 4;
-
     mainSection.children[0].style.transform =
       "translate3d(0, " + translateValue + "px, 0)";
 
+    // Déterminer si le fragment LoadingPage doit être affiché,
+    // ou bien la page de contenu.
     showLoadingPage();
+
+    // Initialiser siteHeader
     A2ta.siteHeader.init();
   }
 
