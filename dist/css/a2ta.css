@@ -311,9 +311,9 @@ a { text-decoration: none; color: black; }
 
 .mp-Map .carte_gis { width: 100%; height: calc(100vh - 100px); }
 
-.mp-Categories_Link { position: relative; display: block; margin: 6px 0; padding-left: 12px; font-size: 14px; font-size: 0.875rem; line-height: 1.28571; white-space: nowrap; }
+.mp-Category { position: relative; display: block; margin: 6px 0; padding-left: 12px; font-size: 14px; font-size: 0.875rem; line-height: 1.28571; white-space: nowrap; cursor: pointer; }
 
-.mp-Categories_Link::before { position: absolute; left: 0; top: 0.4375rem; content: ""; width: 8px; height: 8px; border-radius: 100%; background-color: black; }
+.mp-Category::before { position: absolute; left: 0; top: 0.4375rem; content: ""; width: 8px; height: 8px; border-radius: 100%; background-color: black; }
 
 .mp-Form_Field { position: relative; display: flex; flex-flow: column; }
 
