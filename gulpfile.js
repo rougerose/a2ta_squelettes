@@ -48,7 +48,7 @@ const options = {
     sourceComments: false,
   },
   jsLib: {
-    name: "a2ta_jsLib",
+    name: "a2taLib",
   },
 };
 
@@ -123,7 +123,7 @@ function copieWebfonts() {
 function copieJsLib() {
   return src(paths.jsLib.src)
     .pipe(concat(options.jsLib.name + ".js"))
-    .pipe(dest(paths.jsLib.output));
+    .pipe(dest(paths.jsLib.dest));
 }
 
 // Watch
