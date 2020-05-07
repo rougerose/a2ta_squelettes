@@ -1,5 +1,5 @@
 var A2ta = {
-	init: function() {
+	init: function () {
 		(this.body = $("body")),
 			(this.loadingIntroContainer = $("#loadingIntro")),
 			(this.header = $("#header")),
@@ -14,7 +14,7 @@ var A2ta = {
 			this.menuTrigger();
 	},
 
-	prepareHeader: function() {
+	prepareHeader: function () {
 		var header = this.header;
 		this.headerHeight = header.outerHeight();
 		this.deltaHeader = 5;
@@ -22,7 +22,7 @@ var A2ta = {
 	},
 
 	// https://medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c
-	toggleHeader: function() {
+	toggleHeader: function () {
 		var st = window.scrollY;
 
 		if (Math.abs(A2ta.lastScrollTop - st) <= A2ta.deltaHeader) {
@@ -41,28 +41,28 @@ var A2ta = {
 		A2ta.lastScrollTop = st;
 	},
 
-	loadingContent: function() {
+	loadingContent: function () {
 		if (this.loadingIntroContainer[0].classList.contains("is-hidden")) {
 			var els = [this.contentItems, this.header, this.footer];
 
 			// Ajouter la hauteur du pied de page en marge basse de l'élément body.
 			this.body.css({ "padding-bottom": this.footer.css("height") });
 
-			setTimeout(function() {
-				$.each(els, function() {
+			setTimeout(function () {
+				$.each(els, function () {
 					$(this).addClass("is-visible");
 				});
 			}, 900);
 		}
 	},
 
-	loadingIntro: function() {
+	loadingIntro: function () {
 		if (this.loadingIntroContainer.hasClass("is-visible")) {
 			this.body.addClass("is-locked");
 		}
 	},
 
-	loadingIntroEvents: function() {
+	loadingIntroEvents: function () {
 		var container = this.loadingIntroContainer[0];
 
 		container.addEventListener("swiped-up", hideLoadingIntro);
@@ -78,26 +78,26 @@ var A2ta = {
 		}
 	},
 
-	prepareItems: function() {
+	prepareItems: function () {
 		var decalage = $(window).height() / 4;
-		$.each(this.contentItems, function() {
+		$.each(this.contentItems, function () {
 			$(this).css({ transform: "translateY(" + decalage + "px)" });
 		});
 	},
 
-	menuTrigger: function() {
+	menuTrigger: function () {
 		var $hamburger = $("#hamburger");
-		$hamburger.on("click", function() {
+		$hamburger.on("click", function () {
 			$hamburger.toggleClass("is-active");
 		});
-	}
+	},
 };
 
-$(function() {
+$(function () {
 	A2ta.init();
 	// https://remysharp.com/2017/06/28/sticky-headers
 	var rafTimer;
-	window.onscroll = function(event) {
+	window.onscroll = function (event) {
 		cancelAnimationFrame(rafTimer);
 		rafTimer = requestAnimationFrame(A2ta.toggleHeader);
 	};

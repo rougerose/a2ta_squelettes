@@ -1,0 +1,11 @@
+// ========================================
+// ms-Autocomplete
+// ========================================
+
+.ms-Autocomplete {
+  &.ui-widget.ui-widget-content {
+    font-family: inherit;
+    @include font-size(15px);
+    border-top: 0;
+  }
+}

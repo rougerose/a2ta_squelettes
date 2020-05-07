@@ -1,0 +1,9 @@
+.ms-MapSearch {
+  position: relative;
+  // min-height: 30px;
+  z-index: $zindex-map-search;
+  // overflow: hidden;
+  background-color: $color-map-search-bg;
+  box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+  // transition: height 0.2s ease;
+}
