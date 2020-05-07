@@ -19,7 +19,7 @@ const paths = {
   },
   jsLib: {
     src: ["node_modules/swiped-events/dist/swiped-events.min.js"],
-    dest: "dist/javascript/",
+    dest: "dist/js/",
   },
   scss: {
     src: "_src/scss/*.scss",

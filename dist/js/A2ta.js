@@ -647,6 +647,7 @@ A2ta.Map.Search.Panels = (function () {
   };
 })();
 
+// https://medium.com/@sbastienperrot/comment-mettre-en-place-une-scrollbar-universelle-en-pur-javascript-8af0f522cad6
 A2ta.Map.Search.Scroll = A2ta.Map.Search.Scroll || {};
 
 A2ta.Map.Search.Scroll = (function () {
