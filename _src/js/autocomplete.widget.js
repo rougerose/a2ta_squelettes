@@ -7,21 +7,21 @@ $.widget("ui.autocomplete", $.ui.autocomplete, {
     delay: 500,
     prefix: "",
     classes: {
-      "ui-autocomplete": "mp-MapSearchForm_AutocompleteMenu",
+      "ui-autocomplete": "mp-Form_AutocompleteMenu",
     },
   },
 
   _renderItem: function (ul, item) {
     var label = item.label;
     var value = item.value.split(":");
-    var li_class = "mp-MapSearchForm_AutocompleteMenuItem";
+    var li_class = "mp-Form_AutocompleteMenuItem";
 
     if (value[0] === "ville") {
-      li_class += " mp-MapSearchForm_AutocompleteMenuItem-Geo";
+      li_class += " mp-Form_AutocompleteMenuItem-Geo";
     } else if (value[0] === "id_mot") {
-      li_class += " mp-MapSearchForm_AutocompleteMenuItem-Activity";
+      li_class += " mp-Form_AutocompleteMenuItem-Activity";
     } else if (value[0] === "id_association") {
-      li_class += " mp-MapSearchForm_AutocompleteMenuItem-Org";
+      li_class += " mp-Form_AutocompleteMenuItem-Org";
     }
 
     // if (this.options.prefix) {
@@ -29,9 +29,7 @@ $.widget("ui.autocomplete", $.ui.autocomplete, {
     // }
     return $("<li>")
       .addClass(li_class)
-      .append(
-        $("<a>").addClass("mp-MapSearchForm_AutocompleteMenuLink").text(label)
-      )
+      .append($("<a>").addClass("mp-Form_AutocompleteMenuLink").text(label))
       .appendTo(ul);
   },
 

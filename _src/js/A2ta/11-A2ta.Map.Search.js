@@ -9,11 +9,14 @@ A2ta.Map.Search = (function () {
   function init() {
     var mapContainer = A2ta.Map.getMapContainer();
     if (mapContainer) {
-      var searchForm = mapContainer.querySelector(
-        "#" + A2ta.config.search.searchFormID
+      var searchContainer = mapContainer.querySelector(
+        "#" + A2ta.config.search.searchID
       );
-      setupSearchInputs(searchForm);
+      setupSearchInputs(searchContainer);
       setupNoResultMessage();
+      A2ta.Map.Search.Panels.init();
+      A2ta.Map.Search.Scroll.init();
+      A2ta.Map.Search.Tabs.init();
     }
   }
 
@@ -58,7 +61,7 @@ A2ta.Map.Search = (function () {
     }
   }
 
-  function selecteurFulltext(event, ui) {
+  function autocompleteFullText(event, ui) {
     var keywordLabel = ui.item.label;
     var keywordValue = ui.item.value;
     var alreadyExists = keywordValues.indexOf(keywordValue);
@@ -85,9 +88,8 @@ A2ta.Map.Search = (function () {
     $.each(autocompleteEls, function (index, element) {
       $(element).on("autocompleteresponse", function (event, ui) {
         var parent = this.parentNode;
-        var childMessage = parent.querySelector(
-          "." + A2ta.config.search.messageClass
-        );
+        var messageClass = A2ta.config.search.messageClass.split(" ");
+        var childMessage = parent.querySelector("." + messageClass[0]);
 
         if (!ui.content.length && !childMessage) {
           var inputVal = this.value;
@@ -196,7 +198,6 @@ A2ta.Map.Search = (function () {
       var messageNoResult = parent.parentNode.querySelector(
         "." + messageClass[0]
       );
-      console.log(messageClass, messageNoResult);
       if (messageNoResult) {
         parent.parentNode.removeChild(messageNoResult);
       }
@@ -208,7 +209,7 @@ A2ta.Map.Search = (function () {
 
   return {
     init: init,
-    selecteurFulltext: selecteurFulltext,
+    autocompleteFullText: autocompleteFullText,
     getNoResultMessage: getNoResultMessage,
   };
 })();
