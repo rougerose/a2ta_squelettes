@@ -1,0 +1,11 @@
+// ========================================
+// mp-MapSearch
+// ========================================
+
+.mp-MapSearch {
+  position: absolute;
+  top: $spacing-unit-small;
+  left: $spacing-unit-tiny;
+  z-index: $zindex-map-search;
+  max-width: 400px;
+}

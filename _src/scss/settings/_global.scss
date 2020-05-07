@@ -8,14 +8,14 @@ $inuit-wrapper-width: 1200px;
 
 /*----------- Variable A2TA -----------*/
 
-/* Mediaqueries */
+// Mediaqueries //
 $mq-breakpoints: (
-	s: 320px,
-	m: 640px,
-	l: 1024px,
+  s: 320px,
+  m: 640px,
+  l: 1024px,
 );
 
-/* Fonts */
+// Fonts //
 $font-text: "barlow", sans-serif;
 $font-heading: "barlow", sans-serif;
 $font-monospace: monospace;
@@ -26,12 +26,14 @@ $btn-radius: (4/16) * 1rem;
 // Hauteur du header //
 $headerHeight: 56px;
 
-/* z-index */
+// z-index //
 $zindex-spip-admin-float: 20;
 $zindex-loading-page: 15;
 $zindex-header: 10;
 $zindex-map: 5;
+$zindex-map-search: $zindex-map + 1;
 $zindex-main: 1;
 $zindex-footer: 0;
 
-$scrollbar-height: 10px;
+// MapSearch
+$scrollbar-height: 12px;

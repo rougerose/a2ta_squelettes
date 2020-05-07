@@ -1,0 +1,30 @@
+// ========================================
+// mp-Map
+// ========================================
+
+.mp-Map {
+  position: relative;
+
+  // Surcharger le z-index défini par les css de leaflet
+  .leaflet-pane,
+  .leaflet-top,
+  .leaflet-bottom {
+    z-index: $zindex-map;
+  }
+
+  // Désactiver will-change (en nombre trop important selon Firefox)
+  .leaflet-fade-anim .leaflet-tile,
+  .leaflet-zoom-anim .leaflet-zoom-animated {
+    will-change: auto !important;
+  }
+
+  // leaflet-control-container
+  .leaflet-control-container {
+  }
+
+  // la classe de la carte générée par le plugin GIS n'est pas modifiable
+  .carte_gis {
+    width: 100%;
+    height: calc(100vh - 100px);
+  }
+}

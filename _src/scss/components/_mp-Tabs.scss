@@ -1,0 +1,75 @@
+// ========================================
+// mp-Tabs
+// ========================================
+
+.mp-Tabs_Head {
+  display: flex;
+  margin: 0;
+  // padding: $spacing-unit-tiny $spacing-unit 0 $spacing-unit-small;
+  // color: $color-gray-800;
+}
+
+.mp-Tab_Header {
+}
+
+.mp-Tab_HeaderBtn {
+  padding: $spacing-unit-tiny 0;
+  margin-left: $spacing-unit-small;
+  color: $color-map-search-icon;
+  text-transform: uppercase;
+  @include font-size(13px);
+  font-weight: bold;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: (1 / 16) * 1rem;
+    margin-right: $spacing-unit-small;
+    vertical-align: bottom;
+    background-color: $color-gray-200;
+  }
+
+  &:first-child {
+    margin-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.mp-Tabs_Body {
+}
+
+.mp-Tab_Content {
+  padding-bottom: $spacing-unit-small;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-name: toggleTabs;
+
+  &-Scrollable {
+    padding-bottom: 0;
+    position: relative;
+  }
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
+}
+
+@keyframes toggleTabs {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

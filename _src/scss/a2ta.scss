@@ -125,25 +125,37 @@
 
 // COMPONENTS
 @import "components/btn";
-@import "components/carte";
+
 // Lib : Hamburgers
 @import "hamburgers/_sass/hamburgers/hamburgers";
-//
-@import "components/form-carte";
+
+// Map / mp
+@import "components/mp-Map";
+@import "components/mp-Categories";
+@import "components/mp-Form";
+@import "components/mp-Keywords";
+@import "components/mp-Scroll";
+@import "components/mp-Search";
+@import "components/mp-Tabs";
+
+// @import "components/mp-MapSearch";
+// @import "components/mp-MapSearchForm";
+// @import "components/mp-MapSearchKeywords";
+// @import "components/form-carte";
 
 // LoadingPage / lp-
 @import "components/lp-LoadingPage";
 @import "components/lp-SiteIntro";
 
-@import "components/ms-Autocomplete";
-@import "components/ms-MapSearch";
-@import "components/ms-SearchAdvanced";
-@import "components/ms-SearchForm";
-@import "components/ms-SearchFulltext";
-@import "components/map-SearchCategories";
-@import "components/map-SearchScroll";
-@import "components/map-TabsSearch";
-@import "components/message";
+// @import "components/ms-Autocomplete";
+// @import "components/ms-MapSearch";
+// @import "components/ms-SearchAdvanced";
+// @import "components/ms-SearchForm";
+// @import "components/ms-SearchFulltext";
+// @import "components/map-SearchCategories";
+// @import "components/map-SearchScroll";
+// @import "components/map-TabsSearch";
+// @import "components/message";
 @import "components/selections";
 
 // Structure/st-

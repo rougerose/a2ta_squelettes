@@ -1,0 +1,143 @@
+// ========================================
+// mp-Form
+// ========================================
+
+.mp-Form {
+}
+
+.mp-Form_Field {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+}
+
+.mp-Form_Label {
+  color: $color-map-search-label;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  &.js-FormLabel {
+    transition: transform 0.3s ease;
+    transform: translateY((16/15) * 1rem);
+
+    &.is-Focused {
+      color: $color-map-search-label-isFocus;
+      transform: translateY(0);
+    }
+  }
+}
+
+.mp-Form_Input {
+  border: none;
+  border-bottom: 1px solid $color-map-search-label;
+  background-color: $color-map-search-bg;
+
+  &:focus {
+    border-bottom-color: $color-map-search-label-isFocus;
+  }
+}
+
+// Cet élément est relatif au conteneur Field //
+.mp-Form_Message {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: $spacing-unit-tiny;
+  background-color: $color-map-search-bg;
+  color: $color-map-search-label-isFocus;
+  box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+
+  &-Info {
+  }
+}
+
+.mp-Form_MessageLabel {
+  margin-right: $spacing-unit-tiny;
+  @include font-size(14px, $modifier: -1.5);
+}
+
+.mp-Form_DeleteMessage {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background-color: $color-map-search-icon;
+  transition: background-color 0.5s ease;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: (3/16) * 1rem;
+    left: (7/16) * 1rem;
+    height: (10/16) * 1rem;
+    width: (2/16) * 1rem;
+    content: "";
+    background-color: $color-map-keywords-bg;
+    transition: background-color 0.5s ease;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    background-color: $color-map-search-icon-hover;
+
+    &::before,
+    &::after {
+      background-color: $color-map-search-icon;
+    }
+  }
+}
+
+.mp-Form_AutocompleteMenu {
+  &.ui-widget.ui-widget-content {
+    font-family: inherit;
+    @include font-size(14px, $modifier: -1.5);
+    // @include font-size(15px, $modifier: -1);
+    border-top: 0;
+  }
+}
+
+.mp-Form_AutocompleteMenuItem {
+  position: relative;
+  padding: ($spacing-unit-tiny / 2) 0 ($spacing-unit-tiny / 2) $spacing-unit;
+
+  &::before {
+    position: absolute;
+    left: $spacing-unit-tiny;
+    top: $spacing-unit-tiny;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background-color: $color-black;
+  }
+
+  &-Geo {
+    &::before {
+      background-color: $color-gray-200;
+    }
+  }
+  &-Activity {
+    &::before {
+      background-color: $color-gray-500;
+    }
+  }
+  &-Org {
+    &::before {
+      background-color: $color-gray-800;
+    }
+  }
+}
+
+.mp-Form_AutocompleteMenuLink {
+  .ui-menu &.ui-menu-item-wrapper {
+    padding: 0;
+  }
+}

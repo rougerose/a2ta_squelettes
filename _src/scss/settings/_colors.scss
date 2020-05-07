@@ -1,13 +1,14 @@
-/*=============================================>>>>>
-= colors =
-===============================================>>>>>*/
+// ========================================
+// Couleurs
+// ========================================
+
+//
+// ***** Définitions chromatiques générales **********
+//
 
 $color-black: hsl(0, 0%, 0%);
 $color-white: hsl(0, 100%, 100%);
 $color-orange: hsl(30, 100%, 50%);
-
-// White
-$color-white-page: hsl(0, 0%, 98%);
 
 // Gray
 $color-gray-100: hsla(210, 17%, 98%, 1);
@@ -27,8 +28,23 @@ $color-green-dark: hsl(80, 38%, 36%); //#687f39
 // Orange
 $color-orange-100: hsla(30, 21%, 82%, 1);
 
-// Theme
-$color-loading-page: $color-orange;
+//
+// **** Définitions chromatiques du site *************
+//
+
+$color-loading-page: $color-gray-500;
+$color-white-page: hsl(0, 0%, 98%);
+
+// **** Map-Search
+$color-map-search-bg: $color-gray-400;
+$color-map-search-bg-dark: $color-gray-700;
+$color-map-search-bg-darker: $color-gray-900;
+$color-map-search-label: scale-color($color-map-search-bg, $lightness: -40%);
+$color-map-search-label-isFocus: $color-gray-100;
+$color-map-keywords-bg: $color-map-search-bg;
+$color-map-keywords-label: $color-gray-100;
+$color-map-search-icon: scale-color($color-map-search-bg, $lightness: -50%);
+$color-map-search-icon-hover: $color-gray-200;
 
 // Formulaire recherche carte et éléments associés //
 $color-bg-form-carte: lighten($color-gray-800, 10%);

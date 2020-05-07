@@ -1,0 +1,108 @@
+// ========================================
+// mp-Search
+// ========================================
+
+.mp-Search_Outer {
+  position: absolute;
+  top: $spacing-unit-small;
+  left: $spacing-unit-tiny;
+  z-index: $zindex-map-search;
+  width: calc(100% - #{$spacing-unit-small});
+  // max-width: 400px;
+
+  @include mq(l) {
+    width: 600px;
+  }
+}
+
+.mp-Search {
+  position: relative;
+  z-index: $zindex-map-search;
+  @include font-size(15px, $modifier: -1);
+  background-color: $color-map-search-bg;
+  box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+}
+
+.mp-Search_FullText {
+  padding: $spacing-unit-tiny $spacing-unit-tiny $spacing-unit-tiny
+    $spacing-unit-large;
+  transition: all 0.2s ease;
+
+  &[aria-hidden="true"] {
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    padding: 0 0 0 $spacing-unit-large;
+    // transition-delay: 0.1s;
+  }
+
+  &[aria-hidden="false"] {
+    padding: $spacing-unit-tiny $spacing-unit-tiny $spacing-unit-tiny
+      $spacing-unit-large;
+    visibility: visible;
+  }
+
+  &[aria-busy="true"] {
+    position: relative;
+    visibility: visible;
+    overflow: hidden;
+    height: 0;
+    // transition: height 0.6s ease, visibility 0.6s ease;
+  }
+}
+
+.mp-Search_AdvancedTrigger {
+  position: absolute;
+  top: $spacing-unit-small;
+  left: $spacing-unit-tiny;
+  z-index: $zindex-map-search + 3;
+  height: 30px;
+  width: 30px;
+  padding: $spacing-unit-tiny;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-right: 1px solid $color-gray-200;
+    content: "";
+  }
+
+  &:hover {
+    .mp-Search_AdvancedTriggerIcon {
+      fill: $color-map-search-icon-hover;
+    }
+  }
+}
+
+.mp-Search_AdvancedTriggerIcon {
+  fill: $color-map-search-icon;
+  transition: fill 0.3s ease;
+}
+
+.mp-Search_Advanced {
+  padding: $spacing-unit-tiny $spacing-unit-tiny 0 $spacing-unit-large;
+  background-color: $color-map-search-bg;
+  transition: all 0.2s ease;
+
+  &[aria-hidden="true"] {
+    padding: 0 0 0 $spacing-unit-large;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    // transition-delay: 0.1s;
+  }
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+  }
+
+  &[aria-busy="true"] {
+    position: relative;
+    visibility: visible;
+    overflow: hidden;
+    height: 0;
+    // transition: height 0.6s ease, visibility 0.6s ease;
+  }
+}

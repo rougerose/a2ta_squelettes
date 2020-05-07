@@ -1,0 +1,26 @@
+// ========================================
+// mp-Categories
+// ========================================
+
+.mp-Categories {
+}
+
+.mp-Categories_Link {
+  position: relative;
+  display: block;
+  margin: $spacing-unit-tiny 0;
+  padding-left: $spacing-unit-small;
+  @include font-size(14px, $modifier: -1);
+  white-space: nowrap;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: ((14/16) / 2) * 1rem;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: $color-black;
+  }
+}
