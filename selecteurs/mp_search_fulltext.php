@@ -26,7 +26,7 @@ function selecteurs_recherche_libre() {
 	$tables = array(
 		// les associations liées à un point GIS.
 		'association' => array(
-			'cle' => 'id_association', //
+			'cle' => 'id_association',
 			'titre' => 'nom', // équivalent titre de la table ou de la requête.
 			'select' => array('l1.id_association', 'l1.nom'),
 			'from' => array(
@@ -101,7 +101,7 @@ function selecteurs_recherche_libre() {
 		if ($rows) {
 
 			foreach ($rows as $row) {
-				// Attention: pour ville, c'est une chaîne (nom de la ville recherchée) et non un nombre.
+				// Attention: pour ville, id_objet est une chaîne (nom de la ville recherchée) et non un nombre.
 				$id_objet = $row[$cle];
 
 				$label = filtrer_entites($row[$titre]);
@@ -110,7 +110,8 @@ function selecteurs_recherche_libre() {
 					$label .= ' ('. filtrer_entites($cpt) .')';
 				}
 
-				// "value" est une valeur "technique", le js affiche uniquement le "label"
+				// "value" est une valeur "technique", le js affiche
+				// à l'utilisateur le "label"
 				$resultats[] = array(
 					'label' => $label,
 					'value' => $cle.':'.$id_objet,
