@@ -21,7 +21,7 @@
             <div class="mp-Form_Field">
               <label for="TownsInput" class="mp-Form_Label"><:a2ta:recherche_label_ville:></label>
               [(#SET{params, #ARRAY{limite, 15}|json_encode|attribut_html})]
-              <input type="text" id="TownsInput" class="mp-Form_Input" name="TownsInput" value="" data-selecteur="mp_search_fulltext" data-select-php="oui" data-select-params="[(#GET{params})]" data-select-callback="A2ta.Map.Search.autocompleteFullText" >
+              <input type="text" id="TownsInput" class="mp-Form_Input" name="TownsInput" value="" data-selecteur="mp_search_towns" data-select-php="oui" data-select-params="[(#GET{params})]" data-select-callback="A2ta.Map.Search.autocompleteFullText" >
             </div>
           </form>
         </div>
