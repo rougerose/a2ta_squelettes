@@ -3,7 +3,7 @@
 // Sécurité
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-function selecteurs_recherche_libre() {
+function selecteurs_mp_search_fulltext() {
 	include_spip('base/objets');
 	include_spip('inc/filtres');
 	include_spip('inc/texte');
