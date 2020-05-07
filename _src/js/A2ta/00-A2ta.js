@@ -31,6 +31,7 @@ A2ta = (function () {
       scrollContainerClass: "mp-Scroll",
       scrollbarClass: "mp-Scroll_Scrollbar",
       scrollbarFillClass: "mp-Scroll_ScrollbarFill",
+      categoryClass: "mp-Category",
     },
     keywords: {
       containerID: "mapSearchKeywords",

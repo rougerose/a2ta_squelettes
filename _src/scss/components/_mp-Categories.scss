@@ -5,13 +5,14 @@
 .mp-Categories {
 }
 
-.mp-Categories_Link {
+.mp-Category {
   position: relative;
   display: block;
   margin: $spacing-unit-tiny 0;
   padding-left: $spacing-unit-small;
   @include font-size(14px, $modifier: -1);
   white-space: nowrap;
+  cursor: pointer;
 
   &::before {
     position: absolute;

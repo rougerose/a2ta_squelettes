@@ -13,7 +13,7 @@ A2ta.Map.Search = (function () {
         "#" + A2ta.config.search.searchID
       );
       setupSearchInputs(searchContainer);
-      setupNoResultMessage();
+      setupSearchActivities(searchContainer);
       A2ta.Map.Search.Panels.init();
       A2ta.Map.Search.Scroll.init();
       A2ta.Map.Search.Tabs.init();
@@ -51,6 +51,44 @@ A2ta.Map.Search = (function () {
     });
   }
 
+  function setupSearchActivities(searchContainer) {
+    var advancedSearch = searchContainer.querySelector(
+      "#" + A2ta.config.search.advancedPanelID
+    );
+    var activities = advancedSearch.querySelectorAll(
+      "." + A2ta.config.search.categoryClass
+    );
+    activities.forEach(function (activity) {
+      activity.addEventListener("click", handleClickActivity, false);
+    });
+  }
+
+  function handleClickActivity(event) {
+    var keyword = {
+      label: this.dataset.label,
+      value: this.dataset.value,
+    };
+
+    handleKeyword(keyword);
+  }
+
+  function handleKeyword(keyword) {
+    var label = keyword.label,
+      value = keyword.value;
+
+    var alreadyExists = keywordValues.indexOf(value);
+
+    if (alreadyExists == -1) {
+      keywordLabels.push(label);
+      keywordValues.push(value);
+      // Index du mot dans le tableau
+      var index = keywordLabels.length - 1;
+      // Afficher le mot-clé
+      var keywordHTML = setKeyword(label, value);
+      addKeyword(keywordHTML, index);
+    }
+  }
+
   function handleEventInput(event, index) {
     if ("focus" == event.type) {
       labels[index].classList.add("is-Focused");
@@ -62,19 +100,12 @@ A2ta.Map.Search = (function () {
   }
 
   function autocompleteFullText(event, ui) {
-    var keywordLabel = ui.item.label;
-    var keywordValue = ui.item.value;
-    var alreadyExists = keywordValues.indexOf(keywordValue);
+    var keyword = {
+      label: ui.item.label,
+      value: ui.item.value,
+    };
 
-    if (alreadyExists == -1) {
-      keywordLabels.push(keywordLabel);
-      keywordValues.push(keywordValue);
-      // Index du mot dans le tableau
-      var index = keywordLabels.length - 1;
-      // Afficher le mot-clé
-      var keyword = setKeyword(keywordLabel, keywordValue);
-      addKeyword(keyword, index);
-    }
+    handleKeyword(keyword);
 
     this.value = "";
     return false;

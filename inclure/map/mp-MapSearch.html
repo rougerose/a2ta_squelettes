@@ -32,7 +32,7 @@
                 <BOUCLE_activites(MOTS spip_associations){id_groupe=1}
                   {mots_liens.objet=association}{par titre}>[
                   (#COMPTEUR_BOUCLE|alterner{'<div class="mp-Scroll_Col">', ''})]
-                    <a href="" class="mp-Categories_Link">[(#TITRE)]</a>[
+                    <span class="mp-Category" data-value="id_mot:#ID_MOT" data-label="[(#TITRE)[ \((#DESCRIPTIF|textebrut)\)]]">[(#TITRE)]</span>[
                   (#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
                 </BOUCLE_activites>
               </div>
