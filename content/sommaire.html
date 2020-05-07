@@ -1,12 +1,8 @@
-<section class="c-items-animation js-items">
-	<INCLURE{fond=inclure/carte-a2ta, class="c-item-animation js-item"}/>
-	<BOUCLE_actualites(SELECTIONS){identifiant=actualites_accueil}>
-		<BOUCLE_selections_actualites(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
-			<div class="o-wrapper o-wrapper--narrow">
-				<div class="c-item-animation js-item">
-					<INCLURE{fond=inclure/liste/selections-actualites, id_selection}/>
-				</div>
-			</div>
-		</BOUCLE_selections_actualites>
-	</BOUCLE_actualites>
-</section>
+<INCLURE{fond=inclure/map/mp-map} />
+<BOUCLE_actualites(SELECTIONS){identifiant=actualites_accueil}>
+  <BOUCLE_selections_actualites(SELECTIONS_CONTENUS){id_selection}{0,1}{par rang}>
+    <div class="o-wrapper o-wrapper--narrow">
+      <INCLURE{fond=inclure/liste/selections-actualites, id_selection}/>
+    </div>
+  </BOUCLE_selections_actualites>
+</BOUCLE_actualites>
