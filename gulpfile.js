@@ -135,12 +135,12 @@ function watchFiles() {
 
 exports.watch = series(
   cleanDist,
-  parallel(jsTaskFolders, jsTaskRoot, scssTask),
+  parallel(copieJsLib, jsTaskFolders, jsTaskRoot, scssTask),
   watchFiles
 );
 exports.copieFonts = copieWebfonts;
 exports.copieJsLib = copieJsLib;
 exports.default = series(
   cleanDist,
-  parallel(jsTaskFolders, jsTaskRoot, scssTask)
+  parallel(copieJsLib, jsTaskFolders, jsTaskRoot, scssTask)
 );
