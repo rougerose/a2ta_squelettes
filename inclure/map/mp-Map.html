@@ -2,7 +2,7 @@
 [<div id="a2taMap" class="mp-Map">
   (#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID},
     autocenterandzoom=non, objets=associations, utiliser_bb=oui,
-    cluster=oui, style=non, zoom_molette=non})
+    cluster=oui, clusterMaxZoom=11, style=non, zoom_molette=non})
   [(#REM) Récupérer l'objet carte grâce au callback de GIS]
   <script type="text/javascript">callback_map[(#GET{mapID})] = function(map) {A2ta.Map.init(map);}</script>
   <INCLURE{fond=inclure/map/mp-MapSearch} />
