@@ -336,6 +336,7 @@ A2ta.Map.Search = (function () {
       A2ta.Map.Search.Panels.init();
       A2ta.Map.Search.Scroll.init();
       A2ta.Map.Search.Tabs.init();
+      setupNoResultMessage();
     }
   }
 

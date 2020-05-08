@@ -343,8 +343,6 @@ a { text-decoration: none; color: black; }
 
 .mp-Form_DeleteMessage:hover { background-color: #5d6d84; }
 
-.mp-Form_DeleteMessage:hover::before, .mp-Form_DeleteMessage:hover::after { background-color: #919eb1; }
-
 .mp-Form_AutocompleteMenu.ui-widget.ui-widget-content { font-family: inherit; font-size: 14px; font-size: 0.875rem; line-height: 1.07143; border-top: 0; }
 
 .mp-Form_AutocompleteMenuItem { position: relative; padding: 3px 0 3px 24px; }
