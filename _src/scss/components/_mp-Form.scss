@@ -34,7 +34,7 @@
   background-color: $color-map-search-bg;
 
   &:focus {
-    border-bottom-color: $color-map-search-label-isFocus;
+    border-bottom-color: $color-map-search-input-isFocus;
   }
 }
 
@@ -45,7 +45,7 @@
   width: 100%;
   padding: $spacing-unit-tiny;
   background-color: $color-map-search-bg;
-  color: $color-map-search-label-isFocus;
+  color: $color-map-keywords-label;
   box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
 
   &-Info {
@@ -87,11 +87,6 @@
 
   &:hover {
     background-color: $color-map-search-icon-hover;
-
-    &::before,
-    &::after {
-      background-color: $color-map-search-icon;
-    }
   }
 }
 

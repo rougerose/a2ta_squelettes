@@ -18,7 +18,7 @@
   margin-left: 0;
   box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
   background-color: $color-map-keywords-bg;
-  color: $color-form-text;
+  color: $color-map-keywords-label;
 }
 
 .mp-Keywords_Label {
@@ -55,10 +55,5 @@
 
   &:hover {
     background-color: $color-map-search-icon-hover;
-
-    &::before,
-    &::after {
-      background-color: $color-map-search-icon;
-    }
   }
 }

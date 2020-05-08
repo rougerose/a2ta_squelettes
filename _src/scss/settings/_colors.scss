@@ -36,18 +36,30 @@ $color-loading-page: $color-gray-500;
 $color-white-page: hsl(0, 0%, 98%);
 
 // **** Map-Search
-$color-map-search-bg: $color-gray-400;
-$color-map-search-bg-dark: $color-gray-700;
-$color-map-search-bg-darker: $color-gray-900;
-$color-map-search-label: scale-color($color-map-search-bg, $lightness: -40%);
-$color-map-search-label-isFocus: $color-gray-100;
-$color-map-keywords-bg: $color-map-search-bg;
-$color-map-keywords-label: $color-gray-100;
-$color-map-search-icon: scale-color($color-map-search-bg, $lightness: -50%);
-$color-map-search-icon-hover: $color-gray-200;
+$color-map-search-bg: $color-gray-100;
+$color-map-search-label: $color-gray-600;
+$color-map-search-label-isFocus: scale-color(
+  $color-map-search-label,
+  $lightness: -30%
+);
+$color-map-search-input-isFocus: $color-map-search-label-isFocus;
+$color-map-search-icon: $color-map-search-label;
+$color-map-search-icon-hover: $color-map-search-label-isFocus;
+$color-map-search-separateur: $color-gray-300;
 
-// Formulaire recherche carte et éléments associés //
-$color-bg-form-carte: lighten($color-gray-800, 10%);
-$color-form-text: $color-gray-100;
-$color-form-carte: $color-gray-800;
-$color-hover-form-carte-color: lighten($color-gray-800, 5%);
+// **** Map-Keywords
+$color-map-keywords-bg: $color-map-search-bg;
+$color-map-keywords-label: $color-map-search-label-isFocus;
+
+// **** Map-Tabs
+$color-map-tab-header: scale-color($color-map-search-label, $lightness: 30%);
+$color-map-tab-header-hover: $color-map-search-label-isFocus;
+$color-map-tab-header-active: $color-map-search-label-isFocus;
+
+// **** Map-Category
+$color-map-category: $color-map-search-label;
+$color-map-cateogry-hover: $color-map-search-label-isFocus;
+
+// **** Map-Scroll
+$color-map-scrollbar: $color-gray-200;
+$color-map-scrollbarfill: $color-map-search-label-isFocus;

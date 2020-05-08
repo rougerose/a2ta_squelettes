@@ -17,19 +17,19 @@
   padding: 0 $spacing-unit-tiny $spacing-unit-tiny;
 }
 
-.mp-Scroll_Gradient {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 90%;
-  background-color: $color-white;
-  background: linear-gradient(
-    90deg,
-    rgba($color-map-search-bg, 0) 30%,
-    rgba(scale-color($color-map-search-bg, $lightness: -40%), 1) 100%
-  );
-}
+// .mp-Scroll_Gradient {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 90%;
+//   background-color: $color-white;
+//   background: linear-gradient(
+//     90deg,
+//     rgba($color-map-search-bg, 0) 30%,
+//     rgba(scale-color($color-map-search-bg, $lightness: -40%), 1) 100%
+//   );
+// }
 
 .mp-Scroll_Scrollbar {
   position: absolute;
@@ -37,8 +37,8 @@
   right: 0;
   bottom: 0;
   height: $scrollbar-height;
-  background-color: $color-gray-900;
-  opacity: 0.2;
+  background-color: $color-map-scrollbar;
+  // opacity: 0.2;
 }
 
 .mp-Scroll_ScrollbarFill {
@@ -46,6 +46,6 @@
   left: 0;
   bottom: 0;
   height: $scrollbar-height;
-  background-color: $color-gray-900;
+  background-color: $color-map-scrollbarfill;
   cursor: grab;
 }

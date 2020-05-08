@@ -12,7 +12,13 @@
   padding-left: $spacing-unit-small;
   @include font-size(14px, $modifier: -1);
   white-space: nowrap;
+  color: $color-map-category;
   cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-map-cateogry-hover;
+  }
 
   &::before {
     position: absolute;

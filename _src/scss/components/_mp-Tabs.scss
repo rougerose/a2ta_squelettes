@@ -13,29 +13,40 @@
 }
 
 .mp-Tab_HeaderBtn {
-  padding: $spacing-unit-tiny 0;
-  margin-left: $spacing-unit-small;
-  color: $color-map-search-icon;
+  position: relative;
+  padding: $spacing-unit-tiny $spacing-unit-small;
+  color: $color-map-tab-header;
   text-transform: uppercase;
-  @include font-size(13px);
+  @include font-size(14px, $modifier: -2);
   font-weight: bold;
+  transition: color 0.3s ease;
 
   &::before {
+    position: absolute;
+    top: $spacing-unit-tiny;
+    left: 0;
     content: "";
     display: inline-block;
-    height: 100%;
+    height: calc(100% - #{$spacing-unit-small});
     width: (1 / 16) * 1rem;
-    margin-right: $spacing-unit-small;
+    margin-right: $spacing-unit-tiny;
     vertical-align: bottom;
-    background-color: $color-gray-200;
+    background-color: $color-map-search-separateur;
   }
 
   &:first-child {
-    margin-left: 0;
-
+    padding-left: 0;
     &::before {
       display: none;
     }
+  }
+
+  &:hover {
+    color: $color-map-tab-header-hover;
+  }
+
+  &[aria-selected="true"] {
+    color: $color-map-tab-header-active;
   }
 }
 

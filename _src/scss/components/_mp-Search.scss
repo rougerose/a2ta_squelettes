@@ -59,19 +59,29 @@
   height: 30px;
   width: 30px;
   padding: $spacing-unit-tiny;
+  background-color: $color-map-search-bg;
+  transition: background-color 0.3s ease;
 
   &::after {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
-    border-right: 1px solid $color-gray-200;
+    border-right: 1px solid $color-map-search-separateur;
     content: "";
   }
 
   &:hover {
     .mp-Search_AdvancedTriggerIcon {
       fill: $color-map-search-icon-hover;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    background-color: $color-map-search-icon-hover;
+
+    & .mp-Search_AdvancedTriggerIcon {
+      fill: $color-map-search-bg;
     }
   }
 }
@@ -91,7 +101,6 @@
     visibility: hidden;
     overflow: hidden;
     height: 0;
-    // transition-delay: 0.1s;
   }
 
   &[aria-hidden="false"] {
@@ -103,6 +112,5 @@
     visibility: visible;
     overflow: hidden;
     height: 0;
-    // transition: height 0.6s ease, visibility 0.6s ease;
   }
 }
