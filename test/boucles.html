@@ -1,4 +1,25 @@
-<BOUCLE_m(MOTS spip_associations){id_groupe=1}{mots_liens.objet=association}{par titre}>[(#COMPTEUR_BOUCLE|alterner{'<div>', ''})]
-		<a href="">#TITRE</a>
-	[(#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
-	</BOUCLE_m>
+<BOUCLE_association(ASSOCIATIONS){id_association=#ENV{id_association}}>
+#SET{activites, #ARRAY}
+<BOUCLE_activites(MOTS){id_association}{id_groupe=1}{par titre}>
+[(#SET{activites, #GET{activites}|push{#TITRE|concat{' ('}|concat{#DESCRIPTIF|textebrut}|concat{')'}}})]
+</BOUCLE_activites>
+[(#SET{activites, #GET{activites}|implode{' ; '}})]
+<p>nom: #NOM</p>
+<p>membre: [(#MEMBRE_FRAAP|?{oui, non})]</p>
+<p>site1: #URL_SITE</p>
+<P>site2: #URL_SITE_SUPP</p>
+
+<BOUCLE_rezos(DATA){liste facebook, twitter, instagram}>
+<p>#VALEUR:<B_rezo><BOUCLE_rezo(REZOSOCIOS){type_rezo=#VALEUR}{id_association}>[(#VALEUR|rezosocios_url{#NOM_COMPTE})]</BOUCLE_rezo></B_rezo>""<//B_rezo></p>
+</BOUCLE_rezos>
+<BOUCLE_adresse(ADRESSES){id_association}{type=work}>
+<p>voie: #VOIE</p>
+<p>complement: #COMPLEMENT</p>
+<p>code postal: #CODE_POSTAL</p>
+<p>ville: #VILLE</p>
+<p>Département: <BOUCLE_departement(GEO_SUBDIVISIONS){code=#DEPARTEMENT}>#NOM</BOUCLE_departement></p>
+<p>région: <BOUCLE_region(GEO_SUBDIVISIONS){code=#REGION}>#NOM</BOUCLE_region></p>
+<p>Pays: <BOUCLE_pays(PAYS){code=#PAYS}>#NOM</BOUCLE_pays></p>
+</BOUCLE_adresse>
+<p>Activités:[(#GET{activites}|json_encode)]</p>
+</BOUCLE_association>
