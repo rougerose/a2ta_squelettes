@@ -1,0 +1,149 @@
+// ========================================
+// mp-Org
+// ========================================
+
+// Test uniquement
+// .xsidebar {
+//   position: relative;
+// }
+
+.mp-Org {
+  // overflow-y: auto;
+  padding: $spacing-unit-large $spacing-unit-small $spacing-unit $spacing-unit;
+  // Pour les tests uniquement
+  // position: absolute;
+  // right: 0;
+  // width: 40%;
+  // box-shadow: 0 0 0.5rem rgba($color-black, 0.5);
+  // background-color: $color-white-page;
+}
+
+.mp-Org_Header {
+  display: flex;
+  align-items: baseline;
+  border-bottom: 1px solid $color-gray-200;
+  padding-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
+}
+
+.mp-Org_Title {
+  flex: 2;
+  @include font-size(28px, $modifier: -1.5);
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.mp-Org_MemberFraap {
+  background-color: $color-black;
+  color: $color-white;
+  padding: $spacing-unit-tiny / 2 $spacing-unit-tiny;
+  text-transform: uppercase;
+  @include font-size(14px, $line-height: inherit);
+  font-weight: bold;
+  border-radius: $spacing-unit-tiny / 2;
+}
+
+.mp-Org_Web {
+  display: flex;
+  border-bottom: 1px solid $color-gray-200;
+  padding-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
+}
+
+.mp-Org_WebSites {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $spacing-unit-tiny / 2;
+  overflow: hidden;
+  width: 70%;
+  text-overflow: ellipsis;
+}
+
+.mp-Org_SiteLink {
+  margin-right: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid $color-gray-600;
+  color: $color-gray-900;
+}
+
+.mp-Org_WebSocial {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mp-Org_SocialLink {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  background-color: $color-gray-400;
+  margin-left: $spacing-unit-tiny;
+  background-size: contain;
+
+  &-facebook {
+    background: url("../../img/icon-facebook-k-24.svg");
+  }
+
+  &-twitter {
+    background: url("../../img/icon-twitter-k-24.svg");
+  }
+
+  &-instagram {
+    background: url("../../img/icon-instagram-k-24.svg");
+  }
+}
+
+span.mp-Org_SocialLink {
+  &-facebook {
+    background: url("../../img/icon-facebook-g-24.svg");
+  }
+
+  &-twitter {
+    background: url("../../img/icon-twitter-g-24.svg");
+  }
+
+  &-instagram {
+    background: url("../../img/icon-instagram-g-24.svg");
+  }
+}
+
+.mp-Org_Address {
+  padding-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
+  border-bottom: 1px solid $color-gray-200;
+}
+
+.mp-Org_AddressGroup {
+  &-Country {
+    display: flex;
+    & .mp-Org_AddressLine {
+      &::before {
+        content: "\002F"; // slash
+        margin-right: 0.5em;
+      }
+
+      &:first-child {
+        &::before {
+          content: "\2014"; // em dash
+        }
+      }
+    }
+  }
+}
+
+.mp-Org_AddressLine {
+  margin-right: 0.5em;
+}
+
+.mp-Org_Activities {
+  margin-left: 0;
+}
+
+.mp-Org_Activity {
+  display: inline-flex;
+  padding: $spacing-unit-tiny / 2;
+  margin: $spacing-unit-tiny / 2;
+  margin-left: 0;
+  background-color: $color-gray-700;
+  color: $color-gray-100;
+}

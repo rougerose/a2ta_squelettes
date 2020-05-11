@@ -5,6 +5,10 @@
 .mp-Map {
   position: relative;
 
+  .leaflet-container {
+    font: inherit;
+  }
+
   // Surcharger le z-index défini par les css de leaflet
   .leaflet-pane,
   .leaflet-top,

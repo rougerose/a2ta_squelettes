@@ -41,6 +41,23 @@ A2ta = (function () {
       buttonClass: "btn mp-Keywords_DeleteKeyword",
       buttonID: "deleteKeyword",
     },
+    org: {
+      container: "mp-Org",
+      header: "mp-Org_Header",
+      title: "mp-Org_Title",
+      member: "mp-Org_MemberFraap",
+      web: "mp-Org_Web",
+      websites: "mp-Org_WebSites",
+      webLink: "mp-Org_SiteLink",
+      social: "mp-Org_WebSocial",
+      socialLink: "mp-Org_SocialLink",
+      address: "mp-Org_Address",
+      addressGroup: "mp-Org_AddressGroup",
+      addressGroupCountry: "mp-Org_AddressGroup-Country",
+      adressLine: "mp-Org_AddressLine",
+      activities: "mp-Org_Activities",
+      activity: "mp-Org_Activity",
+    },
   };
 
   var loadingPage = null,

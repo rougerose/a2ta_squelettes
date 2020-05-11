@@ -1,0 +1,54 @@
+<BOUCLE_asso(ASSOCIATIONS){id_association}>
+<div class="xsidebar">
+  <div class="mp-Org">
+    <div class="mp-Org_Header">
+      <h2 class="mp-Org_Title">#NOM</h2>
+      [<span class="mp-Org_MemberFraap">(#MEMBRE_FRAAP|oui)Fraap</span>]
+    </div>
+    <div class="mp-Org_Web">
+      <div class="mp-Org_WebSites">
+        <a href="#" class="mp-Org_SiteLink">#URL_SITE</a>
+        <a href="#" class="mp-Org_SiteLink">#URL_SITE_SUPP</a>
+      </div>
+      <div class="mp-Org_WebSocial">
+        <BOUCLE_rezos(DATA){liste facebook, twitter, instagram}>
+          <BOUCLE_rezo(REZOSOCIOS){type_rezo=#VALEUR}{id_association}>
+            <a href="[(#VALEUR|rezosocios_url{#NOM_COMPTE})]" class="mp-Org_SocialLink mp-Org_SocialLink-#VALEUR"></a>
+          </BOUCLE_rezo>
+            <span class="mp-Org_SocialLink mp-Org_SocialLink-#VALEUR"></span>
+          <//B_rezo>
+        </BOUCLE_rezos>
+      </div>
+    </div>
+    <BOUCLE_adresse(ADRESSES){id_association}{type=work}>
+      <div class="mp-Org_Address">
+        <BOUCLE_departement(GEO_SUBDIVISIONS){code=#DEPARTEMENT}>
+          [(#SET{departement,#NOM})]
+        </BOUCLE_departement>
+        <BOUCLE_region(GEO_SUBDIVISIONS){code=#REGION}>
+          [(#SET{region,#NOM})]
+        </BOUCLE_region>
+        <BOUCLE_pays(PAYS){code=#PAYS}>
+          [(#SET{pays,#NOM})]
+        </BOUCLE_pays>
+        <div class="mp-Org_AddressGroup">
+          <span class="mp-Org_AddressLine">[(#VOIE)]</span>
+          <span class="mp-Org_AddressLine mp-Org_AddressLine-2">[(#COMPLEMENT)]</span>
+          <span class="mp-Org_AddressLine">[(#CODE_POSTAL)][ (#VILLE)]</span>
+        </div>
+        <div class="mp-Org_AddressGroup mp-Org_AddressGroup-Country">
+          <span class="mp-Org_AddressLine">[(#GET{departement})]</span>
+          <span class="mp-Org_AddressLine">[(#GET{region})]</span>
+          <span class="mp-Org_AddressLine">[(#GET{pays})]</span>
+        </div>
+      </div>
+    </BOUCLE_adresse>
+    <ul class="mp-Org_Activities">
+      <BOUCLE_activites(MOTS){id_association}{id_groupe=1}{par titre}>
+        <li class="mp-Org_Activity">[(#TITRE)[ \((#DESCRIPTIF|textebrut)\)]]</li>
+      </BOUCLE_activites>
+    </ul>
+</BOUCLE_asso>
+  </div>
+</div>
+</BOUCLE_asso>

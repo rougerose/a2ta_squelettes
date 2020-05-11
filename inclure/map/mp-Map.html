@@ -1,6 +1,6 @@
 [(#SET{mapID, 1})]
 [<div id="a2taMap" class="mp-Map">
-  (#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID},
+  (#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID}, point=non,
     autocenterandzoom=non, objets=associations, utiliser_bb=oui,
     cluster=oui, clusterMaxZoom=11, style=non, zoom_molette=non})
   [(#REM) Récupérer l'objet carte grâce au callback de GIS]

@@ -17,9 +17,13 @@ const paths = {
     dest: "dist/js",
     watch: "_src/js/**/*.js",
   },
-  jsLib: {
+  jsLibConcat: {
     src: ["node_modules/swiped-events/dist/swiped-events.min.js"],
     dest: "dist/js/",
+  },
+  jsLibSep: {
+    src: ["node_modules/leaflet-sidebar/src/L.Control.Sidebar.js"],
+    dest: "dist/js",
   },
   scss: {
     src: "_src/scss/*.scss",
@@ -47,7 +51,7 @@ const options = {
     outputStyle: "compact",
     sourceComments: false,
   },
-  jsLib: {
+  jsLibConcat: {
     name: "a2taLib",
   },
 };
@@ -120,10 +124,21 @@ function copieWebfonts() {
   return src(paths.webfonts.src).pipe(dest(paths.webfonts.dest));
 }
 
-function copieJsLib() {
-  return src(paths.jsLib.src)
-    .pipe(concat(options.jsLib.name + ".js"))
-    .pipe(dest(paths.jsLib.dest));
+function copieJsLibConcat() {
+  return src(paths.jsLibConcat.src)
+    .pipe(concat(options.jsLibConcat.name + ".js"))
+    .pipe(dest(paths.jsLibConcat.dest));
+}
+
+function copieJsLibSep() {
+  return src(paths.jsLibSep.src)
+    .pipe(dest(paths.jsLibSep.dest))
+    .pipe(terser())
+    .on("error", function (error) {
+      this.emit("end");
+    })
+    .pipe(rename({ suffix: "min" }))
+    .pipe(dest(paths.jsLibSep.dest));
 }
 
 // Watch
@@ -133,14 +148,20 @@ function watchFiles() {
   watch(paths.js.watch, parallel(jsTaskFolders, jsTaskRoot));
 }
 
+exports.fonts = copieWebfonts;
+exports.jsLib = parallel(copieJsLibConcat, copieJsLibSep);
 exports.watch = series(
   cleanDist,
-  parallel(copieJsLib, jsTaskFolders, jsTaskRoot, scssTask),
+  parallel(
+    copieJsLibSep,
+    copieJsLibConcat,
+    jsTaskFolders,
+    jsTaskRoot,
+    scssTask
+  ),
   watchFiles
 );
-exports.copieFonts = copieWebfonts;
-exports.copieJsLib = copieJsLib;
 exports.default = series(
   cleanDist,
-  parallel(copieJsLib, jsTaskFolders, jsTaskRoot, scssTask)
+  parallel(copieJsLibSep, copieJsLibConcat, jsTaskFolders, jsTaskRoot, scssTask)
 );
