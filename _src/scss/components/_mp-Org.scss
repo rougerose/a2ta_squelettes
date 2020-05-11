@@ -8,8 +8,7 @@
 // }
 
 .mp-Org {
-  // overflow-y: auto;
-  padding: $spacing-unit-large $spacing-unit-small $spacing-unit $spacing-unit;
+  // padding: $spacing-unit-large $spacing-unit-small $spacing-unit $spacing-unit;
   // Pour les tests uniquement
   // position: absolute;
   // right: 0;
@@ -20,34 +19,54 @@
 
 .mp-Org_Header {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   border-bottom: 1px solid $color-gray-200;
   padding-bottom: $spacing-unit;
   margin-bottom: $spacing-unit;
+
+  @include mq(m) {
+    flex-direction: row;
+    align-items: baseline;
+  }
 }
 
 .mp-Org_Title {
   flex: 2;
-  @include font-size(28px, $modifier: -1.5);
+  @include font-size(20px, $modifier: -1.5);
   font-weight: normal;
-  margin-bottom: 0;
+  margin-bottom: $spacing-unit;
+
+  @include mq(m) {
+    @include font-size(26px, $modifier: -1.5);
+    margin-bottom: 0;
+  }
 }
 
 .mp-Org_MemberFraap {
+  align-self: flex-end;
   background-color: $color-black;
   color: $color-white;
   padding: $spacing-unit-tiny / 2 $spacing-unit-tiny;
   text-transform: uppercase;
-  @include font-size(14px, $line-height: inherit);
+  @include font-size(12px, $line-height: inherit);
   font-weight: bold;
   border-radius: $spacing-unit-tiny / 2;
+
+  @include mq(m) {
+    align-self: auto;
+  }
 }
 
 .mp-Org_Web {
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid $color-gray-200;
   padding-bottom: $spacing-unit;
   margin-bottom: $spacing-unit;
+
+  @include mq(m) {
+    flex-direction: row;
+  }
 }
 
 .mp-Org_WebSites {
@@ -55,21 +74,28 @@
   flex-direction: column;
   padding-bottom: $spacing-unit-tiny / 2;
   overflow: hidden;
-  width: 70%;
   text-overflow: ellipsis;
+
+  @include mq(m) {
+    width: 70%;
+  }
 }
 
 .mp-Org_SiteLink {
   margin-right: auto;
   white-space: nowrap;
-  border-bottom: 1px solid $color-gray-600;
   color: $color-gray-900;
 }
 
 .mp-Org_WebSocial {
-  width: 30%;
   display: flex;
   justify-content: flex-end;
+  margin-top: $spacing-unit-small;
+
+  @include mq(m) {
+    width: 30%;
+    margin: 0;
+  }
 }
 
 .mp-Org_SocialLink {
@@ -78,32 +104,37 @@
   height: 24px;
   background-color: $color-gray-400;
   margin-left: $spacing-unit-tiny;
-  background-size: contain;
 
   &-facebook {
-    background: url("../../img/icon-facebook-k-24.svg");
+    background: url("../../img/icon-facebook-k-24.svg") center / contain
+      no-repeat;
   }
 
   &-twitter {
-    background: url("../../img/icon-twitter-k-24.svg");
+    background: url("../../img/icon-twitter-k-24.svg") center / contain
+      no-repeat;
   }
 
   &-instagram {
-    background: url("../../img/icon-instagram-k-24.svg");
+    background: url("../../img/icon-instagram-k-24.svg") center / contain
+      no-repeat;
   }
 }
 
 span.mp-Org_SocialLink {
   &-facebook {
-    background: url("../../img/icon-facebook-g-24.svg");
+    background: url("../../img/icon-facebook-k-24.svg") center / contain
+      no-repeat;
   }
 
   &-twitter {
-    background: url("../../img/icon-twitter-g-24.svg");
+    background: url("../../img/icon-twitter-k-24.svg") center / contain
+      no-repeat;
   }
 
   &-instagram {
-    background: url("../../img/icon-instagram-g-24.svg");
+    background: url("../../img/icon-instagram-g-24.svg") center / contain
+      no-repeat;
   }
 }
 

@@ -5,7 +5,7 @@
 
 $threshold-lg: 1200px;
 $threshold-md: 992px;
-$threshold-sm: 600px; //768px;
+$threshold-sm: 500px; //768px;
 
 $width-lg: 460px;
 $width-md: 390px;
@@ -83,7 +83,7 @@ $transition-duration: 0.5s;
 
     @include box-sizing(border-box);
     // padding: 8px 24px;
-    padding: $spacing-unit-large $spacing-unit-small $spacing-unit $spacing-unit;
+    padding: $spacing-unit-large $spacing-unit-small $spacing-unit;
     // font-size: 1.1em;
 
     background: white;
