@@ -18,11 +18,17 @@ const paths = {
     watch: "_src/js/**/*.js",
   },
   jsLibConcat: {
-    src: ["node_modules/swiped-events/dist/swiped-events.min.js"],
+    src: [
+      "node_modules/swiped-events/dist/swiped-events.min.js",
+      "node_modules/spin.js/spin.min.js",
+    ],
     dest: "dist/js/",
   },
   jsLibSep: {
-    src: ["node_modules/leaflet-sidebar/src/L.Control.Sidebar.js"],
+    src: [
+      "node_modules/leaflet-sidebar/src/L.Control.Sidebar.js",
+      "node_modules/leaflet-spin/leaflet.spin.js",
+    ],
     dest: "dist/js",
   },
   scss: {
@@ -126,7 +132,7 @@ function copieWebfonts() {
 
 function copieJsLibConcat() {
   return src(paths.jsLibConcat.src)
-    .pipe(concat(options.jsLibConcat.name + ".js"))
+    .pipe(concat(options.jsLibConcat.name + ".min.js"))
     .pipe(dest(paths.jsLibConcat.dest));
 }
 

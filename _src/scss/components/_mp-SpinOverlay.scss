@@ -1,0 +1,17 @@
+// ========================================
+// mp-SpinOverlay
+// ========================================
+
+.mp-SpinOverlay {
+  background-color: $color-gray-800;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: $zindex-map-search + 2;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+
+  &.is-visible {
+    opacity: 0.8;
+  }
+}

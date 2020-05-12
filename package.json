@@ -28,6 +28,7 @@
     "inuit-flexgrid": "^0.4.0",
     "inuitcss": "^6.0.0",
     "leaflet-sidebar": "0.2.2",
+    "leaflet-spin": "^1.1.2",
     "merge-stream": "^2.0.0",
     "node-sass": "^4.13.1",
     "postcss-cli": "^7.1.0",

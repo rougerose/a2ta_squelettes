@@ -23,7 +23,7 @@
 
   <spip compatibilite="[3.2.0;3.2.*]">
 		<style type="public" source="dist/css/a2ta.css" />
-		<script type="public" source="dist/js/A2taLib.js" />
+		<script type="public" source="dist/js/A2taLib.min.js" />
 		<script type="public" source="dist/js/A2ta.js" />
 	</spip>
 </paquet>

@@ -4,9 +4,11 @@ A2ta.Map = (function () {
   var map = null;
   var container = null;
   var sidebar = null;
+  var spinIsActive = false;
 
   function init(mapObj) {
     map = mapObj;
+    addSpin(map);
     chargerGeoPoints();
     setZoomControl(map);
     A2ta.config.map.defaultLat = map.options.center[0];
@@ -15,6 +17,25 @@ A2ta.Map = (function () {
     container = document.getElementById(A2ta.config.map.containerID);
     addSidebar(map);
     A2ta.Map.Search.init();
+  }
+
+  function addSpin(mapObj) {
+    var container = mapObj.getContainer();
+    var overlay = L.DomUtil.create("div", "mp-SpinOverlay", container);
+    overlay.id = "spinOverlay";
+    L.DomUtil.addClass(overlay, "is-visible");
+    spinIsActive = true;
+    mapObj.spin(true);
+  }
+
+  function removeSpin(mapObj) {
+    var overlay = L.DomUtil.get("spinOverlay");
+    setTimeout(function () {
+      L.DomUtil.removeClass(overlay, "is-visible");
+      mapObj.spin(false);
+      spinIsActive = false;
+    }, 600);
+    L.DomUtil.remove(overlay);
   }
 
   function addSidebar(mapObj) {
@@ -28,9 +49,6 @@ A2ta.Map = (function () {
     });
 
     mapObj.addControl(sidebar);
-    // setTimeout(function () {
-    //   sidebar.show();
-    // }, 500);
   }
 
   function setZoomControl(mapObj) {
@@ -53,7 +71,6 @@ A2ta.Map = (function () {
 
       // Construire la requête à partir des mots-clés
       // demandés par l'utilisateur.
-
       for (var i = 0; i < keywords.length; i++) {
         var p = keywords[i].split(":");
 
@@ -103,7 +120,6 @@ A2ta.Map = (function () {
       // Afficher la carte dans sa position initiale
       // et avec toutes les associations disponibles.
       var url = "?page=gis_json&objets=associations&limit=500";
-      console.log(url);
       $.getJSON(url).done(function (json) {
         parseJson(json, true);
       });
@@ -120,8 +136,8 @@ A2ta.Map = (function () {
   function parseJson(json, reset) {
     var defaultView = reset;
 
-    // TODO: prévoir un traitement spécifique également.
     if (!map.options.cluster) {
+      // TODO: prévoir un traitement spécifique également ?
       map.parseGeoJsonFeatures(data);
     } else {
       var markers = [];
@@ -164,6 +180,9 @@ A2ta.Map = (function () {
           [A2ta.config.map.defaultLat, A2ta.config.map.defaultLng],
           A2ta.config.map.defaultZoom
         );
+      }
+      if (spinIsActive) {
+        removeSpin(map);
       }
     }
   }
@@ -305,50 +324,6 @@ A2ta.Map = (function () {
     }
     return content;
   }
-
-  // parseGeoJson: function (data) {
-  // 	var map = this;
-  // 	// Analyse des points et déclaration (sans regroupement des points en cluster)
-  // 	if (!map.options.cluster) {
-  // 		this.parseGeoJsonFeatures(data);
-  // 	} else {
-  // 		map.markerCluster = L.markerClusterGroup(map.options.clusterOptions).addTo(map);
-  // 		var markers = [];
-  // 		var autres = {
-  // 			type: 'FeatureCollection',
-  // 			features: []
-  // 		};
-  // 		/* Pour chaque points présents, on crée un marqueur */
-  // 		jQuery.each(data.features, function (i, feature) {
-  // 			if (feature.geometry.type == 'Point' && feature.geometry.coordinates[0]) {
-  // 				var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
-  //
-  // 				// Déclarer l'icone du point
-  // 				map.setGeoJsonFeatureIcon(feature, marker);
-  // 				// Déclarer le contenu de la popup s'il y en a
-  // 				map.setGeoJsonFeaturePopup(feature, marker);
-  //
-  // 				// On garde en mémoire toute la feature d'origine dans le marker, comme sans clusters
-  // 				marker.feature = feature;
-  // 				// Pour compat, on continue de garde l'id à part
-  // 				marker.id = feature.id;
-  // 				markers.push(marker);
-  // 			} else {
-  // 				autres.features.push(feature);
-  // 			}
-  // 		});
-  //
-  // 		map.markerCluster.addLayers(markers);
-  // 		this.parseGeoJsonFeatures(autres);
-  //
-  // 		if (map.options.autocenterandzoom) {
-  // 			this.centerAndZoom(map.markerCluster.getBounds());
-  // 		}
-  // 		if (map.options.openId) {
-  // 			gis_focus_marker(map.options.openId,map.options.mapId);
-  // 		}
-  // 	}
-  // },
 
   return {
     init: init,
