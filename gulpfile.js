@@ -28,6 +28,7 @@ const paths = {
     src: [
       "node_modules/leaflet-sidebar/src/L.Control.Sidebar.js",
       "node_modules/leaflet-spin/leaflet.spin.js",
+      "node_modules/leaflet-easybutton/src/easy-button.js",
     ],
     dest: "dist/js",
   },

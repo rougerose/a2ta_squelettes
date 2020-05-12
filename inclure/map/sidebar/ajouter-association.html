@@ -1,0 +1,26 @@
+#HTTP_HEADER{Content-Type: text/html}
+<BOUCLE_ajouter_association(ARTICLES){page=ajouter_association}>
+  <div class="mp-Org">
+    <div class="mp-Org_Header">
+      <h2 class="mp-Org_Title">#TITRE</h2>
+    </div>
+    <div class="mp-Org_Text">
+      [(#TEXTE)]
+      <form action="">
+        <p><strong>Attention ce formulaire ne fonctionne pas.</strong></p>
+        <label for="nom">Nom de l'association</label><br/>
+        <input type="text">
+        <h4>Adresse</h4>
+        <label for="">Rue</label><br/>
+        <input type="text"><br/>
+        <label for="">Complément</label><br/>
+        <input type="text"><br/>
+        <label for="">Code postal</label><br/>
+        <input type="text" size="5"><br/>
+        <label for="">Ville</label><br/>
+        <input type="text"><br/>
+        <p>etc…</p>
+      </form>
+    </div>
+  </div>
+</BOUCLE_ajouter_association>

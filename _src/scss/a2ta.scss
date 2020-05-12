@@ -128,10 +128,12 @@
 
 // Lib : Hamburgers
 @import "hamburgers/_sass/hamburgers/hamburgers";
-@import "components/L.Control.Sidebar.scss";
+@import "components/L.Control.Sidebar";
+@import "components/leaflet-easybutton";
 
 // Map / mp
 @import "components/mp-Map";
+@import "components/mp-Icon";
 @import "components/mp-Categories";
 @import "components/mp-Form";
 @import "components/mp-Keywords";

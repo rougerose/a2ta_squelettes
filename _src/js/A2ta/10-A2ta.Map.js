@@ -8,14 +8,15 @@ A2ta.Map = (function () {
 
   function init(mapObj) {
     map = mapObj;
+    container = document.getElementById(A2ta.config.map.containerID);
     addSpin(map);
     chargerGeoPoints();
-    setZoomControl(map);
+    setControls(map);
+    addSidebar(map);
     A2ta.config.map.defaultLat = map.options.center[0];
     A2ta.config.map.defaultLng = map.options.center[1];
     A2ta.config.map.defaultZoom = map.options.zoom;
-    container = document.getElementById(A2ta.config.map.containerID);
-    addSidebar(map);
+    //
     A2ta.Map.Search.init();
   }
 
@@ -51,10 +52,51 @@ A2ta.Map = (function () {
     mapObj.addControl(sidebar);
   }
 
-  function setZoomControl(mapObj) {
-    // Position par défaut du zoom est désactivée. Puis définie à nouveau.
-    mapObj.options.zoomControl = false;
+  function setControls(mapObj) {
+    // Le zoom est désactivé par défaut, car forcément positionné
+    // en haut à gauche.
     L.control.zoom({ position: "bottomleft" }).addTo(mapObj);
+    // Bouton A propos de la carte
+    var infoBtn = L.easyButton({
+      position: "bottomleft",
+      states: [
+        {
+          icon: '<svg class="mp-Icon"><use href="#iconInfo" /></svg>',
+          title: "À propos de cette carte",
+          onClick: function (control) {
+            $.get("spip.php?page=inclure/map/sidebar/info", function (html) {
+              sidebar.setContent(html);
+              if (!sidebar.isVisible()) {
+                sidebar.show();
+              }
+            });
+          },
+        },
+      ],
+    });
+    // Bouton Ajouter une association à la carte
+    var addOrgBtn = L.easyButton({
+      position: "bottomleft",
+      states: [
+        {
+          icon: '<svg class="mp-Icon"><use href="#iconGeoAdd" /></svg>',
+          onClick: function (control) {
+            $.get(
+              "spip.php?page=inclure/map/sidebar/ajouter-association",
+              function (html) {
+                sidebar.setContent(html);
+                if (!sidebar.isVisible()) {
+                  sidebar.show();
+                }
+              }
+            );
+          },
+        },
+      ],
+    });
+
+    infoBtn.addTo(mapObj);
+    addOrgBtn.addTo(mapObj);
   }
 
   function chargerGeoPoints(keywords) {
