@@ -22,3 +22,7 @@
 # Carte > Recherche > Liste des activités
 
 - La barre de défilement du navigateur reste visible. Chercher une meilleure solution : soit défilement natif soit possibilité de masquer le défilement natif ?
+
+# Icones
+
+Insérer toutes les icones dans le fichier sprite
