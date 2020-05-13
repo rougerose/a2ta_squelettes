@@ -4,7 +4,8 @@ A2ta.siteHeader = (function () {
   var header = null,
     deltaHeader = 5,
     lastScrollTop = 0,
-    headerHeight = 0;
+    headerHeight = 0,
+    menuTriggers = null;
 
   function init() {
     header = document.body.querySelector(
@@ -12,10 +13,22 @@ A2ta.siteHeader = (function () {
     );
     headerHeight = header.offsetHeight;
     handleOnScroll();
-    var menuTrigger = header.querySelector(
-      "#" + A2ta.config.header.menuTriggerID
+
+    menuTriggers = document.querySelectorAll(
+      "." + A2ta.config.header.menuTrigger
     );
-    menuTrigger.addEventListener("click", handleClickMenu, false);
+    menuTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", handleTriggerEvent, false);
+    });
+
+    // Nav -> Transition delay
+    var nav = document.querySelector("." + A2ta.config.header.nav);
+    var list = nav.children[0].children,
+      delay = 2;
+
+    for (var i = 0; i < list.length; i++) {
+      list[i].style.transitionDelay = (delay + i) / 10 + "s";
+    }
   }
 
   // https://medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c
@@ -45,12 +58,24 @@ A2ta.siteHeader = (function () {
     };
   }
 
-  function handleClickMenu(event) {
-    if (this.classList.contains("is-active")) {
-      this.classList.remove("is-active");
+  function handleTriggerEvent(event) {
+    var body = document.body,
+      open;
+
+    if (body.classList.contains("nav-is-opened")) {
+      body.classList.remove("nav-is-opened");
+      open = false;
     } else {
-      this.classList.add("is-active");
+      body.classList.add("nav-is-opened");
+      open = true;
     }
+    menuTriggers.forEach(function (trigger) {
+      if (open) {
+        trigger.classList.add("is-active");
+      } else {
+        trigger.classList.remove("is-active");
+      }
+    });
   }
 
   return {

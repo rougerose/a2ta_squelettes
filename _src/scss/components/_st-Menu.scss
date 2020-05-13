@@ -1,0 +1,52 @@
+// ========================================
+// st-Menu
+// ========================================
+
+.st-Menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 0;
+  z-index: $zindex-header + 1;
+  overflow: hidden;
+  background-color: $color-gray-900;
+  transition: max-height 1s cubic-bezier(0.26, 0.02, 0, 0.99);
+
+  .nav-is-opened & {
+    max-height: 100%;
+  }
+}
+
+.st-MenuHeader_Inner {
+  display: flex;
+}
+
+.st-MenuHeader_Identity {
+  display: flex;
+  flex: 2;
+  padding: $spacing-unit-small 0;
+}
+
+.st-MenuHeader_Home {
+  display: flex;
+  align-items: baseline;
+}
+
+.st-MenuHeader_Logo {
+  margin-right: 0.5rem;
+  @include font-size(28px, false);
+  font-weight: bold;
+  color: $color-white;
+}
+
+.st-MenuHeader_Baseline {
+  display: none;
+  @include font-size(18px, false);
+  color: $color-white;
+
+  @include mq($mq-siteHeader-m) {
+    display: inline;
+  }
+}

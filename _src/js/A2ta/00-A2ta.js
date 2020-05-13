@@ -10,7 +10,8 @@ A2ta = (function () {
       sections: "[data-section]",
     },
     header: {
-      menuTriggerID: "hamburger",
+      menuTrigger: "hamburger",
+      nav: "st-Nav",
     },
     map: {
       containerID: "a2taMap",

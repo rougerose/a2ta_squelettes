@@ -1,0 +1,81 @@
+// ========================================
+// st-Nav
+// ========================================
+
+.st-Nav {
+  margin-top: $spacing-unit + $spacing-unit-tiny;
+
+  @include mq(m) {
+    margin-top: $spacing-unit-huge;
+  }
+}
+
+.st-Nav_List {
+  list-style: none;
+  margin: 0;
+}
+
+.st-Nav_ListItem {
+  transform: translateX(-100px);
+  transition: all 1s 1s cubic-bezier(0.26, 0.02, 0, 0.99);
+
+  .js & {
+    opacity: 0;
+  }
+
+  .nav-is-opened & {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.st-Nav_Link {
+  display: block;
+  padding: $spacing-unit-small 0;
+  @include font-size(22px);
+  color: $color-gray-400;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-gray-100;
+  }
+
+  @include mq(m) {
+    @include font-size(26px);
+  }
+
+  @include mq(l) {
+    @include font-size(30px);
+  }
+}
+
+.st-Nav_Social {
+  margin-top: $spacing-unit-large;
+  transform: translateY(100px);
+  transition: all 1s 0.7s cubic-bezier(0.26, 0.02, 0, 0.99);
+
+  .js & {
+    opacity: 0;
+  }
+
+  .nav-is-opened & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.st-Nav_SocialLink {
+  display: block;
+  padding: $spacing-unit-tiny 0;
+  @include font-size(18px);
+  color: $color-gray-400;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-gray-100;
+  }
+
+  @include mq(m) {
+    @include font-size(20px);
+  }
+}

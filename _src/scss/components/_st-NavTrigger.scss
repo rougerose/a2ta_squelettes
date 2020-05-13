@@ -1,0 +1,52 @@
+// ========================================
+// st-NavTrigger
+// ========================================
+
+$hamburgerHeight: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+$hamburgerRatio: $hamburger-layer-width / $hamburgerHeight;
+
+.st-NavTrigger {
+  flex: 0;
+
+  & .hamburger-box,
+  & .hamburger-inner,
+  & .hamburger-inner::before,
+  & .hamburger-inner::after {
+    width: 30px;
+  }
+
+  & .hamburger-box {
+    height: ceil(30px / $hamburgerRatio);
+  }
+
+  & .hamburger-inner,
+  & .hamburger-inner::before,
+  & .hamburger-inner::after {
+    height: ceil($hamburger-layer-height / $hamburgerRatio);
+  }
+
+  & .hamburger-inner::before {
+    top: ceil(
+      (($hamburger-layer-spacing + $hamburger-layer-height) * -1) /
+        $hamburgerRatio
+    );
+  }
+
+  & .hamburger-inner::after {
+    bottom: ceil(
+      (($hamburger-layer-spacing + $hamburger-layer-height) * -1) /
+        $hamburgerRatio
+    );
+  }
+
+  &-Menu {
+    & .hamburger-inner,
+    &.is-active .hamburger-inner {
+      &,
+      &::before,
+      &::after {
+        background-color: $color-white;
+      }
+    }
+  }
+}

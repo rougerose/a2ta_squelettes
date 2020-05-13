@@ -3,8 +3,6 @@
 // ========================================
 
 $mq-siteHeader-m: 528px;
-$hamburgerHeight: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
-$hamburgerRatio: $hamburger-layer-width / $hamburgerHeight;
 
 .st-SiteHeader {
   position: fixed;
@@ -64,42 +62,5 @@ $hamburgerRatio: $hamburger-layer-width / $hamburgerHeight;
 
   @include mq($mq-siteHeader-m) {
     display: inline;
-  }
-}
-
-// ---------------- st-SiteHeader_MenuTrigger ---------------- //
-
-.st-SiteHeader_MenuTrigger {
-  flex: 0;
-
-  & .hamburger-box,
-  & .hamburger-inner,
-  & .hamburger-inner::before,
-  & .hamburger-inner::after {
-    width: 30px;
-  }
-
-  & .hamburger-box {
-    height: ceil(30px / $hamburgerRatio);
-  }
-
-  & .hamburger-inner,
-  & .hamburger-inner::before,
-  & .hamburger-inner::after {
-    height: ceil($hamburger-layer-height / $hamburgerRatio);
-  }
-
-  & .hamburger-inner::before {
-    top: ceil(
-      (($hamburger-layer-spacing + $hamburger-layer-height) * -1) /
-        $hamburgerRatio
-    );
-  }
-
-  & .hamburger-inner::after {
-    bottom: ceil(
-      (($hamburger-layer-spacing + $hamburger-layer-height) * -1) /
-        $hamburgerRatio
-    );
   }
 }
