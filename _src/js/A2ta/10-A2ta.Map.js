@@ -26,14 +26,14 @@ A2ta.Map = (function () {
     overlay.id = "spinOverlay";
     L.DomUtil.addClass(overlay, "is-visible");
     spinIsActive = true;
-    //mapObj.spin(true);
+    mapObj.spin(true);
   }
 
   function removeSpin(mapObj) {
     var overlay = L.DomUtil.get("spinOverlay");
     setTimeout(function () {
       L.DomUtil.removeClass(overlay, "is-visible");
-      //mapObj.spin(false);
+      // mapObj.spin(false);
       spinIsActive = false;
     }, 600);
     L.DomUtil.remove(overlay);
