@@ -59,7 +59,7 @@ const options = {
     sourceComments: false,
   },
   jsLibConcat: {
-    name: "a2taLib",
+    name: "A2taLib",
   },
 };
 

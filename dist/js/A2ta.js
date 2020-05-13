@@ -247,7 +247,7 @@ A2ta.Map = (function () {
     var overlay = L.DomUtil.get("spinOverlay");
     setTimeout(function () {
       L.DomUtil.removeClass(overlay, "is-visible");
-      // mapObj.spin(false);
+      mapObj.spin(false);
       spinIsActive = false;
     }, 600);
     L.DomUtil.remove(overlay);
