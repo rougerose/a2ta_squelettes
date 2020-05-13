@@ -347,6 +347,22 @@ a { text-decoration: none; color: black; }
 
 .leaflet-right { transition: right 0.5s; }
 
+.leaflet-bar button, .leaflet-bar button:hover { padding: 0; background-color: #fff; border: none; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; }
+
+.leaflet-bar button { background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; }
+
+.leaflet-bar button:hover { background-color: #f4f4f4; }
+
+.leaflet-bar button:first-of-type { border-top-left-radius: 4px; border-top-right-radius: 4px; }
+
+.leaflet-bar button:last-of-type { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; }
+
+.leaflet-bar.disabled, .leaflet-bar button.disabled { cursor: default; pointer-events: none; opacity: 0.4; }
+
+.easy-button-button .button-state { display: block; width: 100%; height: 100%; position: relative; }
+
+.leaflet-touch .leaflet-bar button { width: 30px; height: 30px; line-height: 30px; }
+
 .mp-Map { position: relative; }
 
 .mp-Map .leaflet-container { font: inherit; }
@@ -356,6 +372,8 @@ a { text-decoration: none; color: black; }
 .mp-Map .leaflet-fade-anim .leaflet-tile, .mp-Map .leaflet-zoom-anim .leaflet-zoom-animated { will-change: auto !important; }
 
 .mp-Map .carte_gis { width: 100%; height: calc(100vh - 100px); }
+
+.mp-Icon { width: 20px; height: 20px; margin: 5px; }
 
 .mp-Category { position: relative; display: block; margin: 6px 0; padding-left: 12px; font-size: 14px; font-size: 0.875rem; line-height: 1.28571; white-space: nowrap; color: #919eb1; cursor: pointer; transition: color 0.3s ease; }
 
@@ -517,6 +535,10 @@ span.mp-Org_SocialLink-instagram { background: url("../../img/icon-instagram-g-2
 
 .mp-Search_Advanced[aria-busy="true"] { position: relative; visibility: visible; overflow: hidden; height: 0; }
 
+.mp-SpinOverlay { background-color: #3f4a5a; position: absolute; height: 100%; width: 100%; z-index: 8; transition: opacity 0.4s ease; opacity: 0; }
+
+.mp-SpinOverlay.is-visible { opacity: 0.8; }
+
 .mp-Tabs_Head { display: flex; margin: 0; }
 
 .mp-Tab_HeaderBtn { position: relative; padding: 6px 12px; color: #b2bbc8; text-transform: uppercase; font-size: 14px; font-size: 0.875rem; line-height: 0.85714; font-weight: bold; transition: color 0.3s ease; }
@@ -654,18 +676,6 @@ span.mp-Org_SocialLink-instagram { background: url("../../img/icon-instagram-g-2
 
 @media (min-width: 33em) { .st-SiteHeader_Baseline { display: inline; } }
 
-.st-SiteHeader_MenuTrigger { flex: 0; }
-
-.st-SiteHeader_MenuTrigger .hamburger-box, .st-SiteHeader_MenuTrigger .hamburger-inner, .st-SiteHeader_MenuTrigger .hamburger-inner::before, .st-SiteHeader_MenuTrigger .hamburger-inner::after { width: 30px; }
-
-.st-SiteHeader_MenuTrigger .hamburger-box { height: 18px; }
-
-.st-SiteHeader_MenuTrigger .hamburger-inner, .st-SiteHeader_MenuTrigger .hamburger-inner::before, .st-SiteHeader_MenuTrigger .hamburger-inner::after { height: 3px; }
-
-.st-SiteHeader_MenuTrigger .hamburger-inner::before { top: -6px; }
-
-.st-SiteHeader_MenuTrigger .hamburger-inner::after { bottom: -6px; }
-
 .st-SiteContent { position: relative; z-index: 1; padding-bottom: 24px; background-color: #fafafa; }
 
 .st-SiteContent_Inner { transition: transform 0.7s ease, opacity 0.7s ease; }
@@ -693,6 +703,68 @@ span.mp-Org_SocialLink-instagram { background: url("../../img/icon-instagram-g-2
 .st-SiteFooter_SiteSocial { font-size: 15px; font-size: 0.9375rem; line-height: 1.4; }
 
 .st-SiteFooter_SiteSocial > li::before { content: "/"; margin-right: 6px; }
+
+.st-Menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; max-height: 0; z-index: 11; overflow: hidden; background-color: #1f2732; transition: max-height 1s cubic-bezier(0.26, 0.02, 0, 0.99); }
+
+.nav-is-opened .st-Menu { max-height: 100%; }
+
+.st-MenuHeader_Inner { display: flex; }
+
+.st-MenuHeader_Identity { display: flex; flex: 2; padding: 12px 0; }
+
+.st-MenuHeader_Home { display: flex; align-items: baseline; }
+
+.st-MenuHeader_Logo { margin-right: 0.5rem; font-size: 28px; font-size: 1.75rem; font-weight: bold; color: white; }
+
+.st-MenuHeader_Baseline { display: none; font-size: 18px; font-size: 1.125rem; color: white; }
+
+@media (min-width: 33em) { .st-MenuHeader_Baseline { display: inline; } }
+
+.st-Nav { margin-top: 30px; }
+
+@media (min-width: 40em) { .st-Nav { margin-top: 96px; } }
+
+.st-Nav_List { list-style: none; margin: 0; }
+
+.st-Nav_ListItem { transform: translateX(-100px); transition: all 1s 1s cubic-bezier(0.26, 0.02, 0, 0.99); }
+
+.js .st-Nav_ListItem { opacity: 0; }
+
+.nav-is-opened .st-Nav_ListItem { transform: none; opacity: 1; }
+
+.st-Nav_Link { display: block; padding: 12px 0; font-size: 22px; font-size: 1.375rem; line-height: 1.36364; color: #ccd4db; transition: color 0.3s ease; }
+
+.st-Nav_Link:hover { color: #f9fafb; }
+
+@media (min-width: 40em) { .st-Nav_Link { font-size: 26px; font-size: 1.625rem; line-height: 1.38462; } }
+
+@media (min-width: 64em) { .st-Nav_Link { font-size: 30px; font-size: 1.875rem; line-height: 1.2; } }
+
+.st-Nav_Social { margin-top: 48px; transform: translateY(100px); transition: all 1s 0.7s cubic-bezier(0.26, 0.02, 0, 0.99); }
+
+.js .st-Nav_Social { opacity: 0; }
+
+.nav-is-opened .st-Nav_Social { opacity: 1; transform: none; }
+
+.st-Nav_SocialLink { display: block; padding: 6px 0; font-size: 18px; font-size: 1.125rem; line-height: 1.33333; color: #ccd4db; transition: color 0.3s ease; }
+
+.st-Nav_SocialLink:hover { color: #f9fafb; }
+
+@media (min-width: 40em) { .st-Nav_SocialLink { font-size: 20px; font-size: 1.25rem; line-height: 1.5; } }
+
+.st-NavTrigger { flex: 0; }
+
+.st-NavTrigger .hamburger-box, .st-NavTrigger .hamburger-inner, .st-NavTrigger .hamburger-inner::before, .st-NavTrigger .hamburger-inner::after { width: 30px; }
+
+.st-NavTrigger .hamburger-box { height: 18px; }
+
+.st-NavTrigger .hamburger-inner, .st-NavTrigger .hamburger-inner::before, .st-NavTrigger .hamburger-inner::after { height: 3px; }
+
+.st-NavTrigger .hamburger-inner::before { top: -6px; }
+
+.st-NavTrigger .hamburger-inner::after { bottom: -6px; }
+
+.st-NavTrigger-Menu .hamburger-inner, .st-NavTrigger-Menu .hamburger-inner::before, .st-NavTrigger-Menu .hamburger-inner::after, .st-NavTrigger-Menu.is-active .hamburger-inner, .st-NavTrigger-Menu.is-active .hamburger-inner::before, .st-NavTrigger-Menu.is-active .hamburger-inner::after { background-color: white; }
 
 /*=============================================>>>>>
 = spip-admin =

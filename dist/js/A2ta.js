@@ -10,7 +10,8 @@ A2ta = (function () {
       sections: "[data-section]",
     },
     header: {
-      menuTriggerID: "hamburger",
+      menuTrigger: "hamburger",
+      nav: "st-Nav",
     },
     map: {
       containerID: "a2taMap",
@@ -132,7 +133,8 @@ A2ta.siteHeader = (function () {
   var header = null,
     deltaHeader = 5,
     lastScrollTop = 0,
-    headerHeight = 0;
+    headerHeight = 0,
+    menuTriggers = null;
 
   function init() {
     header = document.body.querySelector(
@@ -140,10 +142,22 @@ A2ta.siteHeader = (function () {
     );
     headerHeight = header.offsetHeight;
     handleOnScroll();
-    var menuTrigger = header.querySelector(
-      "#" + A2ta.config.header.menuTriggerID
+
+    menuTriggers = document.querySelectorAll(
+      "." + A2ta.config.header.menuTrigger
     );
-    menuTrigger.addEventListener("click", handleClickMenu, false);
+    menuTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", handleTriggerEvent, false);
+    });
+
+    // Nav -> Transition delay
+    var nav = document.querySelector("." + A2ta.config.header.nav);
+    var list = nav.children[0].children,
+      delay = 2;
+
+    for (var i = 0; i < list.length; i++) {
+      list[i].style.transitionDelay = (delay + i) / 10 + "s";
+    }
   }
 
   // https://medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c
@@ -173,12 +187,24 @@ A2ta.siteHeader = (function () {
     };
   }
 
-  function handleClickMenu(event) {
-    if (this.classList.contains("is-active")) {
-      this.classList.remove("is-active");
+  function handleTriggerEvent(event) {
+    var body = document.body,
+      open;
+
+    if (body.classList.contains("nav-is-opened")) {
+      body.classList.remove("nav-is-opened");
+      open = false;
     } else {
-      this.classList.add("is-active");
+      body.classList.add("nav-is-opened");
+      open = true;
     }
+    menuTriggers.forEach(function (trigger) {
+      if (open) {
+        trigger.classList.add("is-active");
+      } else {
+        trigger.classList.remove("is-active");
+      }
+    });
   }
 
   return {
@@ -192,17 +218,39 @@ A2ta.Map = (function () {
   var map = null;
   var container = null;
   var sidebar = null;
+  var spinIsActive = false;
 
   function init(mapObj) {
     map = mapObj;
+    container = document.getElementById(A2ta.config.map.containerID);
+    addSpin(map);
     chargerGeoPoints();
-    setZoomControl(map);
+    setControls(map);
+    addSidebar(map);
     A2ta.config.map.defaultLat = map.options.center[0];
     A2ta.config.map.defaultLng = map.options.center[1];
     A2ta.config.map.defaultZoom = map.options.zoom;
-    container = document.getElementById(A2ta.config.map.containerID);
-    addSidebar(map);
+    //
     A2ta.Map.Search.init();
+  }
+
+  function addSpin(mapObj) {
+    var container = mapObj.getContainer();
+    var overlay = L.DomUtil.create("div", "mp-SpinOverlay", container);
+    overlay.id = "spinOverlay";
+    L.DomUtil.addClass(overlay, "is-visible");
+    spinIsActive = true;
+    mapObj.spin(true);
+  }
+
+  function removeSpin(mapObj) {
+    var overlay = L.DomUtil.get("spinOverlay");
+    setTimeout(function () {
+      L.DomUtil.removeClass(overlay, "is-visible");
+      mapObj.spin(false);
+      spinIsActive = false;
+    }, 600);
+    L.DomUtil.remove(overlay);
   }
 
   function addSidebar(mapObj) {
@@ -216,15 +264,53 @@ A2ta.Map = (function () {
     });
 
     mapObj.addControl(sidebar);
-    // setTimeout(function () {
-    //   sidebar.show();
-    // }, 500);
   }
 
-  function setZoomControl(mapObj) {
-    // Position par défaut du zoom est désactivée. Puis définie à nouveau.
-    mapObj.options.zoomControl = false;
+  function setControls(mapObj) {
+    // Le zoom est désactivé par défaut, car forcément positionné
+    // en haut à gauche.
     L.control.zoom({ position: "bottomleft" }).addTo(mapObj);
+    // Bouton A propos de la carte
+    var infoBtn = L.easyButton({
+      position: "bottomleft",
+      states: [
+        {
+          icon: '<svg class="mp-Icon"><use href="#iconInfo" /></svg>',
+          title: "À propos de cette carte",
+          onClick: function (control) {
+            $.get("spip.php?page=inclure/map/sidebar/info", function (html) {
+              sidebar.setContent(html);
+              if (!sidebar.isVisible()) {
+                sidebar.show();
+              }
+            });
+          },
+        },
+      ],
+    });
+    // Bouton Ajouter une association à la carte
+    var addOrgBtn = L.easyButton({
+      position: "bottomleft",
+      states: [
+        {
+          icon: '<svg class="mp-Icon"><use href="#iconGeoAdd" /></svg>',
+          onClick: function (control) {
+            $.get(
+              "spip.php?page=inclure/map/sidebar/ajouter-association",
+              function (html) {
+                sidebar.setContent(html);
+                if (!sidebar.isVisible()) {
+                  sidebar.show();
+                }
+              }
+            );
+          },
+        },
+      ],
+    });
+
+    infoBtn.addTo(mapObj);
+    addOrgBtn.addTo(mapObj);
   }
 
   function chargerGeoPoints(keywords) {
@@ -241,7 +327,6 @@ A2ta.Map = (function () {
 
       // Construire la requête à partir des mots-clés
       // demandés par l'utilisateur.
-
       for (var i = 0; i < keywords.length; i++) {
         var p = keywords[i].split(":");
 
@@ -291,7 +376,6 @@ A2ta.Map = (function () {
       // Afficher la carte dans sa position initiale
       // et avec toutes les associations disponibles.
       var url = "?page=gis_json&objets=associations&limit=500";
-      console.log(url);
       $.getJSON(url).done(function (json) {
         parseJson(json, true);
       });
@@ -308,8 +392,8 @@ A2ta.Map = (function () {
   function parseJson(json, reset) {
     var defaultView = reset;
 
-    // TODO: prévoir un traitement spécifique également.
     if (!map.options.cluster) {
+      // TODO: prévoir un traitement spécifique également ?
       map.parseGeoJsonFeatures(data);
     } else {
       var markers = [];
@@ -352,6 +436,9 @@ A2ta.Map = (function () {
           [A2ta.config.map.defaultLat, A2ta.config.map.defaultLng],
           A2ta.config.map.defaultZoom
         );
+      }
+      if (spinIsActive) {
+        removeSpin(map);
       }
     }
   }
@@ -493,50 +580,6 @@ A2ta.Map = (function () {
     }
     return content;
   }
-
-  // parseGeoJson: function (data) {
-  // 	var map = this;
-  // 	// Analyse des points et déclaration (sans regroupement des points en cluster)
-  // 	if (!map.options.cluster) {
-  // 		this.parseGeoJsonFeatures(data);
-  // 	} else {
-  // 		map.markerCluster = L.markerClusterGroup(map.options.clusterOptions).addTo(map);
-  // 		var markers = [];
-  // 		var autres = {
-  // 			type: 'FeatureCollection',
-  // 			features: []
-  // 		};
-  // 		/* Pour chaque points présents, on crée un marqueur */
-  // 		jQuery.each(data.features, function (i, feature) {
-  // 			if (feature.geometry.type == 'Point' && feature.geometry.coordinates[0]) {
-  // 				var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
-  //
-  // 				// Déclarer l'icone du point
-  // 				map.setGeoJsonFeatureIcon(feature, marker);
-  // 				// Déclarer le contenu de la popup s'il y en a
-  // 				map.setGeoJsonFeaturePopup(feature, marker);
-  //
-  // 				// On garde en mémoire toute la feature d'origine dans le marker, comme sans clusters
-  // 				marker.feature = feature;
-  // 				// Pour compat, on continue de garde l'id à part
-  // 				marker.id = feature.id;
-  // 				markers.push(marker);
-  // 			} else {
-  // 				autres.features.push(feature);
-  // 			}
-  // 		});
-  //
-  // 		map.markerCluster.addLayers(markers);
-  // 		this.parseGeoJsonFeatures(autres);
-  //
-  // 		if (map.options.autocenterandzoom) {
-  // 			this.centerAndZoom(map.markerCluster.getBounds());
-  // 		}
-  // 		if (map.options.openId) {
-  // 			gis_focus_marker(map.options.openId,map.options.mapId);
-  // 		}
-  // 	}
-  // },
 
   return {
     init: init,
