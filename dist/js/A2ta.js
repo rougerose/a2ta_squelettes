@@ -278,7 +278,7 @@ A2ta.Map = (function () {
           icon: '<svg class="mp-Icon"><use href="#iconInfo" /></svg>',
           title: "À propos de cette carte",
           onClick: function (control) {
-            $.get("spip.php?page=inclure/map/sidebar/info", function (html) {
+            $.get("spip.php?page=map-info", function (html) {
               sidebar.setContent(html);
               if (!sidebar.isVisible()) {
                 sidebar.show();
@@ -295,15 +295,12 @@ A2ta.Map = (function () {
         {
           icon: '<svg class="mp-Icon"><use href="#iconGeoAdd" /></svg>',
           onClick: function (control) {
-            $.get(
-              "spip.php?page=inclure/map/sidebar/ajouter-association",
-              function (html) {
-                sidebar.setContent(html);
-                if (!sidebar.isVisible()) {
-                  sidebar.show();
-                }
+            $.get("spip.php?page=map-ajouter-association", function (html) {
+              sidebar.setContent(html);
+              if (!sidebar.isVisible()) {
+                sidebar.show();
               }
-            );
+            });
           },
         },
       ],
