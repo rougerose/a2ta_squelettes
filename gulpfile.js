@@ -144,7 +144,7 @@ function copieJsLibSep() {
     .on("error", function (error) {
       this.emit("end");
     })
-    .pipe(rename({ suffix: "min" }))
+    .pipe(rename({ suffix: ".min" }))
     .pipe(dest(paths.jsLibSep.dest));
 }
 

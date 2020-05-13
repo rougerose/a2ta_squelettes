@@ -18,6 +18,7 @@ function a2ta_squelettes_recuperer_fond($flux) {
     $js .= "\n".spip_file_get_contents(find_in_path('dist/js/leaflet.spin.js'));
     // leaflet-easybutton
     $js .= "\n".spip_file_get_contents(find_in_path('dist/js/easy-button.js'));
+    var_dump($js);
     $flux['data']['texte'] .= "\n".$js;
   }
   return $flux;
