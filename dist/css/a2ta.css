@@ -363,6 +363,12 @@ a { text-decoration: none; color: black; }
 
 .leaflet-touch .leaflet-bar button { width: 30px; height: 30px; line-height: 30px; }
 
+.aiguillage { display: flex; flex-direction: column; width: 400px; margin: 96px auto; font-size: 28px; font-size: 1.75rem; line-height: 1.28571; }
+
+.aiguillage a { text-decoration: underline; color: #919eb1; transition: color 0.3s ease; }
+
+.aiguillage a:hover { color: #1f2732; }
+
 .mp-Map { position: relative; }
 
 .mp-Map .leaflet-container { font: inherit; }

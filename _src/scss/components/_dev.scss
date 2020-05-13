@@ -1,0 +1,17 @@
+.aiguillage {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: $spacing-unit-huge auto;
+  @include font-size(28px);
+
+  a {
+    text-decoration: underline;
+    color: $color-gray-600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-gray-900;
+    }
+  }
+}
