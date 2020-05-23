@@ -1,6 +1,6 @@
 [(#SET{mapID, 1})]
 [<div id="a2taMap" class="mp-Map">
-  (#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID}, point=non, no_control=oui, autocenterandzoom=non, objets=associations, utiliser_bb=oui, cluster=oui, clusterMaxZoom=11, style=non, zoom_molette=non})
+  (#INCLURE{fond=modeles/carte_gis, id_map=#GET{mapID}, point=non, no_control=oui, autocenterandzoom=non, objets=associations, utiliser_bb=oui, cluster=non, clusterMaxZoom=11, style=non, zoom_molette=oui})
   [(#REM) Récupérer l'objet carte grâce au callback de GIS]
   <script type="text/javascript">callback_map[(#GET{mapID})] = function(map) {A2ta.Map.init(map);}</script>
   <INCLURE{fond=inclure/map/mp-MapSearch} />

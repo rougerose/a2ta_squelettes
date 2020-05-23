@@ -176,8 +176,40 @@ A2ta.Map = (function () {
     var defaultView = reset;
 
     if (!map.options.cluster) {
-      // TODO: prévoir un traitement spécifique également ?
-      map.parseGeoJsonFeatures(data);
+      if (json.features && json.features.length > 0) {
+        var geoJson = L.geoJson("", {
+          style: map.options.pathStyles
+            ? map.options.pathStyles
+            : function (feature) {
+                if (feature.properties && feature.properties.styles) {
+                  return feature.properties.styles;
+                } else {
+                  return "";
+                }
+              },
+          onEachFeature: function (feature, layer) {
+            if (feature.geometry.type == "Point") {
+              map.setGeoJsonFeatureIcon(feature, layer);
+            }
+            // map.setGeoJsonFeaturePopup(feature, layer);
+          },
+          pointToLayer: function (feature, latlng) {
+            var alt = "Marker";
+            if (feature.properties.title) {
+              alt = feature.properties.title;
+            }
+            var marker = L.marker(latlng, { alt: alt });
+            marker.on("click", handleClickOnMarker);
+            return marker;
+          },
+        })
+          .addData(json)
+          .addTo(map);
+
+        if (spinIsActive) {
+          removeSpin(map);
+        }
+      }
     } else {
       var markers = [];
       var autres = {
