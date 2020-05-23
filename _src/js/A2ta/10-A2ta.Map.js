@@ -168,9 +168,8 @@ A2ta.Map = (function () {
   /**
    * Afficher les points de géolocalisation
    *
-   * Fonction dérivée et simplifiée de celle disponible
-   * dans l'API de GIS, mais sans les options
-   * de zoom et de centre (centerAndZoom).
+   * Fonction dérivée de la fonction parseGeoJson
+   * dans l'API de GIS.
    */
   function parseJson(json, reset) {
     var defaultView = reset;
@@ -205,6 +204,49 @@ A2ta.Map = (function () {
         })
           .addData(json)
           .addTo(map);
+
+        // Note : Les options centre de GIS ne sont pas prises en compte
+        // et gérer uniquement en fonction du boolean reset.
+        // if (map.options.autocenterandzoom) {
+        //   map.centerAndZoom(geoJson.getBounds());
+        // }
+
+        if (!reset) {
+          var bound = geoJson.getBounds();
+          var bounds = new L.LatLngBounds();
+          bounds.extend(bound);
+          var options = map.options;
+
+          if (
+            bounds._northEast.lat == bounds._southWest.lat &&
+            bounds._northEast.lng == bounds._southWest.lng
+          ) {
+            var singlePoint = true;
+            options.maxZoom = 16;
+            bounds._northEast.lat += 0.1;
+            bounds._northEast.lng += 0.1;
+            bounds._southWest.lat -= 0.1;
+            bounds._southWest.lng -= 0.1;
+          }
+
+          map.fitBounds(bounds, options);
+          map.setZoom(options.maxZoom);
+        } else {
+          map.setView(
+            [A2ta.config.map.defaultLat, A2ta.config.map.defaultLng],
+            A2ta.config.map.defaultZoom
+          );
+        }
+
+        if (map.options.openId) {
+          gis_focus_marker(map.options.openId, map.options.mapId);
+        }
+
+        if (typeof map.geojsons == "undefined") {
+          map.geojsons = [];
+        }
+
+        map.geojsons.push(geoJson);
 
         if (spinIsActive) {
           removeSpin(map);
