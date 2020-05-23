@@ -6,6 +6,8 @@
 
 # Carte
 
+- Script principal : plutôt que de passer par le script de GIS, désactiver l'affichage des points et utiliser un script spécifique pour l'affichage de ces mêmes points, mettre en place un modèle qui initialise le script spécifique ?
+
 - ajouter dans l'url les références aux associations recherchées, à la fiche d'une association affichée ?
 
 # Carte > Sidebar, technique
