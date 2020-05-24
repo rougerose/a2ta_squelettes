@@ -61,7 +61,7 @@ A2ta.Map = (function () {
       position: "bottomleft",
       states: [
         {
-          icon: '<svg class="mp-Icon"><use href="#iconInfo" /></svg>',
+          icon: '<svg class="mp-Icon"><use xlink:href="#iconInfo" /></svg>',
           title: "À propos de cette carte",
           onClick: function (control) {
             $.get("spip.php?page=map-info", function (html) {
@@ -79,7 +79,7 @@ A2ta.Map = (function () {
       position: "bottomleft",
       states: [
         {
-          icon: '<svg class="mp-Icon"><use href="#iconGeoAdd" /></svg>',
+          icon: '<svg class="mp-Icon"><use xlink:href="#iconGeoAdd" /></svg>',
           onClick: function (control) {
             $.get("spip.php?page=map-ajouter-association", function (html) {
               sidebar.setContent(html);
@@ -349,8 +349,6 @@ A2ta.Map = (function () {
       twitter: feature.properties.twitter,
       instagram: feature.properties.instagram,
     };
-
-    console.log(links);
 
     var link;
     for (link in links) {
