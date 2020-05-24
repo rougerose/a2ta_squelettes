@@ -326,7 +326,7 @@ A2ta.Map = (function () {
 
     // Membre FRAAP
     var member = feature.properties.fraapmember;
-    if (member) {
+    if (member == 1) {
       var memberSpan = document.createElement("span");
       memberSpan.className = orgClass.member;
       memberSpan.innerText = "Fraap";
@@ -350,6 +350,8 @@ A2ta.Map = (function () {
       instagram: feature.properties.instagram,
     };
 
+    console.log(links);
+
     var link;
     for (link in links) {
       if (/^website/.test(link)) {
@@ -367,7 +369,7 @@ A2ta.Map = (function () {
         sites.appendChild(a);
       } else {
         // Réseaux
-        if (links[link]) {
+        if (links[link] !== "") {
           // Même schéma que ci-dessus
           var a = document.createElement("a");
           a.href = links[link];
