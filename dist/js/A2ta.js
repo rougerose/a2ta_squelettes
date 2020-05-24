@@ -275,7 +275,7 @@ A2ta.Map = (function () {
       position: "bottomleft",
       states: [
         {
-          icon: '<svg class="mp-Icon"><use href="#iconInfo" /></svg>',
+          icon: '<svg class="mp-Icon"><use xlink:href="#iconInfo" /></svg>',
           title: "À propos de cette carte",
           onClick: function (control) {
             $.get("spip.php?page=map-info", function (html) {
@@ -293,7 +293,7 @@ A2ta.Map = (function () {
       position: "bottomleft",
       states: [
         {
-          icon: '<svg class="mp-Icon"><use href="#iconGeoAdd" /></svg>',
+          icon: '<svg class="mp-Icon"><use xlink:href="#iconGeoAdd" /></svg>',
           onClick: function (control) {
             $.get("spip.php?page=map-ajouter-association", function (html) {
               sidebar.setContent(html);
@@ -382,16 +382,90 @@ A2ta.Map = (function () {
   /**
    * Afficher les points de géolocalisation
    *
-   * Fonction dérivée et simplifiée de celle disponible
-   * dans l'API de GIS, mais sans les options
-   * de zoom et de centre (centerAndZoom).
+   * Fonction dérivée de la fonction parseGeoJson
+   * dans l'API de GIS.
    */
   function parseJson(json, reset) {
     var defaultView = reset;
 
     if (!map.options.cluster) {
-      // TODO: prévoir un traitement spécifique également ?
-      map.parseGeoJsonFeatures(data);
+      if (json.features && json.features.length > 0) {
+        var geoJson = L.geoJson("", {
+          style: map.options.pathStyles
+            ? map.options.pathStyles
+            : function (feature) {
+                if (feature.properties && feature.properties.styles) {
+                  return feature.properties.styles;
+                } else {
+                  return "";
+                }
+              },
+          onEachFeature: function (feature, layer) {
+            if (feature.geometry.type == "Point") {
+              map.setGeoJsonFeatureIcon(feature, layer);
+            }
+            // map.setGeoJsonFeaturePopup(feature, layer);
+          },
+          pointToLayer: function (feature, latlng) {
+            var alt = "Marker";
+            if (feature.properties.title) {
+              alt = feature.properties.title;
+            }
+            var marker = L.marker(latlng, { alt: alt });
+            marker.on("click", handleClickOnMarker);
+            return marker;
+          },
+        })
+          .addData(json)
+          .addTo(map);
+
+        // Note : Les options centre de GIS ne sont pas prises en compte
+        // et gérer uniquement en fonction du boolean reset.
+        // if (map.options.autocenterandzoom) {
+        //   map.centerAndZoom(geoJson.getBounds());
+        // }
+
+        if (!reset) {
+          var bound = geoJson.getBounds();
+          var bounds = new L.LatLngBounds();
+          bounds.extend(bound);
+          var options = map.options;
+
+          if (
+            bounds._northEast.lat == bounds._southWest.lat &&
+            bounds._northEast.lng == bounds._southWest.lng
+          ) {
+            var singlePoint = true;
+            options.maxZoom = 16;
+            bounds._northEast.lat += 0.1;
+            bounds._northEast.lng += 0.1;
+            bounds._southWest.lat -= 0.1;
+            bounds._southWest.lng -= 0.1;
+          }
+
+          map.fitBounds(bounds, options);
+          map.setZoom(options.maxZoom);
+        } else {
+          map.setView(
+            [A2ta.config.map.defaultLat, A2ta.config.map.defaultLng],
+            A2ta.config.map.defaultZoom
+          );
+        }
+
+        if (map.options.openId) {
+          gis_focus_marker(map.options.openId, map.options.mapId);
+        }
+
+        if (typeof map.geojsons == "undefined") {
+          map.geojsons = [];
+        }
+
+        map.geojsons.push(geoJson);
+
+        if (spinIsActive) {
+          removeSpin(map);
+        }
+      }
     } else {
       var markers = [];
       var autres = {
@@ -466,7 +540,7 @@ A2ta.Map = (function () {
 
     // Membre FRAAP
     var member = feature.properties.fraapmember;
-    if (member) {
+    if (member == 1) {
       var memberSpan = document.createElement("span");
       memberSpan.className = orgClass.member;
       memberSpan.innerText = "Fraap";
@@ -507,7 +581,7 @@ A2ta.Map = (function () {
         sites.appendChild(a);
       } else {
         // Réseaux
-        if (links[link]) {
+        if (links[link] !== "") {
           // Même schéma que ci-dessus
           var a = document.createElement("a");
           a.href = links[link];
