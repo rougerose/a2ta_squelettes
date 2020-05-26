@@ -14,7 +14,7 @@
 	<licence>GNU/GPL v3</licence>
 
 	<necessite nom="zcore" compatibilite="[2.8.7;]" />
-	<necessite nom="a2ta_associations" compatibilite="[1.0.0;]" />
+	<necessite nom="a2ta_data" compatibilite="[1.0.0;]" />
 	<necessite nom="selections_editoriales" compatibilite="[1.9.3;]" />
 	<necessite nom="adaptive_images" compatibilite="[1.18.0;]" />
 	<necessite nom="selecteurgenerique" compatibilite="[1.1.14;]" />
