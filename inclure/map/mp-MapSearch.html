@@ -35,6 +35,7 @@
                     <span class="mp-Category" data-value="id_mot:#ID_MOT" data-label="[(#TITRE)[ \((#DESCRIPTIF|textebrut)\)]]">[(#TITRE)]</span>[
                   (#COMPTEUR_BOUCLE|alterner{'', '</div>'})]
                 </BOUCLE_activites>
+                [(#TOTAL_BOUCLE|modulo{2}|=={0}|non)</div>]
               </div>
               <!-- <div class="mp-Scroll_Gradient"></div> -->
               <div class="mp-Scroll_Scrollbar"></div>
