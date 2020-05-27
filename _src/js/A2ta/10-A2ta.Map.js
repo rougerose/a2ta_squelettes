@@ -16,7 +16,7 @@ A2ta.Map = (function () {
     A2ta.config.map.defaultLat = map.options.center[0];
     A2ta.config.map.defaultLng = map.options.center[1];
     A2ta.config.map.defaultZoom = map.options.zoom;
-    //
+
     A2ta.Map.Search.init();
   }
 
@@ -210,12 +210,11 @@ A2ta.Map = (function () {
         // if (map.options.autocenterandzoom) {
         //   map.centerAndZoom(geoJson.getBounds());
         // }
-
+        var options = map.options;
         if (!reset) {
           var bound = geoJson.getBounds();
           var bounds = new L.LatLngBounds();
           bounds.extend(bound);
-          var options = map.options;
 
           if (
             bounds._northEast.lat == bounds._southWest.lat &&
@@ -228,7 +227,6 @@ A2ta.Map = (function () {
             bounds._southWest.lat -= 0.1;
             bounds._southWest.lng -= 0.1;
           }
-
           map.fitBounds(bounds, options);
           map.setZoom(options.maxZoom);
         } else {
